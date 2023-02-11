@@ -1,0 +1,13 @@
+//
+//  KameBooks_Release.xcconfig
+//  KameBooks
+//
+//  Created by Jorge Suárez on 11/2/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+KENV_BUNDLE_NAME = KameBooks
+KENV_BASE_URL = https:\/\/trantorapi-acacademy.herokuapp.com
