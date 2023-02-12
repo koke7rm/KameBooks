@@ -9,13 +9,15 @@ import SwiftUI
 
 enum NetworkInterface {
     case getBooksList
+    case createUser(user: UserModel)
 }
 
 extension NetworkInterface {
     
     var baseURL: String {
         switch self {
-        case .getBooksList:
+        case .getBooksList,
+                .createUser:
             return InfoKey.baseUrl
         }
     }
@@ -24,6 +26,8 @@ extension NetworkInterface {
         switch self {
         case .getBooksList:
             return "/api/books/list"
+        case .createUser:
+            return "/api/client"
         }
     }
     
@@ -31,6 +35,8 @@ extension NetworkInterface {
         switch self {
         case .getBooksList:
             return .get
+        case .createUser:
+            return .post
         }
     }
     
@@ -43,6 +49,9 @@ extension NetworkInterface {
     
     var body: Data? {
         switch self {
+        case .createUser(let user):
+            let dto = user
+            return try? JSONEncoder().encode(dto)
         default:
             return nil
         }

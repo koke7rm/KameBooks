@@ -1,0 +1,13 @@
+//
+//  KameBooks_Develop.xcconfig
+//  KameBooks
+//
+//  Created by Jorge Suárez on 12/2/23.
+//  Copyright © 2023 Trantor S.L. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+KENV_BUNDLE_NAME = KameBooks_Develop
+KENV_BASE_URL = https:\/\/trantorapi-acacademy.herokuapp.com

@@ -1,0 +1,21 @@
+/* 
+  Localizable(es).strings
+  KameBooks
+
+  Created by Jorge Suárez on 12/2/23.
+  Copyright © 2023 Trantor S.L. All rights reserved.
+*/
+
+// GENERAL
+"APP_NAME" = "Trantor Books";
+"LOADING" = "Cargando...";
+"NAME" = "Nombre";
+"EMAIL" = "Email";
+"Address" = "Dirección";
+
+// NETWORK CONNECTION
+"NETWORKCONNECTION_TITLE" = "No hay conexión de red";
+"NETWORKCONNECTION_SUBTITLE" = "Por favor, revisa la conexión e intentalo de nuevo";
+
+// FORM
+"FORM_INVALID_MAIL_MESSAGE" = "Introduce un email válido";

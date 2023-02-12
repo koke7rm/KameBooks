@@ -19,7 +19,13 @@ extension String {
     func removingWhiteSpaces() -> String {
         components(separatedBy: .whitespaces).joined()
     }
+}
 
+// MARK: - Color
+// MARK: -
+extension Color {
+    static let blueMain = Color("blue_main")
+    static let gold = Color("gold")
 }
 
 // MARK: - UIApplication
