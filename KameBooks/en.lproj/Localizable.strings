@@ -9,10 +9,35 @@
 // GENERAL
 "APP_NAME" = "Trantor Books";
 "LOADING" = "Loading...";
+"NAME" = "Name";
+"EMAIL" = "Email";
+"ADDRESS" = "Address";
+"NEXT" = "Next";
+"CONTINUE" = "Continue";
+"CANCEL" = "Cancel";
+"CLOSE" = "Close";
 
 // NETWORK CONNECTION
 "NETWORKCONNECTION_TITLE" = "No network connection";
 "NETWORKCONNECTION_SUBTITLE" = "Please check the connection and try again";
 
-// FORM
-"FORM_INVALID_MAIL_MESSAGE" = "Enter a valid email address";
+// ONBOARDING
+"ONBOARDING_FIRST_TITLE" = "Can't make up your mind?";
+"ONBOARDING_FIRST_DESCRIPTION" = "You can browse our extensive catalogue of books without registering";
+"ONBOARDING_SECOND_TITLE" = "Register and read";
+"ONBOARDING_SECOND_DESCRIPTION" = "Buy the books you want and we will send them to your home free of charge";
+
+// AUTH
+"AUTH_INVALID_MAIL_MESSAGE" = "Enter a valid email address";
+"AUTH_NAME_PLACEHOLDER" = "Bruce Wayne";
+"AUTH_MAIL_PLACEHOLDER" = "user@example.com";
+"AUTH_ADDRESS_PLACEHOLDER" = "Calle Central, Madrid";
+"AUTH_CREATE_ACCOUNT" = "Create account";
+"AUTH_LOGIN" = "Login";
+"AUTH_GUEST" = "Enter as guest";
+"AUTH_REGISTER_SUCCESS" = "Register success";
+"AUTH_REGISTER_SUCCESS_MESSAGE" = "You can now access the user benefits";
+"AUTH_REGISTER_ERROR" = "Register error";
+"AUTH_LOGIN_SUCCESS" = "Hi again!";
+"AUTH_LOGIN_SUCCESS_MESSAGE" = "We were waiting for you";
+"AUTH_LOGIN_ERROR" = "Login error";

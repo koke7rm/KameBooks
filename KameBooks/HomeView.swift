@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    let user = KameBooksKeyChain.shared.user
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(user?.name ?? "nada")
     }
 }
 

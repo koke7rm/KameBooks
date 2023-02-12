@@ -11,7 +11,11 @@
 "LOADING" = "Cargando...";
 "NAME" = "Nombre";
 "EMAIL" = "Email";
-"Address" = "Dirección";
+"ADDRESS" = "Dirección";
+"NEXT" = "Siguiente";
+"CONTINUE" = "Continuar";
+"CANCEL" = "Cancelar";
+"CLOSE" = "Cerrar";
 
 // NETWORK CONNECTION
 "NETWORKCONNECTION_TITLE" = "No hay conexión de red";
@@ -19,3 +23,28 @@
 
 // FORM
 "FORM_INVALID_MAIL_MESSAGE" = "Introduce un email válido";
+"FORM_NAME_PLACEHOLDER" = "Bruce Wayne";
+"FORM_MAIL_PLACEHOLDER" = "user@example.com";
+"FORM_ADDRESS_PLACEHOLDER" = "Calle Central, Madrid";
+
+// ONBOARDING
+"ONBOARDING_FIRST_TITLE" = "¿No te decides?";
+"ONBOARDING_FIRST_DESCRIPTION" = "Puedes revisar nuestro amplio catálogo de libros sin necesidad de registrate";
+"ONBOARDING_SECOND_TITLE" = "Registrate y a leer";
+"ONBOARDING_SECOND_DESCRIPTION" = "Compra los libros que quieras y te los enviamos a casa sin coste";
+
+// AUTH
+"AUTH_INVALID_MAIL_MESSAGE" = "Introduce un email válido";
+"AUTH_NAME_PLACEHOLDER" = "Bruce Wayne";
+"AUTH_MAIL_PLACEHOLDER" = "user@example.com";
+"AUTH_ADDRESS_PLACEHOLDER" = "Calle Central, Madrid";
+"AUTH_CREATE_ACCOUNT" = "Crear cuenta";
+"AUTH_LOGIN" = "Iniciar sesión";
+"AUTH_GUEST" = "Entrar como invitado";
+"AUTH_REGISTER_SUCCESS" = "Registro completado";
+"AUTH_REGISTER_SUCCESS_MESSAGE" = "Ya puedes acceder a las ventajas de usuario";
+"AUTH_REGISTER_ERROR" = "Error de registro";
+"AUTH_LOGIN_SUCCESS" = "¡Hola de nuevo!";
+"AUTH_LOGIN_SUCCESS_MESSAGE" = "Te estabamos esperando";
+"AUTH_LOGIN_ERROR" = "Error en inicio de sesión";
+

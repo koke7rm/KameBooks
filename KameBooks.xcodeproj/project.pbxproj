@@ -40,6 +40,8 @@
 		E1A46AC1299993A600E1CA40 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A46AC0299993A600E1CA40 /* LoginView.swift */; };
 		E1A46AC329999C7E00E1CA40 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A46AC229999C7E00E1CA40 /* TabBar.swift */; };
 		E1A46AC529999CBE00E1CA40 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A46AC429999CBE00E1CA40 /* HomeView.swift */; };
+		E1A46AC829999EFE00E1CA40 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E1A46AC729999EFE00E1CA40 /* KeychainAccess */; };
+		E1A46ACB29999F7300E1CA40 /* KameBooksKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A46ACA29999F7300E1CA40 /* KameBooksKeyChain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,7 @@
 		E1A46AC0299993A600E1CA40 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E1A46AC229999C7E00E1CA40 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		E1A46AC429999CBE00E1CA40 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E1A46ACA29999F7300E1CA40 /* KameBooksKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KameBooksKeyChain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A46AC829999EFE00E1CA40 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +125,7 @@
 				E183805F2997F774008D39FE /* Network */,
 				E1A01FCA2999381200133FDA /* Resources */,
 				E183805E2997F765008D39FE /* Utils */,
+				E1A46AC929999F3800E1CA40 /* Storage */,
 				E183804C2997F588008D39FE /* Preview Content */,
 			);
 			path = KameBooks;
@@ -236,6 +241,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		E1A46AC929999F3800E1CA40 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E1A46ACA29999F7300E1CA40 /* KameBooksKeyChain.swift */,
+			);
+			name = Storage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -252,6 +265,9 @@
 			dependencies = (
 			);
 			name = KameBooks;
+			packageProductDependencies = (
+				E1A46AC729999EFE00E1CA40 /* KeychainAccess */,
+			);
 			productName = KameBooks;
 			productReference = E18380432997F585008D39FE /* KameBooks.app */;
 			productType = "com.apple.product-type.application";
@@ -282,6 +298,9 @@
 				Base,
 			);
 			mainGroup = E183803A2997F585008D39FE;
+			packageReferences = (
+				E1A46AC629999EFE00E1CA40 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = E18380442997F585008D39FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -323,6 +342,7 @@
 				E1A01FE22999468200133FDA /* AuthView.swift in Sources */,
 				E18380622997F930008D39FE /* NetworkErrors.swift in Sources */,
 				E1A01FF42999664F00133FDA /* Styles.swift in Sources */,
+				E1A46ACB29999F7300E1CA40 /* KameBooksKeyChain.swift in Sources */,
 				E1A01FE629994A6B00133FDA /* AuthViewModel.swift in Sources */,
 				E1A01FE42999495200133FDA /* RegisterView.swift in Sources */,
 				E18380712997FDFA008D39FE /* File.swift in Sources */,
@@ -572,6 +592,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1A46AC629999EFE00E1CA40 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1A46AC729999EFE00E1CA40 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1A46AC629999EFE00E1CA40 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E183803B2997F585008D39FE /* Project object */;
 }

@@ -48,7 +48,7 @@ final class AuthViewModel: ObservableObject {
         return false
     }
     
-    /// Método para obtener el listado de centros de carglass
+    /// Método para crear un usuario
     @MainActor func createUser() async {
         loading = true
         Task {
@@ -69,7 +69,7 @@ final class AuthViewModel: ObservableObject {
         }
     }
     
-    /// Método para obtener el listado de centros de carglass
+    /// Método para comprobar si el usuario existe y obtener sus datos
     @MainActor func checkUser() async {
         loading = true
         Task {
@@ -79,6 +79,7 @@ final class AuthViewModel: ObservableObject {
             switch await task.result {
             case .success(let response):
                 print(response)
+                KameBooksKeyChain.shared.user = response
                 showSuccessAlert.toggle()
             case .failure(let error as APIErrorCodeMessage):
                 errorMsg = error.reason ?? "No hemos podido"

@@ -20,10 +20,10 @@ final class RegexValidations: NSObject {
             if let _ = email {
                 return nil
             } else {
-                return "FORM_INVALID_MAIL_MESSAGE".localized
+                return "AUTH_INVALID_MAIL_MESSAGE".localized
             }
         } catch {
-            return "FORM_INVALID_MAIL_MESSAGE".localized
+            return "AUTH_INVALID_MAIL_MESSAGE".localized
         }
     }
 }

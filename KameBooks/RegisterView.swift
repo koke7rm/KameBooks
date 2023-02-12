@@ -18,18 +18,18 @@ struct RegisterView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 16) {
-                CustomTextField(text: $authVM.name, field: "Name", placeholder: "Bruce Wayne", validation: authVM.validateEmpty)
+                CustomTextField(text: $authVM.name, field: "NAME".localized, placeholder: "AUTH_NAME_PLACEHOLDER".localized, validation: authVM.validateEmpty)
                     .textInputAutocapitalization(.words)
                     .textContentType(.name)
-                CustomTextField(text: $authVM.mail, field: "Email", placeholder: "user@example.com", validation: RegexValidations.shared.validateEmail)
+                CustomTextField(text: $authVM.mail, field: "EMAIL".localized, placeholder: "AUTH_MAIL_PLACEHOLDER".localized, validation: RegexValidations.shared.validateEmail)
                     .textContentType(.emailAddress)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
-                CustomTextField(text: $authVM.address, field: "Address", placeholder: "Calle Central, Madrid", validation: authVM.validateEmpty)
+                CustomTextField(text: $authVM.address, field: "ADDRESS".localized, placeholder: "AUTH_ADDRESS_PLACEHOLDER".localized, validation: authVM.validateEmpty)
                     .textContentType(.streetAddressLine1)
                 
                 HStack {
-                    SimpleButton(text: "Registrarme", foregroundColor: .black, bacgkroundColor: .gold) {
+                    SimpleButton(text: "CONTINUE".localized, foregroundColor: .black, bacgkroundColor: .gold) {
                         Task {
                             await authVM.createUser()
                         }
@@ -37,7 +37,7 @@ struct RegisterView: View {
                     .opacity(authVM.validateFields() ? 1 : 0.6)
                     .disabled(!authVM.validateFields())
                     
-                    SimpleButton(text: "Cancelar", foregroundColor: .black, bacgkroundColor: .gold) {
+                    SimpleButton(text: "CANCEL".localized, foregroundColor: .black, bacgkroundColor: .gold) {
                         authStep = .auth
                     }
                 }
@@ -45,24 +45,23 @@ struct RegisterView: View {
             }
             .padding()
         }
-        .alert("Registro completado", isPresented: $authVM.showSuccessAlert) {
+        .alert("AUTH_REGISTER_SUCCESS".localized, isPresented: $authVM.showSuccessAlert) {
             Button(action: {
-                authStep = .auth
-                screen = .home
+                authStep = .login
             }) {
                 Text("CLOSE".localized)
                     .textCase(.uppercase)
             }
         } message: {
-            Text("Ya puedes acceder a las ventajas de usuario")
+            Text("AUTH_REGISTER_SUCCESS_MESSAGE".localized)
         }
-        .alert("Error de registro", isPresented: $authVM.showErrorAlert) {
+        .alert("AUTH_REGISTER_ERROR".localized, isPresented: $authVM.showErrorAlert) {
             Button(action: {}) {
                 Text("CLOSE".localized)
                     .textCase(.uppercase)
             }
         } message: {
-            Text("No se ha podido completar el registro")
+            Text(authVM.errorMsg)
         }
         .overlay {
             if authVM.loading {

@@ -20,6 +20,7 @@ struct SplashView: View {
     
     @State var screen: Screens = .splash
     @State var splashAnimation = false
+    let user = KameBooksKeyChain.shared.user
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
     
     var body: some View {
@@ -63,8 +64,10 @@ struct SplashView: View {
             Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { _ in
                 if isFirstLaunch {
                     screen = .onboarding
-                } else {
+                } else if user == nil{
                     screen = .auth
+                } else {
+                    screen = .home
                 }
             }
         }

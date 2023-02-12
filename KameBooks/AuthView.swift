@@ -14,7 +14,6 @@ enum AuthStep {
     case auth
 }
 
-
 struct AuthView: View {
     
     @Binding var screen: Screens
@@ -40,15 +39,15 @@ struct AuthView: View {
     
     var auth: some View {
         VStack {
-            SimpleButton(text: "Crear cuenta", foregroundColor: .white, bacgkroundColor: .gold) {
+            SimpleButton(text: "AUTH_CREATE_ACCOUNT".localized, foregroundColor: .white, bacgkroundColor: .gold) {
                 authStep = .register
             }
             .padding(.horizontal, 50)
-            SimpleButton(text: "Login", foregroundColor: .white, bacgkroundColor: .gold) {
+            SimpleButton(text: "AUTH_LOGIN".localized, foregroundColor: .white, bacgkroundColor: .gold) {
                 authStep = .login
             }
             .padding(.horizontal, 50)
-            SimpleButton(text: "Crear cuenta", foregroundColor: .white, bacgkroundColor: .gold) {
+            SimpleButton(text: "AUTH_GUEST".localized, foregroundColor: .white, bacgkroundColor: .gold) {
                 authStep = .register
             }
             .padding(.horizontal, 50)

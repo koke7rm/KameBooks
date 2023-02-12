@@ -21,9 +21,9 @@ struct OnboardingView: View {
                 .ignoresSafeArea()
             VStack {
                 TabView(selection: $selection) {
-                    OnboardingPage(title: "¿No te decides?", image: "img_decision", description: "Puedes revisar nuestro amplio catálogo de libros sin necesidad de registrate")
+                    OnboardingPage(title: "ONBOARDING_FIRST_TITLE".localized, image: "img_decision", description: "ONBOARDING_FIRST_DESCRIPTION".localized)
                         .tag(0)
-                    OnboardingPage(title: "Registrate y a leer", image: "img_reading", description: "Compra los libros que quieras y te los enviamos a casa sin coste.")
+                    OnboardingPage(title: "ONBOARDING_SECOND_TITLE".localized, image: "img_reading", description: "ONBOARDING_SECOND_DESCRIPTION".localized)
                         .tag(1)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
@@ -38,9 +38,10 @@ struct OnboardingView: View {
                         isFirstLaunch = false
                     }
                 } label: {
-                    Text("Next")
+                    Text("NEXT".localized)
                         .foregroundColor(.black)
                         .bold()
+                        .textCase(.uppercase)
                 }
                 .buttonStyle(.bordered)
                 .tint(.gold)
