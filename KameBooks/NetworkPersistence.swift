@@ -19,6 +19,10 @@ final class NetworkPersistence {
         try await checkResponseVoid(request: .request(networkRequest: .createUser(user: user)))
     }
     
+    func checkUser(mail: String) async throws -> UserModel {
+        try await checkResponse(request: .request(networkRequest: .checkUser(mail: mail)), type: UserModel.self)
+    }
+    
     /// Método para obtener un JSON lanzando una petición asíncrona y controlando los errores
     func checkResponse<T: Codable>(request: URLRequest,
                                    type: T.Type,

@@ -68,4 +68,26 @@ final class AuthViewModel: ObservableObject {
             loading = false
         }
     }
+    
+    /// Método para obtener el listado de centros de carglass
+    @MainActor func checkUser() async {
+        loading = true
+        Task {
+            let task = Task(priority: .utility) {
+                return try await networkPersistance.checkUser(mail: mail)
+            }
+            switch await task.result {
+            case .success(let response):
+                print(response)
+                showSuccessAlert.toggle()
+            case .failure(let error as APIErrorCodeMessage):
+                errorMsg = error.reason ?? "No hemos podido"
+                showErrorAlert.toggle()
+            case .failure(let error):
+                errorMsg = error.localizedDescription
+                showErrorAlert.toggle()
+            }
+            loading = false
+        }
+    }
 }

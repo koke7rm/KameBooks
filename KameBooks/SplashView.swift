@@ -11,8 +11,7 @@ enum Screens {
     case splash
     case onboarding
     case auth
-    case register
-    case login
+    case home
 }
 
 struct SplashView: View {
@@ -35,11 +34,8 @@ struct SplashView: View {
             case .auth:
                 AuthView(screen: $screen)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-            case .register:
-                RegisterView(screen: $screen)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-            case .login:
-                RegisterView(screen: $screen)
+            case .home:
+                TabBar()
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
             }
         }

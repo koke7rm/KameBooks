@@ -35,7 +35,6 @@ struct DefaultError: LocalizedError {
 }
 
 struct APIErrorCodeMessage: LocalizedError, Codable {
-    var code: String?
-    var message: String?
+    var reason: String?
 }
 

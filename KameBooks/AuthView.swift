@@ -8,37 +8,52 @@
 
 import SwiftUI
 
+enum AuthStep {
+    case register
+    case login
+    case auth
+}
+
 
 struct AuthView: View {
     
     @Binding var screen: Screens
+    @State var authStep: AuthStep = .auth
     
     var body: some View {
-        VStack {
-            Button {
-                screen = .register
-            } label: {
-                Text("Crear cuenta")
+        
+        Group {
+            switch authStep {
+            case .auth:
+                auth
+                    .transition(.move(edge: .leading))
+            case .register:
+                RegisterView(screen: $screen, authStep: $authStep)
+                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            case .login:
+                LoginView(screen: $screen, authStep: $authStep)
+                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
             }
-            .buttonStyle(.bordered)
-            .tint(.gold)
-            Button {
-                print("Register")
-            } label: {
-                Text("Crear cuenta")
-            }
-            .buttonStyle(.bordered)
-            .tint(.gold)
-            
-            Button {
-                print("Register")
-            } label: {
-                Text("Crear cuenta")
-            }
-            .buttonStyle(.bordered)
-            .tint(.gold)
         }
-
+        .animation(.default, value: authStep)
+    }
+    
+    var auth: some View {
+        VStack {
+            SimpleButton(text: "Crear cuenta", foregroundColor: .white, bacgkroundColor: .gold) {
+                authStep = .register
+            }
+            .padding(.horizontal, 50)
+            SimpleButton(text: "Login", foregroundColor: .white, bacgkroundColor: .gold) {
+                authStep = .login
+            }
+            .padding(.horizontal, 50)
+            SimpleButton(text: "Crear cuenta", foregroundColor: .white, bacgkroundColor: .gold) {
+                authStep = .register
+            }
+            .padding(.horizontal, 50)
+        }
+        
     }
 }
 
