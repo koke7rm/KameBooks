@@ -3,6 +3,7 @@
 //  KameBooks
 //
 //  Created by Jorge Suárez on 11/2/23.
+//  Copyright © 2023 Trantor S.L. All rights reserved.
 //
 
 import Foundation
@@ -21,6 +22,14 @@ final class NetworkPersistence {
     
     func checkUser(mail: String) async throws -> UserModel {
         try await checkResponse(request: .request(networkRequest: .checkUser(mail: mail)), type: UserModel.self)
+    }
+    
+    func getAuthors() async throws -> [AuthorModel] {
+        try await checkResponse(request: .request(networkRequest: .getAuthors), type: [AuthorModel].self)
+    }
+    
+    func getFeaturedBooks() async throws -> [BookModel] {
+        try await checkResponse(request: .request(networkRequest: .getFeaturedBooks), type: [BookModel].self)
     }
     
     /// Método para obtener un JSON lanzando una petición asíncrona y controlando los errores

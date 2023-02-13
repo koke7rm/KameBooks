@@ -3,6 +3,7 @@
 //  KameBooks
 //
 //  Created by Jorge Suárez on 12/2/23.
+//  Copyright © 2023 Trantor S.L. All rights reserved.
 //
 
 import SwiftUI

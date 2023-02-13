@@ -3,6 +3,7 @@
 //  KameBooks
 //
 //  Created by Jorge Suárez on 11/2/23.
+//  Copyright © 2023 Trantor S.L. All rights reserved.
 //
 
 import SwiftUI
@@ -11,6 +12,8 @@ enum NetworkInterface {
     case getBooksList
     case createUser(user: UserModel)
     case checkUser(mail: String)
+    case getAuthors
+    case getFeaturedBooks
 }
 
 extension NetworkInterface {
@@ -19,7 +22,9 @@ extension NetworkInterface {
         switch self {
         case .getBooksList,
                 .createUser,
-                .checkUser:
+                .checkUser,
+                .getAuthors,
+                .getFeaturedBooks:
             return InfoKey.baseUrl
         }
     }
@@ -32,12 +37,18 @@ extension NetworkInterface {
             return "/api/client"
         case .checkUser:
             return "/api/client/query"
+        case .getAuthors:
+            return "/api/books/authors"
+        case .getFeaturedBooks:
+            return "/api/books/latest"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getBooksList:
+        case .getBooksList,
+                .getAuthors,
+                .getFeaturedBooks:
             return .get
         case .createUser,
                 .checkUser:

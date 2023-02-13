@@ -3,6 +3,7 @@
 //  KameBooks
 //
 //  Created by Jorge Suárez on 11/2/23.
+//  Copyright © 2023 Trantor S.L. All rights reserved.
 //
 
 import SwiftUI
@@ -18,6 +19,10 @@ extension String {
     /// Metodo para quitar los espacios de un String
     func removingWhiteSpaces() -> String {
         components(separatedBy: .whitespaces).joined()
+    }
+    
+    var replaceDecimal: String {
+        replacingOccurrences(of: ",", with: "")
     }
 }
 

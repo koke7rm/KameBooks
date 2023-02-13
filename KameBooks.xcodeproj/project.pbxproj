@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E141F729299AB4D000381631 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F728299AB4D000381631 /* HomeViewModel.swift */; };
+		E141F72B299AE0E000381631 /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F72A299AE0E000381631 /* AuthorModel.swift */; };
 		E18380472997F585008D39FE /* KameBooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380462997F585008D39FE /* KameBooksApp.swift */; };
 		E183804B2997F588008D39FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183804A2997F588008D39FE /* Assets.xcassets */; };
 		E183804E2997F588008D39FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183804D2997F588008D39FE /* Preview Assets.xcassets */; };
@@ -18,7 +20,6 @@
 		E183806B2997FB3A008D39FE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183806A2997FB3A008D39FE /* Device.swift */; };
 		E183806D2997FB84008D39FE /* NetworkPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183806C2997FB84008D39FE /* NetworkPersistence.swift */; };
 		E183806F2997FD69008D39FE /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183806E2997FD69008D39FE /* BookModel.swift */; };
-		E18380712997FDFA008D39FE /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380702997FDFA008D39FE /* File.swift */; };
 		E1A01FC72999375600133FDA /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FC62999375600133FDA /* SplashView.swift */; };
 		E1A01FC9299937DE00133FDA /* AppOfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FC8299937DE00133FDA /* AppOfflineView.swift */; };
 		E1A01FCD2999385600133FDA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1A01FCF2999385600133FDA /* Localizable.strings */; };
@@ -45,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E141F728299AB4D000381631 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E141F72A299AE0E000381631 /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
 		E18380432997F585008D39FE /* KameBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KameBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18380462997F585008D39FE /* KameBooksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KameBooksApp.swift; sourceTree = "<group>"; };
 		E183804A2997F588008D39FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,7 +61,6 @@
 		E183806A2997FB3A008D39FE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		E183806C2997FB84008D39FE /* NetworkPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPersistence.swift; sourceTree = "<group>"; };
 		E183806E2997FD69008D39FE /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
-		E18380702997FDFA008D39FE /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		E1A01FC62999375600133FDA /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E1A01FC8299937DE00133FDA /* AppOfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOfflineView.swift; sourceTree = "<group>"; };
 		E1A01FD32999386D00133FDA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -175,9 +177,9 @@
 		E18380592997F6EB008D39FE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				E18380702997FDFA008D39FE /* File.swift */,
 				E1A01FD729993A5700133FDA /* NetworkStatus.swift */,
 				E1A01FE529994A6B00133FDA /* AuthViewModel.swift */,
+				E141F728299AB4D000381631 /* HomeViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -206,6 +208,7 @@
 			children = (
 				E183806E2997FD69008D39FE /* BookModel.swift */,
 				E1A01FE72999506700133FDA /* UserModel.swift */,
+				E141F72A299AE0E000381631 /* AuthorModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -345,7 +348,6 @@
 				E1A46ACB29999F7300E1CA40 /* KameBooksKeyChain.swift in Sources */,
 				E1A01FE629994A6B00133FDA /* AuthViewModel.swift in Sources */,
 				E1A01FE42999495200133FDA /* RegisterView.swift in Sources */,
-				E18380712997FDFA008D39FE /* File.swift in Sources */,
 				E18380662997F99D008D39FE /* NetworkInterface.swift in Sources */,
 				E1A01FD829993A5700133FDA /* NetworkStatus.swift in Sources */,
 				E1A46AC529999CBE00E1CA40 /* HomeView.swift in Sources */,
@@ -353,8 +355,10 @@
 				E1A01FEC299955FD00133FDA /* CustomTextField.swift in Sources */,
 				E1A01FEA2999517B00133FDA /* RegexValidations.swift in Sources */,
 				E183806B2997FB3A008D39FE /* Device.swift in Sources */,
+				E141F72B299AE0E000381631 /* AuthorModel.swift in Sources */,
 				E1A46AC329999C7E00E1CA40 /* TabBar.swift in Sources */,
 				E1A01FE82999506700133FDA /* UserModel.swift in Sources */,
+				E141F729299AB4D000381631 /* HomeViewModel.swift in Sources */,
 				E1A01FEE299964E800133FDA /* LoaderView.swift in Sources */,
 				E1A01FC9299937DE00133FDA /* AppOfflineView.swift in Sources */,
 				E18380682997FA03008D39FE /* InfoKeys.swift in Sources */,
