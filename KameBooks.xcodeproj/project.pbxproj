@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E141F729299AB4D000381631 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F728299AB4D000381631 /* HomeViewModel.swift */; };
 		E141F72B299AE0E000381631 /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F72A299AE0E000381631 /* AuthorModel.swift */; };
+		E1517FBB299C333E00661441 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FBA299C333E00661441 /* BookDetailView.swift */; };
+		E1517FBF299C340600661441 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FBE299C340600661441 /* BookDetailViewModel.swift */; };
+		E1517FC1299C36CA00661441 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FC0299C36CA00661441 /* Profile.swift */; };
 		E18380472997F585008D39FE /* KameBooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380462997F585008D39FE /* KameBooksApp.swift */; };
 		E183804B2997F588008D39FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183804A2997F588008D39FE /* Assets.xcassets */; };
 		E183804E2997F588008D39FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183804D2997F588008D39FE /* Preview Assets.xcassets */; };
@@ -48,6 +51,9 @@
 /* Begin PBXFileReference section */
 		E141F728299AB4D000381631 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E141F72A299AE0E000381631 /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
+		E1517FBA299C333E00661441 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		E1517FBE299C340600661441 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		E1517FC0299C36CA00661441 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		E18380432997F585008D39FE /* KameBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KameBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18380462997F585008D39FE /* KameBooksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KameBooksApp.swift; sourceTree = "<group>"; };
 		E183804A2997F588008D39FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,6 +176,8 @@
 				E1A46AC0299993A600E1CA40 /* LoginView.swift */,
 				E1A46AC229999C7E00E1CA40 /* TabBar.swift */,
 				E1A46AC429999CBE00E1CA40 /* HomeView.swift */,
+				E1517FBA299C333E00661441 /* BookDetailView.swift */,
+				E1517FC0299C36CA00661441 /* Profile.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -180,6 +188,7 @@
 				E1A01FD729993A5700133FDA /* NetworkStatus.swift */,
 				E1A01FE529994A6B00133FDA /* AuthViewModel.swift */,
 				E141F728299AB4D000381631 /* HomeViewModel.swift */,
+				E1517FBE299C340600661441 /* BookDetailViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -335,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1517FBB299C333E00661441 /* BookDetailView.swift in Sources */,
 				E1A01FC72999375600133FDA /* SplashView.swift in Sources */,
 				E1A01FDE2999419E00133FDA /* OnboardingView.swift in Sources */,
 				E18380472997F585008D39FE /* KameBooksApp.swift in Sources */,
@@ -343,6 +353,7 @@
 				E1A01FF22999662F00133FDA /* SimpleButton.swift in Sources */,
 				E1A46AC1299993A600E1CA40 /* LoginView.swift in Sources */,
 				E1A01FE22999468200133FDA /* AuthView.swift in Sources */,
+				E1517FC1299C36CA00661441 /* Profile.swift in Sources */,
 				E18380622997F930008D39FE /* NetworkErrors.swift in Sources */,
 				E1A01FF42999664F00133FDA /* Styles.swift in Sources */,
 				E1A46ACB29999F7300E1CA40 /* KameBooksKeyChain.swift in Sources */,
@@ -360,6 +371,7 @@
 				E1A01FE82999506700133FDA /* UserModel.swift in Sources */,
 				E141F729299AB4D000381631 /* HomeViewModel.swift in Sources */,
 				E1A01FEE299964E800133FDA /* LoaderView.swift in Sources */,
+				E1517FBF299C340600661441 /* BookDetailViewModel.swift in Sources */,
 				E1A01FC9299937DE00133FDA /* AppOfflineView.swift in Sources */,
 				E18380682997FA03008D39FE /* InfoKeys.swift in Sources */,
 				E1A01FE02999421100133FDA /* OnboardingPage.swift in Sources */,

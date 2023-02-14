@@ -19,12 +19,23 @@ final class HomeViewModel: ObservableObject {
     
     @Published var completeList: [BooksList] = []
     @Published var featuredList: [BooksList] = []
+    @Published var searchText = ""
     var authorsList: [AuthorModel] = []
     
     init() {
         Task {
             await getBooksList()
             await getFeaturedBooks()
+        }
+    }
+    
+    var filterBooks: [BooksList] {
+        if searchText.isEmpty {
+            return completeList
+        } else {
+            return completeList.filter {
+                $0.book.title.lowercased().hasPrefix(searchText.lowercased())
+            }
         }
     }
     
