@@ -14,6 +14,7 @@ enum NetworkInterface {
     case checkUser(mail: String)
     case getAuthors
     case getFeaturedBooks
+    case searchbook(word: String)
 }
 
 extension NetworkInterface {
@@ -24,7 +25,8 @@ extension NetworkInterface {
                 .createUser,
                 .checkUser,
                 .getAuthors,
-                .getFeaturedBooks:
+                .getFeaturedBooks,
+                .searchbook:
             return InfoKey.baseUrl
         }
     }
@@ -41,6 +43,8 @@ extension NetworkInterface {
             return "/api/books/authors"
         case .getFeaturedBooks:
             return "/api/books/latest"
+        case .searchbook(let word):
+            return "/api/books/find/\(word)"
         }
     }
     
@@ -48,7 +52,8 @@ extension NetworkInterface {
         switch self {
         case .getBooksList,
                 .getAuthors,
-                .getFeaturedBooks:
+                .getFeaturedBooks,
+                .searchbook:
             return .get
         case .createUser,
                 .checkUser:

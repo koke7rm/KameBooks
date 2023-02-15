@@ -11,11 +11,13 @@ import SwiftUI
 struct BookDetailView: View {
     
     @ObservedObject var bookVM: BookDetailViewModel
-    
+
     @Environment (\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
+            LinearGradient(gradient: Gradient.mainGradient, startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
             VStack {
                 AsyncImage(url: bookVM.bookDetail.book.cover) { image in
                     image
@@ -31,9 +33,15 @@ struct BookDetailView: View {
                 }
                 .padding()
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(bookVM.bookDetail.book.title)
+                        .foregroundColor(.white)
+                        .bold()
+                }
+            }
         }
-        .navigationTitle("Chapter detail")
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     var detailCard: some View {

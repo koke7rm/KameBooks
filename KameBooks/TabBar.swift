@@ -33,11 +33,15 @@ struct TabBar: View {
                 //                }
                     .tag(1)
             }
-            .navigationTitle(navTitle[selection])
+           /// .navigationTitle(navTitle[selection])
             .navigationDestination(for: BooksList.self) { book in
                 BookDetailView(bookVM: BookDetailViewModel(book: book))
             }
+            .navigationBarTitleDisplayMode(.inline)
+                            .toolbarBackground(.red, for: .navigationBar)
+                            .toolbarBackground(.visible, for: .navigationBar)
         }
+
     }
 }
 

@@ -18,8 +18,9 @@ final class HomeViewModel: ObservableObject {
     let networkPersistance = NetworkPersistence.shared
     
     @Published var completeList: [BooksList] = []
+    @Published var filteredList: [BooksList] = []
     @Published var featuredList: [BooksList] = []
-    @Published var searchText = ""
+    @Published var showNoResults = false
     var authorsList: [AuthorModel] = []
     
     init() {
@@ -28,17 +29,7 @@ final class HomeViewModel: ObservableObject {
             await getFeaturedBooks()
         }
     }
-    
-    var filterBooks: [BooksList] {
-        if searchText.isEmpty {
-            return completeList
-        } else {
-            return completeList.filter {
-                $0.book.title.lowercased().hasPrefix(searchText.lowercased())
-            }
-        }
-    }
-    
+
     @MainActor func getBooksList() async {
         do {
             let booksList = try await networkPersistance.getBooksList()
@@ -50,6 +41,7 @@ final class HomeViewModel: ObservableObject {
                     completeList.append(BooksList(book: book, author: author.name))
                 }
             }
+            self.filteredList = self.completeList
         } catch let error as APIErrors {
             print("error \(error.description)")
         } catch {
@@ -65,6 +57,26 @@ final class HomeViewModel: ObservableObject {
                 let authors = authorsList.filter { $0.id == book.author }.map { $0 }
                 authors.forEach { author in
                     featuredList.append(BooksList(book: book, author: author.name))
+                }
+            }
+        } catch let error as APIErrors {
+            print("error \(error.description)")
+        } catch {
+            print("error")
+        }
+    }
+    
+    @MainActor func searchBook(word: String) async {
+        filteredList.removeAll()
+        do {
+            let booksList = try await networkPersistance.searchBook(word: word)
+            if booksList.isEmpty {
+                showNoResults = true
+            }
+            booksList.forEach { book in
+                let authors = authorsList.filter { $0.id == book.author }.map { $0 }
+                authors.forEach { author in
+                    filteredList.append(BooksList(book: book, author: author.name))
                 }
             }
         } catch let error as APIErrors {

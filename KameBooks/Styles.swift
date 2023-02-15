@@ -15,3 +15,13 @@ struct TapEffect: ButtonStyle {
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
     }
 }
+
+struct CustomRounderedTextFieldStyle: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding(10)
+            .background(Color.lightGray)
+            .cornerRadius(8)
+            .shadow(color: .black.opacity(0.4), radius: 4, x: 0, y: 4)
+    }
+}

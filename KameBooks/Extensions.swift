@@ -31,6 +31,12 @@ extension String {
 extension Color {
     static let blueMain = Color("blue_main")
     static let gold = Color("gold")
+    static let lightGray = Color("lightGray")
+    static let blackLight = Color("blackLight")
+}
+
+extension Gradient {
+    static let mainGradient = Gradient(colors: [.blackLight, .gold, .white])
 }
 
 // MARK: - UIApplication
