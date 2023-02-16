@@ -18,6 +18,7 @@ struct AuthView: View {
     
     @Binding var screen: Screens
     @State var authStep: AuthStep = .auth
+    @AppStorage("isGuest") var isGuest = false
     
     var body: some View {
         
@@ -48,7 +49,9 @@ struct AuthView: View {
             }
             .padding(.horizontal, 50)
             SimpleButton(text: "AUTH_GUEST".localized, foregroundColor: .white, bacgkroundColor: .gold) {
-                authStep = .register
+                isGuest = true
+                KameBooksKeyChain.shared.deleteUser()
+                screen = .home
             }
             .padding(.horizontal, 50)
         }

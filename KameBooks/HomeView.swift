@@ -15,7 +15,7 @@ struct HomeView: View {
     @State var showCancel = false
     @FocusState var focusField: Bool
     
-    let user = KameBooksKeyChain.shared.user
+    @State var userName = ""
     
     var body: some View {
             VStack {
@@ -56,7 +56,7 @@ struct HomeView: View {
                 .padding()
                 .background(Color.blackLight)
                 
-                Text("Hola \(user?.name ?? "Invitado")")
+                Text("Hola \(userName)")
                     .font(.headline)
                     .padding(.bottom)
                 Text("Libros destacados")
@@ -135,6 +135,9 @@ struct HomeView: View {
                     }
                     .opacity(homeVM.showNoResults ? 1 : 0)
                 }
+            }
+            .onAppear {
+                userName = KameBooksKeyChain.shared.user?.name ?? "Invitado"
             }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TabBar: View {
     
+    @Binding var screen: Screens
     @State var selection = 0
     @State var navTitle = ["Home", "Favorites"]
     
@@ -24,7 +25,7 @@ struct TabBar: View {
                 //                    showSearch = true
                 //                }
                     .tag(0)
-                Profile()
+                Profile(screen: $screen)
                     .tabItem {
                         Label("Favorites", systemImage: "heart")
                     }
@@ -47,6 +48,6 @@ struct TabBar: View {
 
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar()
+        TabBar(screen: .constant(.home))
     }
 }

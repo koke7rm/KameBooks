@@ -30,6 +30,25 @@ struct BookDetailView: View {
                 ScrollView {
                     
                     detailCard
+                    
+                    Button {
+                        Task {
+                         await bookVM.createBooksOrder()
+                        }
+                    } label: {
+                        Text("Realizar pedido")
+                    }
+                    .buttonStyle(.bordered)
+                    
+                    Button {
+                        Task {
+                         await bookVM.createBooksOrder()
+                        }
+                    } label: {
+                        Text("Marcar como leido")
+                    }
+                    .buttonStyle(.bordered)
+
                 }
                 .padding()
             }

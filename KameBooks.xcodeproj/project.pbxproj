@@ -23,6 +23,9 @@
 		E183806B2997FB3A008D39FE /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183806A2997FB3A008D39FE /* Device.swift */; };
 		E183806D2997FB84008D39FE /* NetworkPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183806C2997FB84008D39FE /* NetworkPersistence.swift */; };
 		E183806F2997FD69008D39FE /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183806E2997FD69008D39FE /* BookModel.swift */; };
+		E190366B299E5CE8004DF1C3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E190366A299E5CE8004DF1C3 /* ProfileViewModel.swift */; };
+		E190366D299E6089004DF1C3 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E190366C299E6089004DF1C3 /* EditProfileView.swift */; };
+		E190366F299E773F004DF1C3 /* ModelPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E190366E299E773F004DF1C3 /* ModelPersistence.swift */; };
 		E1A01FC72999375600133FDA /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FC62999375600133FDA /* SplashView.swift */; };
 		E1A01FC9299937DE00133FDA /* AppOfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FC8299937DE00133FDA /* AppOfflineView.swift */; };
 		E1A01FCD2999385600133FDA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1A01FCF2999385600133FDA /* Localizable.strings */; };
@@ -67,6 +70,9 @@
 		E183806A2997FB3A008D39FE /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		E183806C2997FB84008D39FE /* NetworkPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPersistence.swift; sourceTree = "<group>"; };
 		E183806E2997FD69008D39FE /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		E190366A299E5CE8004DF1C3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		E190366C299E6089004DF1C3 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		E190366E299E773F004DF1C3 /* ModelPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPersistence.swift; sourceTree = "<group>"; };
 		E1A01FC62999375600133FDA /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E1A01FC8299937DE00133FDA /* AppOfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOfflineView.swift; sourceTree = "<group>"; };
 		E1A01FD32999386D00133FDA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -178,6 +184,7 @@
 				E1A46AC429999CBE00E1CA40 /* HomeView.swift */,
 				E1517FBA299C333E00661441 /* BookDetailView.swift */,
 				E1517FC0299C36CA00661441 /* Profile.swift */,
+				E190366C299E6089004DF1C3 /* EditProfileView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -189,6 +196,7 @@
 				E1A01FE529994A6B00133FDA /* AuthViewModel.swift */,
 				E141F728299AB4D000381631 /* HomeViewModel.swift */,
 				E1517FBE299C340600661441 /* BookDetailViewModel.swift */,
+				E190366A299E5CE8004DF1C3 /* ProfileViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -218,6 +226,7 @@
 				E183806E2997FD69008D39FE /* BookModel.swift */,
 				E1A01FE72999506700133FDA /* UserModel.swift */,
 				E141F72A299AE0E000381631 /* AuthorModel.swift */,
+				E190366E299E773F004DF1C3 /* ModelPersistence.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -347,6 +356,7 @@
 				E1517FBB299C333E00661441 /* BookDetailView.swift in Sources */,
 				E1A01FC72999375600133FDA /* SplashView.swift in Sources */,
 				E1A01FDE2999419E00133FDA /* OnboardingView.swift in Sources */,
+				E190366D299E6089004DF1C3 /* EditProfileView.swift in Sources */,
 				E18380472997F585008D39FE /* KameBooksApp.swift in Sources */,
 				E183806D2997FB84008D39FE /* NetworkPersistence.swift in Sources */,
 				E183806F2997FD69008D39FE /* BookModel.swift in Sources */,
@@ -356,8 +366,10 @@
 				E1517FC1299C36CA00661441 /* Profile.swift in Sources */,
 				E18380622997F930008D39FE /* NetworkErrors.swift in Sources */,
 				E1A01FF42999664F00133FDA /* Styles.swift in Sources */,
+				E190366F299E773F004DF1C3 /* ModelPersistence.swift in Sources */,
 				E1A46ACB29999F7300E1CA40 /* KameBooksKeyChain.swift in Sources */,
 				E1A01FE629994A6B00133FDA /* AuthViewModel.swift in Sources */,
+				E190366B299E5CE8004DF1C3 /* ProfileViewModel.swift in Sources */,
 				E1A01FE42999495200133FDA /* RegisterView.swift in Sources */,
 				E18380662997F99D008D39FE /* NetworkInterface.swift in Sources */,
 				E1A01FD829993A5700133FDA /* NetworkStatus.swift in Sources */,

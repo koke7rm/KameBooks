@@ -11,10 +11,13 @@ import SwiftUI
 enum NetworkInterface {
     case getBooksList
     case createUser(user: UserModel)
+    case updateUser(user: UserModel)
     case checkUser(mail: String)
     case getAuthors
     case getFeaturedBooks
     case searchbook(word: String)
+    case createBookOrer(orderData: OrderModel)
+    case postBooksRead(readsData: OrderModel)
 }
 
 extension NetworkInterface {
@@ -26,7 +29,10 @@ extension NetworkInterface {
                 .checkUser,
                 .getAuthors,
                 .getFeaturedBooks,
-                .searchbook:
+                .searchbook,
+                .createBookOrer,
+                .postBooksRead,
+                .updateUser:
             return InfoKey.baseUrl
         }
     }
@@ -35,7 +41,7 @@ extension NetworkInterface {
         switch self {
         case .getBooksList:
             return "/api/books/list"
-        case .createUser:
+        case .createUser, .updateUser:
             return "/api/client"
         case .checkUser:
             return "/api/client/query"
@@ -45,6 +51,11 @@ extension NetworkInterface {
             return "/api/books/latest"
         case .searchbook(let word):
             return "/api/books/find/\(word)"
+        case .createBookOrer:
+            return "/api/shop/newOrder"
+        case .postBooksRead:
+            return "/api/client/readQuery"
+
         }
     }
     
@@ -56,8 +67,12 @@ extension NetworkInterface {
                 .searchbook:
             return .get
         case .createUser,
-                .checkUser:
+                .checkUser,
+                .createBookOrer,
+                .postBooksRead:
             return .post
+        case .updateUser:
+            return .put
         }
     }
     
@@ -70,11 +85,17 @@ extension NetworkInterface {
     
     var body: Data? {
         switch self {
-        case .createUser(let user):
+        case .createUser(let user), .updateUser(let user):
             let dto = user
             return try? JSONEncoder().encode(dto)
         case .checkUser(let mail):
             return try? JSONEncoder().encode(["email" : mail])
+        case .createBookOrer(let orderData):
+            let dto = orderData
+            return try? JSONEncoder().encode(dto)
+        case .postBooksRead(let readsData):
+            let dto = readsData
+            return try? JSONEncoder().encode(dto)
         default:
             return nil
         }

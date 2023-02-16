@@ -37,7 +37,7 @@ struct SplashView: View {
                 AuthView(screen: $screen)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
             case .home:
-                TabBar()
+                TabBar(screen: $screen)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
             }
         }
