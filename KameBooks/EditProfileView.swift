@@ -54,13 +54,13 @@ struct EditProfileView: View {
                         .disabled(true)
                     CustomTextField(text: $profileVM.address, field: "ADDRESS".localized, placeholder: "AUTH_ADDRESS_PLACEHOLDER".localized)
                         .textContentType(.streetAddressLine1)
-                        
+                    
                     
                     SimpleButton(text: "Guardar".localized, foregroundColor: .black, bacgkroundColor: .gold) {
                         profileVM.saveData()
                     }
-                                        .opacity(profileVM.validateFields() ? 1 : 0.6)
-                                        .disabled(!profileVM.validateFields())
+                    .opacity(profileVM.validateFields() ? 1 : 0.6)
+                    .disabled(!profileVM.validateFields())
                     
                     .padding()
                 }

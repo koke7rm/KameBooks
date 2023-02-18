@@ -17,42 +17,51 @@ enum Screens {
 
 struct SplashView: View {
     
+    init() {
+        UIToolbar.appearance().barTintColor = UIColor.red
+    }
+    
     @StateObject var monitorNetwork = NetworkStatus()
+    
+    @AppStorage("isFirstLaunch") var isFirstLaunch = true
     
     @State var screen: Screens = .splash
     @State var splashAnimation = false
     let user = KameBooksKeyChain.shared.user
-    @AppStorage("isFirstLaunch") var isFirstLaunch = true
     
     var body: some View {
-        Group {
-            switch screen {
-            case .splash:
-                splash
-                    .transition(.move(edge: .leading))
-            case .onboarding:
-                OnboardingView(screen: $screen)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-            case .auth:
-                AuthView(screen: $screen)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-            case .home:
-                TabBar(screen: $screen)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+        ZStack {
+            Color.blackLight
+                .ignoresSafeArea()
+            Group {
+                switch screen {
+                case .splash:
+                    splash
+                        .transition(.move(edge: .leading))
+                case .onboarding:
+                    OnboardingView(screen: $screen)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                case .auth:
+                    AuthView(screen: $screen)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                case .home:
+                    TabBar(screen: $screen)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                }
             }
-        }
-        .animation(.default, value: screen)
-        .overlay {
-            if monitorNetwork.status == .offline {
-                AppOfflineView()
-                    .transition(.opacity)
+            .animation(.default, value: screen)
+            .overlay {
+                if monitorNetwork.status == .offline {
+                    AppOfflineView()
+                        .transition(.opacity)
+                }
             }
         }
     }
     
     var splash: some View {
         ZStack {
-            Color.black
+            Color.blackLight
                 .ignoresSafeArea()
             Image(decorative: "img_logoName")
                 .resizable()

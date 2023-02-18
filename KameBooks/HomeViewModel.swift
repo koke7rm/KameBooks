@@ -6,7 +6,7 @@
 //  Copyright © 2023 Trantor S.L. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 struct BooksList: Hashable {
     let book: BookModel
@@ -21,15 +21,34 @@ final class HomeViewModel: ObservableObject {
     @Published var filteredList: [BooksList] = []
     @Published var featuredList: [BooksList] = []
     @Published var showNoResults = false
+    @Published var showSearch = false
     var authorsList: [AuthorModel] = []
+    @Published var searchText = "" {
+        didSet {
+            searchTextActions(searchText)
+        }
+    }
     
     init() {
+        completeList.reserveCapacity(1000)
         Task {
             await getBooksList()
             await getFeaturedBooks()
         }
     }
-
+    
+    func searchTextActions(_ text: String) {
+        if text.isEmpty {
+            showNoResults = false
+            filteredList = completeList
+            showSearch = false
+        } else {
+            withAnimation {
+                showSearch = true
+            }
+        }
+    }
+    
     @MainActor func getBooksList() async {
         do {
             let booksList = try await networkPersistance.getBooksList()
@@ -67,7 +86,8 @@ final class HomeViewModel: ObservableObject {
     }
     
     @MainActor func searchBook(word: String) async {
-        filteredList.removeAll()
+        showNoResults = false
+        filteredList.removeAll(keepingCapacity: true)
         do {
             let booksList = try await networkPersistance.searchBook(word: word)
             if booksList.isEmpty {

@@ -21,31 +21,37 @@ struct AuthView: View {
     @AppStorage("isGuest") var isGuest = false
     
     var body: some View {
-        
-        Group {
-            switch authStep {
-            case .auth:
-                auth
-                    .transition(.move(edge: .leading))
-            case .register:
-                RegisterView(screen: $screen, authStep: $authStep)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-            case .login:
-                LoginView(screen: $screen, authStep: $authStep)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+        ZStack {
+            Color.white
+                .ignoresSafeArea(edges: .bottom)
+            Group {
+                switch authStep {
+                case .auth:
+                    auth
+                        .transition(.move(edge: .leading))
+                case .register:
+                    RegisterView(screen: $screen, authStep: $authStep)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                case .login:
+                    LoginView(screen: $screen, authStep: $authStep)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                }
             }
+            .animation(.default, value: authStep)
+            
         }
-        .animation(.default, value: authStep)
     }
     
     var auth: some View {
         VStack {
             SimpleButton(text: "AUTH_CREATE_ACCOUNT".localized, foregroundColor: .white, bacgkroundColor: .gold) {
                 authStep = .register
+                isGuest = false
             }
             .padding(.horizontal, 50)
             SimpleButton(text: "AUTH_LOGIN".localized, foregroundColor: .white, bacgkroundColor: .gold) {
                 authStep = .login
+                isGuest = false
             }
             .padding(.horizontal, 50)
             SimpleButton(text: "AUTH_GUEST".localized, foregroundColor: .white, bacgkroundColor: .gold) {

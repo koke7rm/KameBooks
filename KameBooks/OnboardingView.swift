@@ -18,7 +18,7 @@ struct OnboardingView: View {
     var body: some View {
         ZStack {
             Color.white
-                .ignoresSafeArea()
+                .ignoresSafeArea(edges: .bottom)
             VStack {
                 TabView(selection: $selection) {
                     OnboardingPage(title: "ONBOARDING_FIRST_TITLE".localized, image: "img_decision", description: "ONBOARDING_FIRST_DESCRIPTION".localized)
@@ -46,6 +46,7 @@ struct OnboardingView: View {
                 .buttonStyle(.bordered)
                 .tint(.gold)
             }
+            .background(Color.white)
             .padding()
         }
     }

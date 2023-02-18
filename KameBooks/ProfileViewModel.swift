@@ -13,7 +13,7 @@ final class ProfileViewModel: ObservableObject {
     
     let networkPersistence = NetworkPersistence.shared
     let persistence = ModelPersistence()
-
+    
     @Published var userData = KameBooksKeyChain.shared.user
     @Published var name = ""
     @Published var mail = ""
@@ -34,7 +34,7 @@ final class ProfileViewModel: ObservableObject {
     }
     
     @MainActor func updateuser() async {
- 
+        
         Task {
             let task = Task(priority: .utility) {
                 try await networkPersistence.updateUser(user: UserModel(name: name, email: mail, location: address) )
@@ -47,9 +47,9 @@ final class ProfileViewModel: ObservableObject {
             case .failure(let error as APIErrors):
                 print(error)
             case .failure(let error):
-print(error)
+                print(error)
             }
-
+            
         }
     }
     

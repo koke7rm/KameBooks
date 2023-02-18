@@ -17,56 +17,70 @@ struct Profile: View {
     @AppStorage("isGuest") var isGuest = false
     
     var body: some View {
-        VStack {
-            HStack(alignment: .center) {
-                if let image = profileVM.newPhoto {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100)
-                        .background {
-                            Color.gray.opacity(0.2)
-                        }
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "person.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80)
-                        .padding()
-                        .background {
-                            Color.gray.opacity(0.2)
-                        }
-                        .clipShape(Circle())
+        ZStack {
+            Color.blackLight
+                .ignoresSafeArea()
+            VStack {
+                HStack(alignment: .center) {
+                    if let image = profileVM.newPhoto {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100)
+                            .background {
+                                Color.gray.opacity(0.2)
+                            }
+                            .clipShape(Circle())
+                    } else {
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80)
+                            .padding()
+                            .background {
+                                Color.gray.opacity(0.2)
+                            }
+                            .clipShape(Circle())
+                    }
+                    
+                    VStack {
+                        Text(profileVM.userData?.name ?? "Invitado")
+                            .bold()
+                        Text(profileVM.userData?.email ?? "")
+                    }
+                    .padding()
+                    Spacer()
                 }
-                VStack {
-                    Text(profileVM.userData?.name ?? "Invitado")
-                    Text(profileVM.userData?.email ?? "-")
+                .padding()
+                
+                if !isGuest {
+                    Button {
+                        presentEditProfile.toggle()
+                    } label: {
+                        Text("Editar Mi perfil")
+                    }
+                    .buttonStyle(.bordered)
                 }
-            }
-            Button {
-                presentEditProfile.toggle()
-            } label: {
-                Text("Editar Mi perfil")
-            }
-            .buttonStyle(.bordered)
-            Button {
-                screen = .auth
-                KameBooksKeyChain.shared.deleteUser()
-                isGuest = false
-            } label: {
-                if isGuest {
-                    Text("Iniciar sesión")
-                } else {
-                    Text("Cerrar sesión")
+                Button {
+                    screen = .auth
+                    KameBooksKeyChain.shared.deleteUser()
+                } label: {
+                    if isGuest {
+                        Text("Iniciar sesión")
+                    } else {
+                        Text("Cerrar sesión")
+                    }
                 }
+                .buttonStyle(.bordered)
+                Spacer()
             }
-            .buttonStyle(.bordered)
+            .background(Color.white)
+            .padding(.top)
         }
-        .navigationDestination(isPresented: $presentEditProfile) {
+        .sheet(isPresented: $presentEditProfile, content: {
             EditProfileView()
                 .environmentObject(profileVM)
-        }
+        })
     }
 }
 

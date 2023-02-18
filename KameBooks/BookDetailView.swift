@@ -11,14 +11,21 @@ import SwiftUI
 struct BookDetailView: View {
     
     @ObservedObject var bookVM: BookDetailViewModel
-
-    @Environment (\.dismiss) var dismiss
     
+    @Environment (\.dismiss) var dismiss
+    @AppStorage("isGuest") var isGuest = false
+    
+    @State var seeAllText = false
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient.mainGradient, startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             VStack {
+                Text(bookVM.bookDetail.book.title)
+                    .font(.title)
+                    .bold()
+                    .foregroundColor(.white)
+                
                 AsyncImage(url: bookVM.bookDetail.book.cover) { image in
                     image
                         .resizable()
@@ -30,64 +37,58 @@ struct BookDetailView: View {
                 ScrollView {
                     
                     detailCard
-                    
-                    Button {
-                        Task {
-                         await bookVM.createBooksOrder()
+                    if !isGuest {
+                        HStack {
+                            Button {
+                                Task {
+                                    await bookVM.createBooksOrder()
+                                }
+                            } label: {
+                                Text("Realizar pedido")
+                            }
+                            .buttonStyle(.bordered)
+                            
+                            Button {
+                                Task {
+                                    await bookVM.createBooksOrder()
+                                }
+                            } label: {
+                                Text("Marcar como leido")
+                            }
+                            .buttonStyle(.bordered)
+                            
                         }
-                    } label: {
-                        Text("Realizar pedido")
+                        .padding()
                     }
-                    .buttonStyle(.bordered)
-                    
-                    Button {
-                        Task {
-                         await bookVM.createBooksOrder()
-                        }
-                    } label: {
-                        Text("Marcar como leido")
-                    }
-                    .buttonStyle(.bordered)
-
-                }
-                .padding()
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text(bookVM.bookDetail.book.title)
-                        .foregroundColor(.white)
-                        .bold()
                 }
             }
+            .padding()
+            //            .navigationBarTitleDisplayMode(.inline)
+            //            .toolbar {
+            //                ToolbarItem(placement: .principal) {
+            //                    Text(bookVM.bookDetail.book.title)
+            //                        .foregroundColor(.white)
+            //                        .bold()
+            //                }
+            //            }
         }
     }
     
     var detailCard: some View {
         VStack {
-            //topSelector
-//            Image(decorative: chapterDetailVM.image)
-//                .resizable()
-//                .scaledToFit()
-//            HStack {
-//                ForEach(1...5, id:\.self) { index in
-//                    chapterDetailVM.setImageScore(id: chapterDetailVM.id, tag: index)
-//                        .font(.largeTitle)
-//                        .foregroundColor(.newYellow)
-//                        .onTapGesture {
-//                            chapterDetailVM.toggleScore(id: chapterDetailVM.id, starNumber: index)
-//                        }
-//                }
-//            }
-//            .frame(maxWidth: .infinity)
-//            .background(Color.white)
             Text(bookVM.bookDetail.book.plot ?? "-")
+                .lineLimit(seeAllText ? .max : 8)
                 .padding()
-
+            Button {
+                seeAllText.toggle()
+            } label: {
+                Label(seeAllText ? "Ver Menos" : "Ver más", image: seeAllText ? "ic_arrowUp" : "ic_arrowDown")
+            }
+            .padding(.bottom)
+            
         }
         .background(Color.white.opacity(0.8))
         .cornerRadius(20)
-        .padding()
     }
 }
 

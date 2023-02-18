@@ -21,28 +21,19 @@ struct TabBar: View {
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
-                //                .onAppear {
-                //                    showSearch = true
-                //                }
                     .tag(0)
                 Profile(screen: $screen)
                     .tabItem {
-                        Label("Favorites", systemImage: "heart")
+                        Label("Perfil", systemImage: "person.fill")
                     }
-                //                .onAppear {
-                //                    showSearch = false
-                //                }
                     .tag(1)
             }
-           /// .navigationTitle(navTitle[selection])
+            /// .navigationTitle(navTitle[selection])
             .navigationDestination(for: BooksList.self) { book in
                 BookDetailView(bookVM: BookDetailViewModel(book: book))
             }
-            .navigationBarTitleDisplayMode(.inline)
-                            .toolbarBackground(.red, for: .navigationBar)
-                            .toolbarBackground(.visible, for: .navigationBar)
         }
-
+        
     }
 }
 

@@ -8,11 +8,6 @@
 
 import SwiftUI
 
-extension URL {
-    static let parkingDataURL = URL.documentsDirectory.appending(component: "ParkingData").appendingPathExtension("json")
-    static let questionsDataURL = Bundle.main.url(forResource: "dudas", withExtension: "json")!
-}
-
 final class ModelPersistence {
     
     func saveCover(image: UIImage, mail: String) {
