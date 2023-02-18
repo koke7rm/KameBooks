@@ -46,3 +46,9 @@ extension UIApplication {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
 }
+
+extension Date {
+    var showOnlyYear: String {
+        self.formatted(.dateTime.year())
+    }
+}

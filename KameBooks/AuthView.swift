@@ -22,8 +22,8 @@ struct AuthView: View {
     
     var body: some View {
         ZStack {
-            Color.white
-                .ignoresSafeArea(edges: .bottom)
+            LinearGradient(gradient: Gradient.mainGradient, startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
             Group {
                 switch authStep {
                 case .auth:
@@ -38,30 +38,28 @@ struct AuthView: View {
                 }
             }
             .animation(.default, value: authStep)
-            
         }
     }
     
     var auth: some View {
         VStack {
-            SimpleButton(text: "AUTH_CREATE_ACCOUNT".localized, foregroundColor: .white, bacgkroundColor: .gold) {
+            SimpleButton(text: "AUTH_CREATE_ACCOUNT".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
                 authStep = .register
                 isGuest = false
             }
             .padding(.horizontal, 50)
-            SimpleButton(text: "AUTH_LOGIN".localized, foregroundColor: .white, bacgkroundColor: .gold) {
+            SimpleButton(text: "AUTH_LOGIN".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
                 authStep = .login
                 isGuest = false
             }
             .padding(.horizontal, 50)
-            SimpleButton(text: "AUTH_GUEST".localized, foregroundColor: .white, bacgkroundColor: .gold) {
+            SimpleButton(text: "AUTH_GUEST".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
                 isGuest = true
                 KameBooksKeyChain.shared.deleteUser()
                 screen = .home
             }
             .padding(.horizontal, 50)
         }
-        
     }
 }
 

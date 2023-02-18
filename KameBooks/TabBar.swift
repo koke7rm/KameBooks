@@ -12,28 +12,25 @@ struct TabBar: View {
     
     @Binding var screen: Screens
     @State var selection = 0
-    @State var navTitle = ["Home", "Favorites"]
     
     var body: some View {
         NavigationStack {
             TabView(selection: $selection) {
                 HomeView()
                     .tabItem {
-                        Label("Home", systemImage: "house")
+                        Label("TABBAR_HOME".localized, systemImage: "house")
                     }
                     .tag(0)
                 Profile(screen: $screen)
                     .tabItem {
-                        Label("Perfil", systemImage: "person.fill")
+                        Label("TABBAR_PROFILE".localized, systemImage: "person.fill")
                     }
                     .tag(1)
             }
-            /// .navigationTitle(navTitle[selection])
             .navigationDestination(for: BooksList.self) { book in
                 BookDetailView(bookVM: BookDetailViewModel(book: book))
             }
         }
-        
     }
 }
 

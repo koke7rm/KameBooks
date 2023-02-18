@@ -48,6 +48,10 @@ final class NetworkPersistence {
         try await checkResponseVoid(request: .request(networkRequest: .updateUser(user: user)))
     }
     
+    func userHistory(mail: String) async throws -> UserHistoryModel{
+        try await checkResponse(request: .request(networkRequest: .userHistory(mail: mail)), type: UserHistoryModel.self)
+    }
+    
     /// Método para obtener un JSON lanzando una petición asíncrona y controlando los errores
     func checkResponse<T: Codable>(request: URLRequest,
                                    type: T.Type,

@@ -20,6 +20,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var address = ""
     @Published var showSuccessAlert = false
     @Published var newPhoto: UIImage?
+    @Published var userHistory: UserHistoryModel?
     @Published var photoItem: PhotosPickerItem? {
         didSet {
             Task { await transferPhoto() }
@@ -31,10 +32,12 @@ final class ProfileViewModel: ObservableObject {
         mail = KameBooksKeyChain.shared.user?.email ?? ""
         address = KameBooksKeyChain.shared.user?.location ?? ""
         newPhoto = persistence.loadCover(mail: userData?.email ?? "")
+        Task {
+            await userHistory()
+        }
     }
     
     @MainActor func updateuser() async {
-        
         Task {
             let task = Task(priority: .utility) {
                 try await networkPersistence.updateUser(user: UserModel(name: name, email: mail, location: address) )
@@ -53,8 +56,18 @@ final class ProfileViewModel: ObservableObject {
         }
     }
     
+    @MainActor func userHistory() async {
+        guard let email = KameBooksKeyChain.shared.user?.email else { return }
+        do {
+           userHistory = try await networkPersistence.userHistory(mail: email)
+        } catch let error as APIErrors {
+            print("error \(error.description)")
+        } catch {
+            print("error")
+        }
+    }
+    
     func saveData() {
-        
         Task {
             await updateuser()
             guard let image = newPhoto, let mail = userData?.email else { return }

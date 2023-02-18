@@ -17,31 +17,38 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                TextField("Buscar...", text: $homeVM.searchText)
-                    .textFieldStyle(CustomRounderedTextFieldStyle())
-                    .focused($focusField)
-                if homeVM.showSearch {
-                    Button {
-                        Task(priority: .userInitiated) {
-                            await homeVM.searchBook(word: homeVM.searchText)
-                        }
-                    } label: {
-                        Image(systemName: "magnifyingglass.circle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(.gold)
-                            .frame(width: 40, height: 40)
-                    }
+            CustomSearchBar(searchText: $homeVM.searchText, showSearch: $homeVM.showSearch, placeHolder: "HOME_SEARCH_PLACEHOLDER".localized) {
+                Task(priority: .userInitiated) {
+                    await homeVM.searchBook(word: homeVM.searchText)
                 }
             }
-            .padding()
-            .background(Color.blackLight)
-            
-            Text("Hola \(userName)")
+            Text(String(format: "HOME_WELLCOME_USER".localized, userName))
                 .font(.headline)
                 .padding(.bottom)
-            Text("Libros destacados")
+            
+            featuredBooksSection
+            
+            List(homeVM.filteredList, id: \.book.id) { bookList in
+                NavigationLink(value: bookList) {
+                    BookCell(bookList: bookList)
+                        .environmentObject(homeVM)
+                }
+            }
+            .listStyle(.sidebar)
+            .background(Color.blackLight)
+            .scrollContentBackground(.hidden)
+            .overlay {
+                noResults
+            }
+        }
+        .onAppear {
+            userName = KameBooksKeyChain.shared.user?.name ?? "GUEST".localized
+        }
+    }
+    
+    var featuredBooksSection: some View {
+        VStack {
+            Text("HOME_FEATURE_LIST_TITLE".localized)
                 .textCase(.uppercase)
             
             ScrollView(.horizontal, showsIndicators: false) {
@@ -71,56 +78,15 @@ struct HomeView: View {
             }
             .frame(height: 150)
             .background(Color.gold)
-            
-            List(homeVM.filteredList, id: \.book.id) { bookList in
-                NavigationLink(value: bookList) {
-                    HStack {
-                        Rectangle()
-                            .foregroundColor(.gold)
-                            .frame(width: 130, height: 200)
-                            .overlay {
-                                AsyncImage(url: bookList.book.cover) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 110, height: 200)
-                                } placeholder: {
-                                    Image("img_placeholder")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 100, height: 100)
-                                }
-                            }
-                        
-                        VStack(alignment: .leading) {
-                            Text(bookList.book.title)
-                                .font(.headline)
-                            Text(bookList.author)
-                                .font(.callout)
-                            Spacer()
-                            Text("Publicado en: \(bookList.book.year?.formatted().replaceDecimal ?? "-")")
-                                .padding(.bottom)
-                            
-                        }
-                        .padding(.top)
-                    }
-                }
-            }
-            .navigationTitle("Scores")
-            .listStyle(.sidebar)
-            .background(Color.blackLight)
-            .scrollContentBackground(.hidden)
-            .overlay {
-                VStack {
-                    Image(systemName: "magnifyingglass")
-                    Text("No se encontraron resultados")
-                }
-                .opacity(homeVM.showNoResults ? 1 : 0)
-            }
         }
-        .onAppear {
-            userName = KameBooksKeyChain.shared.user?.name ?? "Invitado"
+    }
+    
+    var noResults: some View {
+        VStack {
+            Image(systemName: "magnifyingglass")
+            Text("HOME_NO_RESULTS".localized)
         }
+        .opacity(homeVM.showNoResults ? 1 : 0)
     }
 }
 

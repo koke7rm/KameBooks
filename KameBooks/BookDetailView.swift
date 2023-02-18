@@ -35,8 +35,9 @@ struct BookDetailView: View {
                     Image("img_placeholder")
                 }
                 ScrollView {
-                    
-                    detailCard
+                    if bookVM.bookDetail.book.plot != nil {
+                        detailCard
+                    }
                     if !isGuest {
                         HStack {
                             Button {

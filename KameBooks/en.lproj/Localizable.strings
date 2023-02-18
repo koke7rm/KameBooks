@@ -16,6 +16,7 @@
 "CONTINUE" = "Continue";
 "CANCEL" = "Cancel";
 "CLOSE" = "Close";
+"GUEST" = "Guest";
 
 // NETWORK CONNECTION
 "NETWORKCONNECTION_TITLE" = "No network connection";
@@ -41,3 +42,19 @@
 "AUTH_LOGIN_SUCCESS" = "Hi again!";
 "AUTH_LOGIN_SUCCESS_MESSAGE" = "We were waiting for you";
 "AUTH_LOGIN_ERROR" = "Login error";
+
+// PROFILE
+"PROFILE_VERSION" = "Version %@ © Trantor Books %@";
+
+// TABBAR
+"TABBAR_HOME" = "Home";
+"TABBAR_PROFILE" = "Profile";
+
+// HOME
+"HOME_SEARCH_PLACEHOLDER" = "Search...";
+"HOME_WELLCOME_USER" = "Hi %@";
+"HOME_FEATURE_LIST_TITLE" = "Featured books";
+"HOME_NO_RESULTS" = "No results found";
+
+// BOOKINFO
+"BOOKINFO_PUBLISHED" = "Published in %@";

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E13BA99C29A0F05C004F1EA4 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BA99B29A0F05C004F1EA4 /* BookCell.swift */; };
+		E13BA99E29A0F1B5004F1EA4 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */; };
 		E141F729299AB4D000381631 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F728299AB4D000381631 /* HomeViewModel.swift */; };
 		E141F72B299AE0E000381631 /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F72A299AE0E000381631 /* AuthorModel.swift */; };
 		E1517FBB299C333E00661441 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FBA299C333E00661441 /* BookDetailView.swift */; };
@@ -52,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E13BA99B29A0F05C004F1EA4 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		E141F728299AB4D000381631 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E141F72A299AE0E000381631 /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
 		E1517FBA299C333E00661441 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 			children = (
 				E1A01FDF2999421100133FDA /* OnboardingPage.swift */,
 				E1A01FEB299955FD00133FDA /* CustomTextField.swift */,
+				E13BA99B29A0F05C004F1EA4 /* BookCell.swift */,
+				E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */,
 			);
 			name = ViewComponents;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				E18380622997F930008D39FE /* NetworkErrors.swift in Sources */,
 				E1A01FF42999664F00133FDA /* Styles.swift in Sources */,
 				E190366F299E773F004DF1C3 /* ModelPersistence.swift in Sources */,
+				E13BA99E29A0F1B5004F1EA4 /* CustomSearchBar.swift in Sources */,
 				E1A46ACB29999F7300E1CA40 /* KameBooksKeyChain.swift in Sources */,
 				E1A01FE629994A6B00133FDA /* AuthViewModel.swift in Sources */,
 				E190366B299E5CE8004DF1C3 /* ProfileViewModel.swift in Sources */,
@@ -377,6 +384,7 @@
 				E18380642997F95E008D39FE /* Extensions.swift in Sources */,
 				E1A01FEC299955FD00133FDA /* CustomTextField.swift in Sources */,
 				E1A01FEA2999517B00133FDA /* RegexValidations.swift in Sources */,
+				E13BA99C29A0F05C004F1EA4 /* BookCell.swift in Sources */,
 				E183806B2997FB3A008D39FE /* Device.swift in Sources */,
 				E141F72B299AE0E000381631 /* AuthorModel.swift in Sources */,
 				E1A46AC329999C7E00E1CA40 /* TabBar.swift in Sources */,

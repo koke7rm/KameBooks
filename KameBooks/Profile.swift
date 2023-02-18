@@ -61,6 +61,29 @@ struct Profile: View {
                     }
                     .buttonStyle(.bordered)
                 }
+                
+                Divider()
+                VStack(alignment: .leading) {
+                    Text("Libros leidos")
+                        .bold()
+                    Text("\(profileVM.userHistory?.readed.count ?? 0)")
+                        .font(.title)
+                    
+                    Divider()
+                    
+                    Text("Libros Comprados")
+                        .bold()
+                    Text("\(profileVM.userHistory?.ordered.count ?? 0)")
+                        .font(.title)
+                }
+                .frame(maxWidth: .infinity,alignment: .leading)
+                .padding()
+                Spacer()
+                
+                Text(String(format: "PROFILE_VERSION".localized, UIApplication.appVersion ?? "-", Date.now.showOnlyYear))
+                    .foregroundColor(.black)
+                
+                Spacer()
                 Button {
                     screen = .auth
                     KameBooksKeyChain.shared.deleteUser()
@@ -72,7 +95,7 @@ struct Profile: View {
                     }
                 }
                 .buttonStyle(.bordered)
-                Spacer()
+                .padding()
             }
             .background(Color.white)
             .padding(.top)

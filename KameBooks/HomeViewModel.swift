@@ -49,6 +49,15 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
+    func setImageScore(id:Int, tag: Int) -> Image {
+        let score = Int(completeList[id].book.rating ?? 0)
+        if tag > score {
+            return Image(systemName: "star")
+        } else {
+            return Image(systemName: "star.fill")
+        }
+    }
+    
     @MainActor func getBooksList() async {
         do {
             let booksList = try await networkPersistance.getBooksList()

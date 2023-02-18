@@ -13,3 +13,8 @@ struct UserModel: Codable {
     let email: String
     let location: String
 }
+
+struct UserHistoryModel: Codable {
+    let readed: [Int]
+    let ordered: [Int]
+}
