@@ -23,7 +23,7 @@ struct LoginView: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                 HStack {
-                    SimpleButton(text: "CONTINUE".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
+                    SimpleButton(text: "CONTINUE".localized, foregroundColor: .white, backroundColor: .blackLight) {
                         Task {
                             await authVM.checkUser()
                         }
@@ -31,7 +31,7 @@ struct LoginView: View {
                     .opacity(authVM.validateMail() ? 1 : 0.6)
                     .disabled(!authVM.validateMail())
                     
-                    SimpleButton(text: "CANCEL".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
+                    SimpleButton(text: "CANCEL".localized, foregroundColor: .white, backroundColor: .blackLight) {
                         authStep = .auth
                     }
                 }

@@ -38,13 +38,7 @@ struct BookCell: View {
                     .font(.headline)
                 Text(bookList.author)
                     .font(.callout)
-                HStack {
-                    ForEach(1...5, id:\.self) { index in
-                        homeVM.setImageScore(id: bookList.book.id, tag: index)
-                            .foregroundColor(.yellow)
-                    }
-                }
-                .padding(.top, 8)
+                RatingStarsView(rating: bookList.book.rating ?? 0)
                 
                 Spacer()
                 
@@ -58,7 +52,8 @@ struct BookCell: View {
 
 struct BookCell_Previews: PreviewProvider {
     static var previews: some View {
-        BookCell(bookList: BooksList(book: .bookTest, author: "1"))
+        BookCell(bookList: BooksList(book: .bookTest, author: "531EDFA6-A361-4E15-873F-45E4EA0AF120"))
+            .previewLayout(.fixed(width: 450, height: 120))
             .environmentObject(HomeViewModel())
     }
 }

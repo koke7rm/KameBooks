@@ -27,9 +27,6 @@ struct TabBar: View {
                     }
                     .tag(1)
             }
-            .navigationDestination(for: BooksList.self) { book in
-                BookDetailView(bookVM: BookDetailViewModel(book: book))
-            }
         }
     }
 }

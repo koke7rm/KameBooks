@@ -16,7 +16,8 @@
 "CONTINUE" = "Continuar";
 "CANCEL" = "Cancelar";
 "CLOSE" = "Cerrar";
-"GUEST" = "Invitado";
+"GUEST" = "Invitado/a";
+"SAVE" = "Guardar";
 
 // NETWORK CONNECTION
 "NETWORKCONNECTION_TITLE" = "No hay conexión de red";
@@ -51,6 +52,13 @@
 
 // PROFILE
 "PROFILE_VERSION" = "Versión %@ © Trantor Books %@";
+"PROFILE_EDIT_PROFILE" = "Editar Mi perfil";
+"PROFILE_BOOKS_READ" = "Libros leídos";
+"PROFILE_BOOKS_PURCHASED" = "Libros comprados";
+"PROFILE_LOGIN" = "Iniciar sesión";
+"PROFILE_LOGOUT" = "Cerrar sesión";
+"PROFILE_EDIT_IMAGE" = "Editar imagen";
+"PROFILE_UPDATE_OK" = "Cambios realizados correctamente";
 
 // TABBAR
 "TABBAR_HOME" = "Home";
@@ -64,3 +72,13 @@
 
 // BOOKINFO
 "BOOKINFO_PUBLISHED" = "Publicado en %@";
+
+//BOOKDETAIL
+"BOOKDETAIL_PLACE_ORDER" = "Realizar pedido";
+"BOOKDETAIL_MARK_READ" = "Marcar como leído";
+"BOOKDETAIL_NO_INFORMATION" = "Sin información";
+"BOOKDETAIL_SEE_MORE" = "Ver más";
+"BOOKDETAIL_SEE_LESS" = "Ver menos";
+"BOOKDETAIL_AUTHOR" = "Autor:";
+"BOOKDETAIL_YEAR" = "Año:";
+"BOOKDETAIL_PAGES" = "Páginas:";

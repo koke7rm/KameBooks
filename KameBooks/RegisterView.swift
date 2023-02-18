@@ -29,7 +29,7 @@ struct RegisterView: View {
                     .textContentType(.streetAddressLine1)
                 
                 HStack {
-                    SimpleButton(text: "CONTINUE".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
+                    SimpleButton(text: "CONTINUE".localized, foregroundColor: .white, backroundColor: .blackLight) {
                         Task {
                             await authVM.createUser()
                         }
@@ -37,7 +37,7 @@ struct RegisterView: View {
                     .opacity(authVM.validateFields() ? 1 : 0.6)
                     .disabled(!authVM.validateFields())
                     
-                    SimpleButton(text: "CANCEL".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
+                    SimpleButton(text: "CANCEL".localized, foregroundColor: .white, backroundColor: .blackLight) {
                         authStep = .auth
                     }
                 }

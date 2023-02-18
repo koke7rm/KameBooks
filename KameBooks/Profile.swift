@@ -21,63 +21,18 @@ struct Profile: View {
             Color.blackLight
                 .ignoresSafeArea()
             VStack {
-                HStack(alignment: .center) {
-                    if let image = profileVM.newPhoto {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100)
-                            .background {
-                                Color.gray.opacity(0.2)
-                            }
-                            .clipShape(Circle())
-                    } else {
-                        Image(systemName: "person.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 80)
-                            .padding()
-                            .background {
-                                Color.gray.opacity(0.2)
-                            }
-                            .clipShape(Circle())
-                    }
-                    
-                    VStack {
-                        Text(profileVM.userData?.name ?? "Invitado")
-                            .bold()
-                        Text(profileVM.userData?.email ?? "")
-                    }
-                    .padding()
-                    Spacer()
-                }
-                .padding()
+                headerInfo
                 
                 if !isGuest {
-                    Button {
+                    SimpleButton(text: "PROFILE_EDIT_PROFILE".localized, foregroundColor: .black, backroundColor: .gold) {
                         presentEditProfile.toggle()
-                    } label: {
-                        Text("Editar Mi perfil")
                     }
-                    .buttonStyle(.bordered)
+                    .padding(.horizontal, 40)
+                    .padding(.bottom)
                 }
-                
                 Divider()
-                VStack(alignment: .leading) {
-                    Text("Libros leidos")
-                        .bold()
-                    Text("\(profileVM.userHistory?.readed.count ?? 0)")
-                        .font(.title)
-                    
-                    Divider()
-                    
-                    Text("Libros Comprados")
-                        .bold()
-                    Text("\(profileVM.userHistory?.ordered.count ?? 0)")
-                        .font(.title)
-                }
-                .frame(maxWidth: .infinity,alignment: .leading)
-                .padding()
+                historyInfo
+                
                 Spacer()
                 
                 Text(String(format: "PROFILE_VERSION".localized, UIApplication.appVersion ?? "-", Date.now.showOnlyYear))
@@ -89,9 +44,9 @@ struct Profile: View {
                     KameBooksKeyChain.shared.deleteUser()
                 } label: {
                     if isGuest {
-                        Text("Iniciar sesión")
+                        Text("PROFILE_LOGIN".localized)
                     } else {
-                        Text("Cerrar sesión")
+                        Text("PROFILE_LOGOUT".localized)
                     }
                 }
                 .buttonStyle(.bordered)
@@ -104,6 +59,70 @@ struct Profile: View {
             EditProfileView()
                 .environmentObject(profileVM)
         })
+    }
+    
+    var headerInfo: some View {
+        HStack(alignment: .center) {
+            if let image = profileVM.newPhoto {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100)
+                    .background {
+                        Color.gray.opacity(0.2)
+                    }
+                    .clipShape(Circle())
+            } else {
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 80)
+                    .padding()
+                    .background {
+                        Color.gray.opacity(0.2)
+                    }
+                    .clipShape(Circle())
+            }
+            
+            VStack {
+                Text(profileVM.userData?.name ?? "GUEST".localized)
+                    .font(.title2)
+                    .bold()
+                Text(profileVM.userData?.email ?? "")
+            }
+            .padding()
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var historyInfo: some View {
+        
+        VStack(alignment: .leading) {
+            HistorySection(section: "PROFILE_BOOKS_READ".localized, info: "\(profileVM.userHistory?.readed.count ?? 0)")
+            
+            Divider()
+            
+            HistorySection(section: "PROFILE_BOOKS_PURCHASED".localized, info: "\(profileVM.userHistory?.ordered.count ?? 0)")
+            Divider()
+        }
+    }
+    
+    struct HistorySection: View {
+        
+        let section: String
+        let info: String
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                Text(section)
+                    .font(.title3)
+                    .bold()
+                Text(info)
+                    .font(.title)
+            }
+            .padding()
+        }
     }
 }
 

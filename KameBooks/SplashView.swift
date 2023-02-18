@@ -17,10 +17,6 @@ enum Screens {
 
 struct SplashView: View {
     
-    init() {
-        UIToolbar.appearance().barTintColor = UIColor.red
-    }
-    
     @StateObject var monitorNetwork = NetworkStatus()
     
     @AppStorage("isFirstLaunch") var isFirstLaunch = true

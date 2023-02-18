@@ -12,7 +12,7 @@ struct SimpleButton: View {
     
     let text: String
     let foregroundColor: Color
-    let bacgkroundColor: Color
+    let backroundColor: Color
     let action: () -> ()
     
     var body: some View {
@@ -23,10 +23,11 @@ struct SimpleButton: View {
                 .font(.system(size: 18))
                 .bold()
                 .textCase(.uppercase)
+                .padding(.horizontal)
                 .foregroundColor(foregroundColor)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .background(bacgkroundColor)
+                .background(backroundColor)
                 .cornerRadius(8)
         }
         .buttonStyle(TapEffect())
@@ -35,7 +36,7 @@ struct SimpleButton: View {
 
 struct SimpleButton_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleButton(text: "Test", foregroundColor: .white, bacgkroundColor: .gold, action: {})
+        SimpleButton(text: "Test", foregroundColor: .white, backroundColor: .gold, action: {})
     }
 }
 

@@ -52,3 +52,13 @@ extension Date {
         self.formatted(.dateTime.year())
     }
 }
+
+extension Image {
+    func setImageScore(rating: Double, tag: Int) -> Image {
+        if tag > Int(rating) {
+            return Image(systemName: "star")
+        } else {
+            return Image(systemName: "star.fill")
+        }
+    }
+}

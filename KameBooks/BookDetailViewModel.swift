@@ -6,7 +6,7 @@
 //  Copyright © 2023 Trantor S.L. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 
 final class BookDetailViewModel: ObservableObject {
@@ -28,15 +28,15 @@ final class BookDetailViewModel: ObservableObject {
             }
             switch await task.result {
             case .success(let res):
-          print(res)
+                print(res)
             case .failure(let error as APIErrors):
                 print(error)
-//                errorMsg = error.description
-//                showErrorAlert.toggle()
+                //                errorMsg = error.description
+                //                showErrorAlert.toggle()
             case .failure(let error):
                 print(error)
-//                errorMsg = error.localizedDescription
-//                showErrorAlert.toggle()
+                //                errorMsg = error.localizedDescription
+                //                showErrorAlert.toggle()
             }
             //loading = false
         }

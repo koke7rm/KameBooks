@@ -52,7 +52,6 @@ final class ProfileViewModel: ObservableObject {
             case .failure(let error):
                 print(error)
             }
-            
         }
     }
     

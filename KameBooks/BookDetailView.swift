@@ -20,76 +20,100 @@ struct BookDetailView: View {
         ZStack {
             LinearGradient(gradient: Gradient.mainGradient, startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
+            
             VStack {
-                Text(bookVM.bookDetail.book.title)
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.white)
+                header
                 
-                AsyncImage(url: bookVM.bookDetail.book.cover) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150)
-                } placeholder: {
-                    Image("img_placeholder")
-                }
-                ScrollView {
-                    if bookVM.bookDetail.book.plot != nil {
-                        detailCard
-                    }
+                ScrollView(showsIndicators: false) {
+                    detailCard
+                    
                     if !isGuest {
-                        HStack {
-                            Button {
+                        VStack {
+                            SimpleButton(text: "BOOKDETAIL_PLACE_ORDER".localized, foregroundColor: .blackLight, backroundColor: .gold) {
                                 Task {
                                     await bookVM.createBooksOrder()
                                 }
-                            } label: {
-                                Text("Realizar pedido")
                             }
-                            .buttonStyle(.bordered)
-                            
-                            Button {
+                            SimpleButton(text: "BOOKDETAIL_MARK_READ".localized, foregroundColor: .blackLight, backroundColor: .gold) {
                                 Task {
                                     await bookVM.createBooksOrder()
                                 }
-                            } label: {
-                                Text("Marcar como leido")
                             }
-                            .buttonStyle(.bordered)
-                            
                         }
                         .padding()
                     }
                 }
             }
             .padding()
-            //            .navigationBarTitleDisplayMode(.inline)
-            //            .toolbar {
-            //                ToolbarItem(placement: .principal) {
-            //                    Text(bookVM.bookDetail.book.title)
-            //                        .foregroundColor(.white)
-            //                        .bold()
-            //                }
-            //            }
+        }
+    }
+    
+    var header: some View {
+        VStack {
+            Text(bookVM.bookDetail.book.title)
+                .font(.title)
+                .bold()
+                .foregroundColor(.white)
+            
+            AsyncImage(url: bookVM.bookDetail.book.cover) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 150)
+            } placeholder: {
+                Image("img_placeholder")
+            }
         }
     }
     
     var detailCard: some View {
         VStack {
-            Text(bookVM.bookDetail.book.plot ?? "-")
-                .lineLimit(seeAllText ? .max : 8)
+            RatingStarsView(rating: bookVM.bookDetail.book.rating ?? 0)
                 .padding()
-            Button {
-                seeAllText.toggle()
-            } label: {
-                Label(seeAllText ? "Ver Menos" : "Ver más", image: seeAllText ? "ic_arrowUp" : "ic_arrowDown")
+            VStack(alignment: .leading, spacing: 8) {
+                InfoField(sectionTitle: "BOOKDETAIL_AUTHOR".localized, sectionInfo: bookVM.bookDetail.author)
+                InfoField(sectionTitle: "BOOKDETAIL_YEAR".localized, sectionInfo: bookVM.bookDetail.book.year?.formatted().replaceDecimal ?? "-")
+                InfoField(sectionTitle: "BOOKDETAIL_PAGES".localized, sectionInfo: "\(bookVM.bookDetail.book.pages ?? 0)")
             }
-            .padding(.bottom)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
             
+            plotInfo
         }
+        .frame(maxWidth: .infinity)
         .background(Color.white.opacity(0.8))
         .cornerRadius(20)
+    }
+    
+    var plotInfo: some View {
+        VStack {
+            Text(bookVM.bookDetail.book.plot ?? "BOOKDETAIL_NO_INFORMATION".localized)
+                .lineLimit(seeAllText ? .max : 8)
+                .padding()
+            if bookVM.bookDetail.book.plot != nil {
+                Button {
+                    seeAllText.toggle()
+                } label: {
+                    Label(seeAllText ? "BOOKDETAIL_SEE_LESS".localized : "BOOKDETAIL_SEE_MORE".localized, image: seeAllText ? "ic_arrowUp" : "ic_arrowDown")
+                }
+                .padding(.bottom)
+            }
+        }
+    }
+    
+    struct InfoField: View {
+        
+        let sectionTitle: String
+        let sectionInfo: String
+        
+        var body: some View {
+            HStack {
+                Text(sectionTitle)
+                    .font(.title2)
+                    .bold()
+                Text(sectionInfo)
+            }
+        }
     }
 }
 

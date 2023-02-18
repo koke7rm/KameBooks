@@ -10,8 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var homeVM = HomeViewModel()
-    @FocusState var focusField: Bool
+    @StateObject var homeVM = HomeViewModel()
     
     @State var userName = ""
     
@@ -40,6 +39,9 @@ struct HomeView: View {
             .overlay {
                 noResults
             }
+        }
+        .navigationDestination(for: BooksList.self) { book in
+            BookDetailView(bookVM: BookDetailViewModel(book: book))
         }
         .onAppear {
             userName = KameBooksKeyChain.shared.user?.name ?? "GUEST".localized

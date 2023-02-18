@@ -43,17 +43,17 @@ struct AuthView: View {
     
     var auth: some View {
         VStack {
-            SimpleButton(text: "AUTH_CREATE_ACCOUNT".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
+            SimpleButton(text: "AUTH_CREATE_ACCOUNT".localized, foregroundColor: .white, backroundColor: .blackLight) {
                 authStep = .register
                 isGuest = false
             }
             .padding(.horizontal, 50)
-            SimpleButton(text: "AUTH_LOGIN".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
+            SimpleButton(text: "AUTH_LOGIN".localized, foregroundColor: .white, backroundColor: .blackLight) {
                 authStep = .login
                 isGuest = false
             }
             .padding(.horizontal, 50)
-            SimpleButton(text: "AUTH_GUEST".localized, foregroundColor: .white, bacgkroundColor: .blackLight) {
+            SimpleButton(text: "AUTH_GUEST".localized, foregroundColor: .white, backroundColor: .blackLight) {
                 isGuest = true
                 KameBooksKeyChain.shared.deleteUser()
                 screen = .home
