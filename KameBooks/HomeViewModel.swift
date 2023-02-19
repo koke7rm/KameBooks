@@ -22,15 +22,19 @@ final class HomeViewModel: ObservableObject {
     @Published var featuredList: [BooksList] = []
     @Published var showNoResults = false
     @Published var showSearch = false
-    var authorsList: [AuthorModel] = []
     @Published var searchText = "" {
         didSet {
             searchTextActions(searchText)
         }
     }
+    // MARK: - Overlays properties
+    @Published var loading = false
+    @Published var errorMsg = ""
+    @Published var showErrorAlert = false
+    
+    var authorsList: [AuthorModel] = []
     
     init() {
-        completeList.reserveCapacity(1000)
         Task {
             await getBooksList()
             await getFeaturedBooks()
@@ -50,6 +54,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     @MainActor func getBooksList() async {
+        loading = true
         do {
             let booksList = try await networkPersistance.getBooksList()
             authorsList = try await networkPersistance.getAuthors()
@@ -62,13 +67,17 @@ final class HomeViewModel: ObservableObject {
             }
             self.filteredList = self.completeList
         } catch let error as APIErrors {
-            print("error \(error.description)")
+            errorMsg = error.description
+            showErrorAlert.toggle()
         } catch {
-            print("error")
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
         }
+        loading = false
     }
     
     @MainActor func getFeaturedBooks() async {
+        loading = true
         do {
             let booksList = try await networkPersistance.getFeaturedBooks()
             
@@ -79,13 +88,17 @@ final class HomeViewModel: ObservableObject {
                 }
             }
         } catch let error as APIErrors {
-            print("error \(error.description)")
+            errorMsg = error.description
+            showErrorAlert.toggle()
         } catch {
-            print("error")
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
         }
+        loading = false
     }
     
     @MainActor func searchBook(word: String) async {
+        loading = true
         showNoResults = false
         filteredList.removeAll(keepingCapacity: true)
         do {
@@ -100,9 +113,12 @@ final class HomeViewModel: ObservableObject {
                 }
             }
         } catch let error as APIErrors {
-            print("error \(error.description)")
+            errorMsg = error.description
+            showErrorAlert.toggle()
         } catch {
-            print("error")
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
         }
+        loading = false
     }
 }

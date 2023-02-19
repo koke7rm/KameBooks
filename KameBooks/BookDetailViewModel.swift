@@ -13,6 +13,13 @@ final class BookDetailViewModel: ObservableObject {
     
     let networkPersistence = NetworkPersistence.shared
     
+    // MARK: - Overlays properties
+    @Published var loading = false
+    @Published var errorMsg = ""
+    @Published var showErrorAlert = false
+    @Published var showSuccessAlert = false
+    @Published var orderNumber = ""
+    
     let bookDetail: BooksList
     
     init(book: BooksList) {
@@ -20,7 +27,7 @@ final class BookDetailViewModel: ObservableObject {
     }
     
     @MainActor func createBooksOrder() async {
-        //loading = true
+        loading = true
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
         Task {
             let task = Task(priority: .utility) {
@@ -28,28 +35,32 @@ final class BookDetailViewModel: ObservableObject {
             }
             switch await task.result {
             case .success(let res):
-                print(res)
+                orderNumber = res.orderNumber
+                showSuccessAlert.toggle()
             case .failure(let error as APIErrors):
                 print(error)
-                //                errorMsg = error.description
-                //                showErrorAlert.toggle()
+                errorMsg = error.description
+                showErrorAlert.toggle()
             case .failure(let error):
-                print(error)
-                //                errorMsg = error.localizedDescription
-                //                showErrorAlert.toggle()
+                errorMsg = error.localizedDescription
+                showErrorAlert.toggle()
             }
-            //loading = false
+            loading = false
         }
     }
     
     @MainActor func bookReaded() async {
+        loading = true
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
         do {
             try await networkPersistence.postBooksReaded(booksReaded: OrderModel(email: email, order: [bookDetail.book.id]))
         } catch let error as APIErrors {
-            print("error \(error.description)")
+            errorMsg = error.description
+            showErrorAlert.toggle()
         } catch {
-            print("error")
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
         }
+        loading = false
     }
 }

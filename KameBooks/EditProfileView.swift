@@ -16,32 +16,31 @@ struct EditProfileView: View {
     @Environment (\.dismiss) var dismiss
     
     var body: some View {
-        ZStack {
+        
+        VStack {
+            userImage
+            
             VStack {
-                userImage
+                formFields
                 
-                VStack {
-                    formFields
-                    
-                    SimpleButton(text: "SAVE".localized, foregroundColor: .black, backroundColor: .gold) {
-                        profileVM.saveData()
-                    }
-                    .opacity(profileVM.validateFields() ? 1 : 0.6)
-                    .disabled(!profileVM.validateFields())
-                    .padding()
+                SimpleButton(text: "SAVE".localized, foregroundColor: .black, backroundColor: .gold) {
+                    profileVM.saveData()
                 }
+                .opacity(profileVM.validateFields() ? 1 : 0.6)
+                .disabled(!profileVM.validateFields())
                 .padding()
             }
+            .padding()
         }
-        .alert("APP_NAME".localized, isPresented: $profileVM.showSuccessAlert) {
-            Button {
+        .frame(maxHeight: .infinity)
+        .overlay{
+            SimpleCustomAlert(isPresented: $profileVM.showSuccessAlert, title: "APP_NAME".localized, description: "PROFILE_UPDATE_OK".localized) {
                 dismiss()
-            } label: {
-                Text("CLOSE".localized)
-                    .textCase(.uppercase)
             }
-        } message: {
-            Text("PROFILE_UPDATE_OK".localized)
+            if profileVM.loading {
+                LoaderView()
+                    .transition(.opacity)
+            }
         }
     }
     
@@ -77,7 +76,7 @@ struct EditProfileView: View {
     
     var formFields: some View {
         VStack(spacing: 16) {
-            CustomTextField(text: $profileVM.name, field: "NAME".localized, placeholder: "AUTH_NAME_PLACEHOLDER".localized)
+            CustomTextField(text: $profileVM.name, field: "NAME".localized, placeholder: "AUTH_NAME_PLACEHOLDER".localized, validation: profileVM.validateEmpty)
                 .textInputAutocapitalization(.words)
                 .textContentType(.name)
             CustomTextField(text: $profileVM.mail, field: "EMAIL".localized, placeholder: "AUTH_MAIL_PLACEHOLDER".localized)
@@ -85,7 +84,7 @@ struct EditProfileView: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .disabled(true)
-            CustomTextField(text: $profileVM.address, field: "ADDRESS".localized, placeholder: "AUTH_ADDRESS_PLACEHOLDER".localized)
+            CustomTextField(text: $profileVM.address, field: "ADDRESS".localized, placeholder: "AUTH_ADDRESS_PLACEHOLDER".localized, validation: profileVM.validateEmpty)
                 .textContentType(.streetAddressLine1)
         }
     }

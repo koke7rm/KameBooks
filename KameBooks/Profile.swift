@@ -59,6 +59,20 @@ struct Profile: View {
             EditProfileView()
                 .environmentObject(profileVM)
         })
+        .alert("ERROR_TITLE".localized, isPresented: $profileVM.showErrorAlert) {
+            Button(action: {}) {
+                Text("CLOSE".localized)
+                    .textCase(.uppercase)
+            }
+        } message: {
+            Text(profileVM.errorMsg)
+        }
+        .overlay {
+            if profileVM.loading {
+                LoaderView()
+                    .transition(.opacity)
+            }
+        }
     }
     
     var headerInfo: some View {

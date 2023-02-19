@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BookCell: View {
     
-    @EnvironmentObject var homeVM: HomeViewModel
+    @ObservedObject var homeVM: HomeViewModel
     
     let bookList: BooksList
     
@@ -52,8 +52,8 @@ struct BookCell: View {
 
 struct BookCell_Previews: PreviewProvider {
     static var previews: some View {
-        BookCell(bookList: BooksList(book: .bookTest, author: "531EDFA6-A361-4E15-873F-45E4EA0AF120"))
+        BookCell(homeVM: HomeViewModel(), bookList: BooksList(book: .bookTest, author: "531EDFA6-A361-4E15-873F-45E4EA0AF120"))
             .previewLayout(.fixed(width: 450, height: 120))
-            .environmentObject(HomeViewModel())
+           
     }
 }

@@ -32,9 +32,9 @@ final class AuthViewModel: ObservableObject {
         }
     }
     
-    func validateEmpty(value:String) -> String? {
+    func validateEmpty(value: String) -> String? {
         if value.isEmpty {
-            return "Field cannot be empty."
+            return "ERROR_FIELD_EMPTY".localized
         } else {
             return nil
         }

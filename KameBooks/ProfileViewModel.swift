@@ -18,6 +18,9 @@ final class ProfileViewModel: ObservableObject {
     @Published var name = ""
     @Published var mail = ""
     @Published var address = ""
+    @Published var loading = false
+    @Published var errorMsg = ""
+    @Published var showErrorAlert = false
     @Published var showSuccessAlert = false
     @Published var newPhoto: UIImage?
     @Published var userHistory: UserHistoryModel?
@@ -37,7 +40,8 @@ final class ProfileViewModel: ObservableObject {
         }
     }
     
-    @MainActor func updateuser() async {
+    @MainActor func updateUser() async {
+        loading = true
         Task {
             let task = Task(priority: .utility) {
                 try await networkPersistence.updateUser(user: UserModel(name: name, email: mail, location: address) )
@@ -48,27 +52,34 @@ final class ProfileViewModel: ObservableObject {
                 userData = KameBooksKeyChain.shared.user
                 showSuccessAlert.toggle()
             case .failure(let error as APIErrors):
-                print(error)
+                errorMsg = error.description
+                showErrorAlert.toggle()
             case .failure(let error):
-                print(error)
+                errorMsg = error.localizedDescription
+                showErrorAlert.toggle()
             }
+            loading = false
         }
     }
     
     @MainActor func userHistory() async {
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
+        loading = true
         do {
-           userHistory = try await networkPersistence.userHistory(mail: email)
+            userHistory = try await networkPersistence.userHistory(mail: email)
         } catch let error as APIErrors {
-            print("error \(error.description)")
+            errorMsg = error.description
+            showErrorAlert.toggle()
         } catch {
-            print("error")
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
         }
+        loading = false
     }
     
     func saveData() {
         Task {
-            await updateuser()
+            await updateUser()
             guard let image = newPhoto, let mail = userData?.email else { return }
             persistence.saveCover(image: image, mail: mail)
         }
@@ -82,6 +93,15 @@ final class ProfileViewModel: ObservableObject {
             return true
         }
     }
+    
+    func validateEmpty(value: String) -> String? {
+        if value.isEmpty {
+            return "ERROR_FIELD_EMPTY".localized
+        } else {
+            return nil
+        }
+    }
+    
     
     /// Método para cargar una imagen de la galería
     func transferPhoto() async {

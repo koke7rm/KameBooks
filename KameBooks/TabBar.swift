@@ -13,6 +13,11 @@ struct TabBar: View {
     @Binding var screen: Screens
     @State var selection = 0
     
+    init(screen: Binding<Screens>) {
+        self._screen = screen
+        UITabBar.appearance().backgroundColor = UIColor(Color.gold)
+    }
+    
     var body: some View {
         NavigationStack {
             TabView(selection: $selection) {
@@ -24,9 +29,11 @@ struct TabBar: View {
                 Profile(screen: $screen)
                     .tabItem {
                         Label("TABBAR_PROFILE".localized, systemImage: "person.fill")
+                            .foregroundColor(.red)
                     }
                     .tag(1)
             }
+            .tint(.black)
         }
     }
 }

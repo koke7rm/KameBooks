@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject var homeVM = HomeViewModel()
+    @ObservedObject var homeVM = HomeViewModel()
     
     @State var userName = ""
     
@@ -23,14 +23,14 @@ struct HomeView: View {
             }
             Text(String(format: "HOME_WELLCOME_USER".localized, userName))
                 .font(.headline)
-                .padding(.bottom)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
             
             featuredBooksSection
             
             List(homeVM.filteredList, id: \.book.id) { bookList in
                 NavigationLink(value: bookList) {
-                    BookCell(bookList: bookList)
-                        .environmentObject(homeVM)
+                    BookCell(homeVM: homeVM, bookList: bookList)
                 }
             }
             .listStyle(.sidebar)
@@ -45,6 +45,20 @@ struct HomeView: View {
         }
         .onAppear {
             userName = KameBooksKeyChain.shared.user?.name ?? "GUEST".localized
+        }
+        .alert("ERROR_TITLE".localized, isPresented: $homeVM.showErrorAlert) {
+            Button(action: {}) {
+                Text("CLOSE".localized)
+                    .textCase(.uppercase)
+            }
+        } message: {
+            Text(homeVM.errorMsg)
+        }
+        .overlay {
+            if homeVM.loading {
+                LoaderView()
+                    .transition(.opacity)
+            }
         }
     }
     

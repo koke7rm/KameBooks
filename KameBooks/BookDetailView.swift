@@ -46,6 +46,22 @@ struct BookDetailView: View {
             }
             .padding()
         }
+        .overlay {
+            SuccessOrderAlert(isPresented: $bookVM.showSuccessAlert, bookTitle: bookVM.bookDetail.book.title, orderNumber: bookVM.orderNumber)
+            
+            if bookVM.loading {
+                LoaderView()
+                    .transition(.opacity)
+            }
+        }
+        .alert("ERROR_TITLE".localized, isPresented: $bookVM.showErrorAlert) {
+            Button(action: {}) {
+                Text("CLOSE".localized)
+                    .textCase(.uppercase)
+            }
+        } message: {
+            Text(bookVM.errorMsg)
+        }
     }
     
     var header: some View {

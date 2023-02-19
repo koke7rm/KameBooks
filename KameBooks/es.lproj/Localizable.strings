@@ -23,6 +23,16 @@
 "NETWORKCONNECTION_TITLE" = "No hay conexión de red";
 "NETWORKCONNECTION_SUBTITLE" = "Por favor, revisa la conexión e intentalo de nuevo";
 
+// ERROR
+"ERROR_MESSAGE_DEFAULT" = "Ha ocurrido un error inesperado, vuelve a intentarlo más tarde";
+"ERROR_GENERAL" = "Error general:\n";
+"ERROR_JSON" = "Error de JSON:\n";
+"ERROR_HTTP" = "No es una conexión HTTP\n";
+"ERROR_STATUS" = "Codigo de error: Codigo ";
+"ERROR_INVALID_DATA" = "Dato Invalido";
+"ERROR_TITLE" = "Error de conexión";
+"ERROR_FIELD_EMPTY" = "El campo no puede estar vacio";
+
 // FORM
 "FORM_INVALID_MAIL_MESSAGE" = "Introduce un email válido";
 "FORM_NAME_PLACEHOLDER" = "Bruce Wayne";
@@ -82,3 +92,8 @@
 "BOOKDETAIL_AUTHOR" = "Autor:";
 "BOOKDETAIL_YEAR" = "Año:";
 "BOOKDETAIL_PAGES" = "Páginas:";
+"BOOKDETAIL_ORDER_SUCCESS_TITLE" = "Pedido realizado";
+"BOOKDETAIL_ORDER_SUCCESS_MESSAGE" = "Recibirás un mail con la información de tu pedido";
+"BOOKDETAIL_TITLE" = "-Título: %@";
+"BOOKDETAIL_ORDER_NUMBER" = "-Número de pedido: %@";
+

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E101AFCF29A1A21300197456 /* SimpleCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */; };
+		E101AFD129A1A3A800197456 /* SuccessOrderAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E101AFD029A1A3A800197456 /* SuccessOrderAlert.swift */; };
 		E13BA99C29A0F05C004F1EA4 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BA99B29A0F05C004F1EA4 /* BookCell.swift */; };
 		E13BA99E29A0F1B5004F1EA4 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */; };
 		E141F729299AB4D000381631 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F728299AB4D000381631 /* HomeViewModel.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCustomAlert.swift; sourceTree = "<group>"; };
+		E101AFD029A1A3A800197456 /* SuccessOrderAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessOrderAlert.swift; sourceTree = "<group>"; };
 		E13BA99B29A0F05C004F1EA4 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		E141F728299AB4D000381631 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 				E13BA99B29A0F05C004F1EA4 /* BookCell.swift */,
 				E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */,
 				E14B3C0C29A137480053A426 /* RatingStarsView.swift */,
+				E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */,
+				E101AFD029A1A3A800197456 /* SuccessOrderAlert.swift */,
 			);
 			name = ViewComponents;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1517FBB299C333E00661441 /* BookDetailView.swift in Sources */,
+				E101AFCF29A1A21300197456 /* SimpleCustomAlert.swift in Sources */,
 				E1A01FC72999375600133FDA /* SplashView.swift in Sources */,
 				E1A01FDE2999419E00133FDA /* OnboardingView.swift in Sources */,
 				E190366D299E6089004DF1C3 /* EditProfileView.swift in Sources */,
@@ -399,6 +406,7 @@
 				E1A01FC9299937DE00133FDA /* AppOfflineView.swift in Sources */,
 				E18380682997FA03008D39FE /* InfoKeys.swift in Sources */,
 				E1A01FE02999421100133FDA /* OnboardingPage.swift in Sources */,
+				E101AFD129A1A3A800197456 /* SuccessOrderAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

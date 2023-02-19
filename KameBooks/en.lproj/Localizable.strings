@@ -23,6 +23,16 @@
 "NETWORKCONNECTION_TITLE" = "No network connection";
 "NETWORKCONNECTION_SUBTITLE" = "Please check the connection and try again";
 
+// ERROR
+"ERROR_MESSAGE_DEFAULT" = "An unexpected error has occurred, please try again later";
+"ERROR_GENERAL" = "General error:\n";
+"ERROR_JSON" = "JSON Error:\n";
+"ERROR_HTTP" = "Non HTTP connection\n";
+"ERROR_STATUS" = "Status error: Code ";
+"ERROR_INVALID_DATA" = "Invalid data";
+"ERROR_TITLE" = "Connection error";
+"ERROR_FIELD_EMPTY" = "Field cannot be empty";
+
 // ONBOARDING
 "ONBOARDING_FIRST_TITLE" = "Can't make up your mind?";
 "ONBOARDING_FIRST_DESCRIPTION" = "You can browse our extensive catalogue of books without registering";
@@ -76,3 +86,7 @@
 "BOOKDETAIL_AUTHOR" = "Author:";
 "BOOKDETAIL_YEAR" = "Year:";
 "BOOKDETAIL_PAGES" = "Pages:";
+"BOOKDETAIL_ORDER_SUCCESS_TITLE" = "Order placed";
+"BOOKDETAIL_ORDER_SUCCESS_MESSAGE" = "You will receive an email with your order information.";
+"BOOKDETAIL_TITLE" = "-Title: %@";
+"BOOKDETAIL_ORDER_NUMBER" = "-Order number: %@";

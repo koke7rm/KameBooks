@@ -26,7 +26,7 @@ struct LoaderView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(.blueMain)
+                    .foregroundColor(.gold)
             )
         }
     }
