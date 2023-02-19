@@ -19,11 +19,15 @@ final class BookDetailViewModel: ObservableObject {
     @Published var showErrorAlert = false
     @Published var showSuccessAlert = false
     @Published var orderNumber = ""
+    @Published var asReaded = false
     
     let bookDetail: BooksList
     
     init(book: BooksList) {
         self.bookDetail = book
+        Task {
+            await userHistory()
+        }
     }
     
     @MainActor func createBooksOrder() async {
@@ -53,7 +57,28 @@ final class BookDetailViewModel: ObservableObject {
         loading = true
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
         do {
-            try await networkPersistence.postBooksReaded(booksReaded: OrderModel(email: email, order: [bookDetail.book.id]))
+            try await networkPersistence.postBooksReaded(booksReaded: ReadModel(email: email, books: [bookDetail.book.id]))
+            asReaded = true
+        } catch let error as APIErrors {
+            errorMsg = error.description
+            showErrorAlert.toggle()
+        } catch {
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
+        }
+        loading = false
+    }
+    
+    @MainActor func userHistory() async {
+        guard let email = KameBooksKeyChain.shared.user?.email else { return }
+        loading = true
+        do {
+           let userHistory = try await networkPersistence.userHistory(mail: email)
+            userHistory.readed.forEach { readed in
+                if bookDetail.book.id == readed {
+                    asReaded = true
+                }
+            }
         } catch let error as APIErrors {
             errorMsg = error.description
             showErrorAlert.toggle()

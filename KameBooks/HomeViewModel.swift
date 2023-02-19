@@ -20,6 +20,7 @@ final class HomeViewModel: ObservableObject {
     @Published var completeList: [BooksList] = []
     @Published var filteredList: [BooksList] = []
     @Published var featuredList: [BooksList] = []
+    @Published var orderHistoryList: [UserOrderHistoryModel] = []
     @Published var showNoResults = false
     @Published var showSearch = false
     @Published var searchText = "" {
@@ -38,6 +39,7 @@ final class HomeViewModel: ObservableObject {
         Task {
             await getBooksList()
             await getFeaturedBooks()
+            await userOrderHistory()
         }
     }
     
@@ -112,6 +114,21 @@ final class HomeViewModel: ObservableObject {
                     filteredList.append(BooksList(book: book, author: author.name))
                 }
             }
+        } catch let error as APIErrors {
+            errorMsg = error.description
+            showErrorAlert.toggle()
+        } catch {
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
+        }
+        loading = false
+    }
+    
+    @MainActor func userOrderHistory() async {
+        guard let email = KameBooksKeyChain.shared.user?.email else { return }
+        loading = true
+        do {
+            orderHistoryList = try await networkPersistance.userOrderHistory(mail: email)
         } catch let error as APIErrors {
             errorMsg = error.description
             showErrorAlert.toggle()

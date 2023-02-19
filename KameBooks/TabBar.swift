@@ -10,6 +10,8 @@ import SwiftUI
 
 struct TabBar: View {
     
+    @StateObject var homeVM = HomeViewModel()
+    
     @Binding var screen: Screens
     @State var selection = 0
     
@@ -22,16 +24,24 @@ struct TabBar: View {
         NavigationStack {
             TabView(selection: $selection) {
                 HomeView()
+                    .environmentObject(homeVM)
                     .tabItem {
                         Label("TABBAR_HOME".localized, systemImage: "house")
                     }
                     .tag(0)
-                Profile(screen: $screen)
+                HistoryOrdersView()
+                    .environmentObject(homeVM)
+                    .tabItem {
+                        Label("TABBAR_ORDERS".localized, systemImage: "shippingbox.fill")
+                    }
+                    .tag(1)
+                
+                Profile(screen: $screen, booksOrderCount: homeVM.orderHistoryList.count)
                     .tabItem {
                         Label("TABBAR_PROFILE".localized, systemImage: "person.fill")
                             .foregroundColor(.red)
                     }
-                    .tag(1)
+                    .tag(2)
             }
             .tint(.black)
         }

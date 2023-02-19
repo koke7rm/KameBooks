@@ -11,7 +11,7 @@ import PhotosUI
 
 final class ProfileViewModel: ObservableObject {
     
-    let networkPersistence = NetworkPersistence.shared
+    let networkPersistance = NetworkPersistence.shared
     let persistence = ModelPersistence()
     
     @Published var userData = KameBooksKeyChain.shared.user
@@ -44,7 +44,7 @@ final class ProfileViewModel: ObservableObject {
         loading = true
         Task {
             let task = Task(priority: .utility) {
-                try await networkPersistence.updateUser(user: UserModel(name: name, email: mail, location: address) )
+                try await networkPersistance.updateUser(user: UserModel(name: name, email: mail, location: address) )
             }
             switch await task.result {
             case .success():
@@ -66,7 +66,7 @@ final class ProfileViewModel: ObservableObject {
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
         loading = true
         do {
-            userHistory = try await networkPersistence.userHistory(mail: email)
+            userHistory = try await networkPersistance.userHistory(mail: email)
         } catch let error as APIErrors {
             errorMsg = error.description
             showErrorAlert.toggle()

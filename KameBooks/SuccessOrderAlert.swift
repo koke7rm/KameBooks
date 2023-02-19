@@ -36,11 +36,9 @@ struct SuccessOrderAlert: View {
                     Text(String(format: "BOOKDETAIL_TITLE".localized, bookTitle))
                         .foregroundColor(.black)
                         .font(.system(size: 18))
-                        .multilineTextAlignment(.center)
                     Text(String(format: "BOOKDETAIL_ORDER_NUMBER".localized, orderNumber))
                         .foregroundColor(.black)
                         .font(.system(size: 18))
-                        .multilineTextAlignment(.center)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 SimpleButton(text: "ACCEPT".localized, foregroundColor: .white, backroundColor: .gold) {

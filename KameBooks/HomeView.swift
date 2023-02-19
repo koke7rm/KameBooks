@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var homeVM = HomeViewModel()
+    @EnvironmentObject var homeVM: HomeViewModel
     
     @State var userName = ""
     

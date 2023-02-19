@@ -42,11 +42,12 @@ struct BookCell: View {
                 
                 Spacer()
                 
-                Text(String(format: "BOOKINFO_PUBLISHED", bookList.book.year?.formatted().replaceDecimal ?? "-"))
+                Text(String(format: "BOOKINFO_PUBLISHED".localized, bookList.book.year?.formatted().replaceDecimal ?? "-"))
                     .padding(.bottom)
             }
             .padding(.top)
         }
+        .frame(maxHeight: 200)
     }
 }
 

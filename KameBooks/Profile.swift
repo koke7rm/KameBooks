@@ -13,6 +13,7 @@ struct Profile: View {
     @StateObject var profileVM = ProfileViewModel()
     
     @Binding var screen: Screens
+    let booksOrderCount: Int?
     @State var presentEditProfile = false
     @AppStorage("isGuest") var isGuest = false
     
@@ -117,7 +118,7 @@ struct Profile: View {
             
             Divider()
             
-            HistorySection(section: "PROFILE_BOOKS_PURCHASED".localized, info: "\(profileVM.userHistory?.ordered.count ?? 0)")
+            HistorySection(section: "PROFILE_BOOKS_PURCHASED".localized, info: "\(booksOrderCount ?? 0)")
             Divider()
         }
     }
@@ -142,6 +143,6 @@ struct Profile: View {
 
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
-        Profile(screen: .constant(.home))
+        Profile(screen: .constant(.home), booksOrderCount: 0)
     }
 }

@@ -18,3 +18,20 @@ struct UserHistoryModel: Codable {
     let readed: [Int]
     let ordered: [Int]
 }
+
+struct UserReadedHistoryModel: Codable {
+    let books: [Int]
+}
+
+struct UserOrderHistoryModel: Codable, Hashable {
+    let orderNumber: String
+    let books: [Int]
+    let state: String
+    let date: String
+    
+    enum CodingKeys: String, CodingKey {
+        case books, date
+        case orderNumber = "npedido"
+        case state = "estado"
+    }
+}

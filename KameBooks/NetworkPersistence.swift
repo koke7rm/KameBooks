@@ -36,11 +36,11 @@ final class NetworkPersistence {
         try await checkResponse(request: .request(networkRequest: .searchbook(word: word)), type: [BookModel].self)
     }
     
-    func createBooksOrder(order: OrderModel) async throws -> OrderResponse{
+    func createBooksOrder(order: OrderModel) async throws -> OrderResponse {
         try await checkResponse(request: .request(networkRequest: .createBookOrer(orderData: order)), type: OrderResponse.self)
     }
     
-    func postBooksReaded(booksReaded: OrderModel) async throws {
+    func postBooksReaded(booksReaded: ReadModel) async throws {
         try await checkResponseVoid(request: .request(networkRequest: .postBooksRead(readsData: booksReaded)))
     }
     
@@ -48,8 +48,12 @@ final class NetworkPersistence {
         try await checkResponseVoid(request: .request(networkRequest: .updateUser(user: user)))
     }
     
-    func userHistory(mail: String) async throws -> UserHistoryModel{
+    func userHistory(mail: String) async throws -> UserHistoryModel {
         try await checkResponse(request: .request(networkRequest: .userHistory(mail: mail)), type: UserHistoryModel.self)
+    }
+    
+    func userOrderHistory(mail: String) async throws -> [UserOrderHistoryModel] {
+        try await checkResponse(request: .request(networkRequest: .userOrderHistory(mail: mail)), type: [UserOrderHistoryModel].self)
     }
     
     /// Método para obtener un JSON lanzando una petición asíncrona y controlando los errores

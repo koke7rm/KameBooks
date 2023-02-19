@@ -34,9 +34,11 @@ struct BookDetailView: View {
                                     await bookVM.createBooksOrder()
                                 }
                             }
-                            SimpleButton(text: "BOOKDETAIL_MARK_READ".localized, foregroundColor: .blackLight, backroundColor: .gold) {
-                                Task {
-                                    await bookVM.createBooksOrder()
+                            if !bookVM.asReaded {
+                                SimpleButton(text: "BOOKDETAIL_MARK_READ".localized, foregroundColor: .blackLight, backroundColor: .gold) {
+                                    Task {
+                                        await bookVM.bookReaded()
+                                    }
                                 }
                             }
                         }
@@ -86,7 +88,13 @@ struct BookDetailView: View {
         VStack {
             RatingStarsView(rating: bookVM.bookDetail.book.rating ?? 0)
                 .padding()
+            
             VStack(alignment: .leading, spacing: 8) {
+                Image(systemName: bookVM.asReaded ? "bookmark.fill" : "bookmark.slash.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 25)
+                    .foregroundColor(bookVM.asReaded ? .green : .lightGray)
                 InfoField(sectionTitle: "BOOKDETAIL_AUTHOR".localized, sectionInfo: bookVM.bookDetail.author)
                 InfoField(sectionTitle: "BOOKDETAIL_YEAR".localized, sectionInfo: bookVM.bookDetail.book.year?.formatted().replaceDecimal ?? "-")
                 InfoField(sectionTitle: "BOOKDETAIL_PAGES".localized, sectionInfo: "\(bookVM.bookDetail.book.pages ?? 0)")

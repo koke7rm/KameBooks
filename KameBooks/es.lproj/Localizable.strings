@@ -73,6 +73,7 @@
 // TABBAR
 "TABBAR_HOME" = "Home";
 "TABBAR_PROFILE" = "Perfil";
+"TABBAR_ORDERS" = "Pedidos";
 
 // HOME
 "HOME_SEARCH_PLACEHOLDER" = "Buscar...";
