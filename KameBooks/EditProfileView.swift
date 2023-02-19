@@ -24,7 +24,9 @@ struct EditProfileView: View {
                 formFields
                 
                 SimpleButton(text: "SAVE".localized, foregroundColor: .black, backroundColor: .gold) {
-                    profileVM.saveData()
+                    Task{
+                        await profileVM.saveData()
+                    }
                 }
                 .opacity(profileVM.validateFields() ? 1 : 0.6)
                 .disabled(!profileVM.validateFields())

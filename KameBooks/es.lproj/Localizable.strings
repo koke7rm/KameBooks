@@ -70,7 +70,7 @@
 "PROFILE_EDIT_IMAGE" = "Editar imagen";
 "PROFILE_UPDATE_OK" = "Cambios realizados correctamente";
 
-// TABBAR
+// TAB BAR
 "TABBAR_HOME" = "Home";
 "TABBAR_PROFILE" = "Perfil";
 "TABBAR_ORDERS" = "Pedidos";
@@ -81,10 +81,10 @@
 "HOME_FEATURE_LIST_TITLE" = "Libros destacados";
 "HOME_NO_RESULTS" = "No se encontraron resultados";
 
-// BOOKINFO
+// BOOK INFO
 "BOOKINFO_PUBLISHED" = "Publicado en %@";
 
-//BOOKDETAIL
+//BOOK DETAIL
 "BOOKDETAIL_PLACE_ORDER" = "Realizar pedido";
 "BOOKDETAIL_MARK_READ" = "Marcar como leído";
 "BOOKDETAIL_NO_INFORMATION" = "Sin información";
@@ -97,4 +97,9 @@
 "BOOKDETAIL_ORDER_SUCCESS_MESSAGE" = "Recibirás un mail con la información de tu pedido";
 "BOOKDETAIL_TITLE" = "-Título: %@";
 "BOOKDETAIL_ORDER_NUMBER" = "-Número de pedido: %@";
+
+// MY ORDERS
+"MYORDERS_TITLE" = "Mis pedidos";
+"MYORDERS_ORDER_DATE" = "Fecha del pedido: %@";
+"MYORDERS_NO_ORDERS" = "No hay pedidos realizados";
 

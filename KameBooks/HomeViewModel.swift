@@ -8,21 +8,17 @@
 
 import SwiftUI
 
-struct BooksList: Hashable {
-    let book: BookModel
-    let author: String
-}
-
 final class HomeViewModel: ObservableObject {
     
     let networkPersistance = NetworkPersistence.shared
     
     @Published var completeList: [BooksList] = []
+    @Published var orderedList: [OrderList] = []
     @Published var filteredList: [BooksList] = []
     @Published var featuredList: [BooksList] = []
-    @Published var orderHistoryList: [UserOrderHistoryModel] = []
     @Published var showNoResults = false
     @Published var showSearch = false
+    
     @Published var searchText = "" {
         didSet {
             searchTextActions(searchText)
@@ -36,6 +32,7 @@ final class HomeViewModel: ObservableObject {
     var authorsList: [AuthorModel] = []
     
     init() {
+        completeList.reserveCapacity(1000)
         Task {
             await getBooksList()
             await getFeaturedBooks()
@@ -62,7 +59,7 @@ final class HomeViewModel: ObservableObject {
             authorsList = try await networkPersistance.getAuthors()
             
             booksList.forEach { book in
-                let authors = authorsList.filter { $0.id == book.author }.map { $0 }
+                let authors = authorsList.filter { $0.id == book.author }
                 authors.forEach { author in
                     completeList.append(BooksList(book: book, author: author.name))
                 }
@@ -81,10 +78,10 @@ final class HomeViewModel: ObservableObject {
     @MainActor func getFeaturedBooks() async {
         loading = true
         do {
-            let booksList = try await networkPersistance.getFeaturedBooks()
+            let booksList = try await networkPersistance.getFeaturedBooks().sorted { $0.title < $1.title }
             
             booksList.forEach { book in
-                let authors = authorsList.filter { $0.id == book.author }.map { $0 }
+                let authors = authorsList.filter { $0.id == book.author }
                 authors.forEach { author in
                     featuredList.append(BooksList(book: book, author: author.name))
                 }
@@ -109,7 +106,7 @@ final class HomeViewModel: ObservableObject {
                 showNoResults = true
             }
             booksList.forEach { book in
-                let authors = authorsList.filter { $0.id == book.author }.map { $0 }
+                let authors = authorsList.filter { $0.id == book.author }
                 authors.forEach { author in
                     filteredList.append(BooksList(book: book, author: author.name))
                 }
@@ -128,7 +125,18 @@ final class HomeViewModel: ObservableObject {
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
         loading = true
         do {
-            orderHistoryList = try await networkPersistance.userOrderHistory(mail: email)
+            let orderHistoryList = try await networkPersistance.userOrderHistory(mail: email)
+            
+            orderHistoryList.forEach { userHistory in
+                var booksList: [BooksList] = []
+                
+                userHistory.books.forEach { libro in
+                    let booksOrdered = completeList.filter { $0.book.id == libro }
+                    booksList.append(contentsOf: booksOrdered)
+                }
+                orderedList.append(OrderList(book: booksList, orderData: userHistory))
+            }
+            
         } catch let error as APIErrors {
             errorMsg = error.description
             showErrorAlert.toggle()

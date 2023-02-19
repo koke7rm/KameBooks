@@ -35,8 +35,7 @@ struct TabBar: View {
                         Label("TABBAR_ORDERS".localized, systemImage: "shippingbox.fill")
                     }
                     .tag(1)
-                
-                Profile(screen: $screen, booksOrderCount: homeVM.orderHistoryList.count)
+                Profile(screen: $screen, booksOrderCount: homeVM.orderedList.count)
                     .tabItem {
                         Label("TABBAR_PROFILE".localized, systemImage: "person.fill")
                             .foregroundColor(.red)

@@ -57,7 +57,7 @@ struct SplashView: View {
     
     var splash: some View {
         ZStack {
-            Color.blackLight
+            LinearGradient(gradient: Gradient.mainGradient, startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             Image(decorative: "img_logoName")
                 .resizable()

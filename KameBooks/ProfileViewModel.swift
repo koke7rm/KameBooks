@@ -42,24 +42,22 @@ final class ProfileViewModel: ObservableObject {
     
     @MainActor func updateUser() async {
         loading = true
-        Task {
-            let task = Task(priority: .utility) {
-                try await networkPersistance.updateUser(user: UserModel(name: name, email: mail, location: address) )
-            }
-            switch await task.result {
-            case .success():
-                KameBooksKeyChain.shared.user = UserModel(name: name, email: mail, location: address)
-                userData = KameBooksKeyChain.shared.user
-                showSuccessAlert.toggle()
-            case .failure(let error as APIErrors):
-                errorMsg = error.description
-                showErrorAlert.toggle()
-            case .failure(let error):
-                errorMsg = error.localizedDescription
-                showErrorAlert.toggle()
-            }
-            loading = false
+        let task = Task(priority: .utility) {
+            try await networkPersistance.updateUser(user: UserModel(name: name, email: mail, location: address) )
         }
+        switch await task.result {
+        case .success():
+            KameBooksKeyChain.shared.user = UserModel(name: name, email: mail, location: address)
+            userData = KameBooksKeyChain.shared.user
+            showSuccessAlert.toggle()
+        case .failure(let error as APIErrors):
+            errorMsg = error.description
+            showErrorAlert.toggle()
+        case .failure(let error):
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
+        }
+        loading = false
     }
     
     @MainActor func userHistory() async {
@@ -77,12 +75,10 @@ final class ProfileViewModel: ObservableObject {
         loading = false
     }
     
-    func saveData() {
-        Task {
+    func saveData() async {
             await updateUser()
             guard let image = newPhoto, let mail = userData?.email else { return }
             persistence.saveCover(image: image, mail: mail)
-        }
     }
     
     /// Método para validar los campos del formulario

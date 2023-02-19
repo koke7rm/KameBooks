@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct KameBooksApp: App {
+    
+    @StateObject var homeVM = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
            SplashView()

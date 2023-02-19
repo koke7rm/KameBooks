@@ -60,3 +60,12 @@ struct OrderResponse: Codable {
     }
 }
 
+struct BooksList: Hashable {
+    let book: BookModel
+    let author: String
+}
+
+struct OrderList: Hashable {
+    let book: [BooksList]
+    let orderData: UserOrderHistoryModel
+}

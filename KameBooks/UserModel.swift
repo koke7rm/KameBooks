@@ -29,9 +29,22 @@ struct UserOrderHistoryModel: Codable, Hashable {
     let state: String
     let date: String
     
+    var orderState: OrderState? {
+        OrderState(rawValue: state)
+    }
+    
+    var formatDate: String {
+        date.toDate()?.formatDateString ?? "-"
+    }
+    
     enum CodingKeys: String, CodingKey {
         case books, date
         case orderNumber = "npedido"
         case state = "estado"
     }
+}
+
+enum OrderState: String {
+    case sent = "enviado"
+    case recived = "recibido"
 }

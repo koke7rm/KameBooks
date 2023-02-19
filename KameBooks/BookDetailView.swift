@@ -96,7 +96,7 @@ struct BookDetailView: View {
                     .frame(width: 25)
                     .foregroundColor(bookVM.asReaded ? .green : .lightGray)
                 InfoField(sectionTitle: "BOOKDETAIL_AUTHOR".localized, sectionInfo: bookVM.bookDetail.author)
-                InfoField(sectionTitle: "BOOKDETAIL_YEAR".localized, sectionInfo: bookVM.bookDetail.book.year?.formatted().replaceDecimal ?? "-")
+                InfoField(sectionTitle: "BOOKDETAIL_YEAR".localized, sectionInfo: "\(bookVM.bookDetail.book.year ?? 0)")
                 InfoField(sectionTitle: "BOOKDETAIL_PAGES".localized, sectionInfo: "\(bookVM.bookDetail.book.pages ?? 0)")
             }
             .frame(maxWidth: .infinity, alignment: .leading)

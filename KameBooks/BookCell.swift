@@ -42,7 +42,7 @@ struct BookCell: View {
                 
                 Spacer()
                 
-                Text(String(format: "BOOKINFO_PUBLISHED".localized, bookList.book.year?.formatted().replaceDecimal ?? "-"))
+                Text(String(format: "BOOKINFO_PUBLISHED".localized, "\(bookList.book.year ?? 0)"))
                     .padding(.bottom)
             }
             .padding(.top)

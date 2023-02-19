@@ -21,8 +21,12 @@ extension String {
         components(separatedBy: .whitespaces).joined()
     }
     
-    var replaceDecimal: String {
-        replacingOccurrences(of: ",", with: "")
+    func toDate(withFormat format: String = "yyyy-MM-dd'T'HH:mm:ssZ") -> Date?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+        return date
     }
 }
 
@@ -50,6 +54,12 @@ extension UIApplication {
 extension Date {
     var showOnlyYear: String {
         self.formatted(.dateTime.year())
+    }
+    
+    var formatDateString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy, HH:mm"
+        return formatter.string(from: self)
     }
 }
 

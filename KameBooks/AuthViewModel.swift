@@ -51,44 +51,40 @@ final class AuthViewModel: ObservableObject {
     /// Método para crear un usuario
     @MainActor func createUser() async {
         loading = true
-        Task {
-            let task = Task(priority: .utility) {
-                return try await networkPersistance.createUser(user:UserModel(name: name, email: mail, location: address))
-            }
-            switch await task.result {
-            case .success():
-                showSuccessAlert.toggle()
-            case .failure(let error as APIErrors):
-                errorMsg = error.description
-                showErrorAlert.toggle()
-            case .failure(let error):
-                errorMsg = error.localizedDescription
-                showErrorAlert.toggle()
-            }
-            loading = false
+        let task = Task(priority: .utility) {
+            return try await networkPersistance.createUser(user:UserModel(name: name, email: mail, location: address))
         }
+        switch await task.result {
+        case .success():
+            showSuccessAlert.toggle()
+        case .failure(let error as APIErrors):
+            errorMsg = error.description
+            showErrorAlert.toggle()
+        case .failure(let error):
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
+        }
+        loading = false
     }
     
     /// Método para comprobar si el usuario existe y obtener sus datos
     @MainActor func checkUser() async {
         loading = true
-        Task {
-            let task = Task(priority: .utility) {
-                return try await networkPersistance.checkUser(mail: mail)
-            }
-            switch await task.result {
-            case .success(let response):
-                print(response)
-                KameBooksKeyChain.shared.user = response
-                showSuccessAlert.toggle()
-            case .failure(let error as APIErrorCodeMessage):
-                errorMsg = error.reason ?? "No hemos podido"
-                showErrorAlert.toggle()
-            case .failure(let error):
-                errorMsg = error.localizedDescription
-                showErrorAlert.toggle()
-            }
-            loading = false
+        let task = Task(priority: .utility) {
+            return try await networkPersistance.checkUser(mail: mail)
         }
+        switch await task.result {
+        case .success(let response):
+            print(response)
+            KameBooksKeyChain.shared.user = response
+            showSuccessAlert.toggle()
+        case .failure(let error as APIErrorCodeMessage):
+            errorMsg = error.reason ?? "No hemos podido"
+            showErrorAlert.toggle()
+        case .failure(let error):
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
+        }
+        loading = false
     }
 }
