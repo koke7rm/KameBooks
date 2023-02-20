@@ -32,6 +32,7 @@
 "ERROR_INVALID_DATA" = "Invalid data";
 "ERROR_TITLE" = "Connection error";
 "ERROR_FIELD_EMPTY" = "Field cannot be empty";
+"ERROR_BASKET_BOOK_EXIST" = "The book is already in your basket";
 
 // ONBOARDING
 "ONBOARDING_FIRST_TITLE" = "Can't make up your mind?";
@@ -68,6 +69,7 @@
 "TABBAR_HOME" = "Home";
 "TABBAR_PROFILE" = "Profile";
 "TABBAR_ORDERS" = "Orders";
+"TABBAR_CART" = "Cart";
 
 // HOME
 "HOME_SEARCH_PLACEHOLDER" = "Search...";

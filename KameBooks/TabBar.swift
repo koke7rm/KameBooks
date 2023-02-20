@@ -35,12 +35,17 @@ struct TabBar: View {
                         Label("TABBAR_ORDERS".localized, systemImage: "shippingbox.fill")
                     }
                     .tag(1)
+                CartView(tabBarSelection: $selection)
+                    .tabItem {
+                        Label("TABBAR_CART".localized, systemImage: "cart.fill")
+                    }
+                    .tag(2)
                 Profile(screen: $screen, booksOrderCount: homeVM.orderedList.count)
                     .tabItem {
                         Label("TABBAR_PROFILE".localized, systemImage: "person.fill")
                             .foregroundColor(.red)
                     }
-                    .tag(2)
+                    .tag(3)
             }
             .tint(.black)
         }

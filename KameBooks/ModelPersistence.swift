@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+extension URL {
+    static let basketBooksURL = URL.documentsDirectory.appending(component: "basketBooks").appendingPathExtension("json")
+}
+
 final class ModelPersistence {
     
     func saveCover(image: UIImage, mail: String) {
@@ -32,5 +36,25 @@ final class ModelPersistence {
             }
         }
         return nil
+    }
+    
+    func loadBasketBooks() -> [BooksList] {
+        do {
+            let data = try Data(contentsOf: .basketBooksURL)
+            return try JSONDecoder().decode([BooksList].self, from: data)
+        } catch {
+            print("Error en la carga \(error)")
+            return []
+        }
+    }
+    
+    func saveBasketBooks(basketBooks: [BooksList]) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(basketBooks)
+            try data.write(to: .basketBooksURL, options: [.atomic, .completeFileProtection])
+        } catch {
+            print("Error en la grabación del archivo \(error)")
+        }
     }
 }

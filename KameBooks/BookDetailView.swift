@@ -29,9 +29,14 @@ struct BookDetailView: View {
                     
                     if !isGuest {
                         VStack {
-                            SimpleButton(text: "BOOKDETAIL_PLACE_ORDER".localized, foregroundColor: .blackLight, backroundColor: .gold) {
-                                Task {
-                                    await bookVM.createBooksOrder()
+                            HStack {
+                                SimpleButton(text: "BOOKDETAIL_PLACE_ORDER".localized, foregroundColor: .blackLight, backroundColor: .gold) {
+                                    Task {
+                                        await bookVM.createBooksOrder()
+                                    }
+                                }
+                                SimpleButton(text: "Añadir a la cesta".localized, foregroundColor: .blackLight, backroundColor: .gold) {
+                                    bookVM.addBookInBasket(book: bookVM.bookDetail)
                                 }
                             }
                             if !bookVM.asReaded {
@@ -50,13 +55,16 @@ struct BookDetailView: View {
         }
         .overlay {
             SuccessOrderAlert(isPresented: $bookVM.showSuccessAlert, bookTitle: bookVM.bookDetail.book.title, orderNumber: bookVM.orderNumber)
+            SimpleCustomAlert(isPresented: $bookVM.showBasketAlert, title: "Libro añadido a la cesta", description: "El libro \(bookVM.bookDetail.book.title) ha sido añadido a la cesta") {
+                bookVM.showBasketAlert = false
+            }
             
             if bookVM.loading {
                 LoaderView()
                     .transition(.opacity)
             }
         }
-        .alert("ERROR_TITLE".localized, isPresented: $bookVM.showErrorAlert) {
+        .alert(bookVM.errorTitle, isPresented: $bookVM.showErrorAlert) {
             Button(action: {}) {
                 Text("CLOSE".localized)
                     .textCase(.uppercase)

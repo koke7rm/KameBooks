@@ -17,6 +17,8 @@
 		E1517FBB299C333E00661441 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FBA299C333E00661441 /* BookDetailView.swift */; };
 		E1517FBF299C340600661441 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FBE299C340600661441 /* BookDetailViewModel.swift */; };
 		E1517FC1299C36CA00661441 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FC0299C36CA00661441 /* Profile.swift */; };
+		E170BE4A29A3FC5400B5AD9A /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170BE4929A3FC5400B5AD9A /* CartView.swift */; };
+		E170BE4C29A3FCDB00B5AD9A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170BE4B29A3FCDB00B5AD9A /* CartViewModel.swift */; };
 		E18380472997F585008D39FE /* KameBooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380462997F585008D39FE /* KameBooksApp.swift */; };
 		E183804B2997F588008D39FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183804A2997F588008D39FE /* Assets.xcassets */; };
 		E183804E2997F588008D39FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183804D2997F588008D39FE /* Preview Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		E1517FBA299C333E00661441 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		E1517FBE299C340600661441 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		E1517FC0299C36CA00661441 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		E170BE4929A3FC5400B5AD9A /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		E170BE4B29A3FCDB00B5AD9A /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		E18380432997F585008D39FE /* KameBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KameBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18380462997F585008D39FE /* KameBooksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KameBooksApp.swift; sourceTree = "<group>"; };
 		E183804A2997F588008D39FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				E1517FC0299C36CA00661441 /* Profile.swift */,
 				E190366C299E6089004DF1C3 /* EditProfileView.swift */,
 				E1FC945629A23C200002AB67 /* HistoryOrdersView.swift */,
+				E170BE4929A3FC5400B5AD9A /* CartView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				E141F728299AB4D000381631 /* HomeViewModel.swift */,
 				E1517FBE299C340600661441 /* BookDetailViewModel.swift */,
 				E190366A299E5CE8004DF1C3 /* ProfileViewModel.swift */,
+				E170BE4B29A3FCDB00B5AD9A /* CartViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 				E1A01FDE2999419E00133FDA /* OnboardingView.swift in Sources */,
 				E190366D299E6089004DF1C3 /* EditProfileView.swift in Sources */,
 				E18380472997F585008D39FE /* KameBooksApp.swift in Sources */,
+				E170BE4A29A3FC5400B5AD9A /* CartView.swift in Sources */,
 				E1FC945729A23C200002AB67 /* HistoryOrdersView.swift in Sources */,
 				E183806D2997FB84008D39FE /* NetworkPersistence.swift in Sources */,
 				E183806F2997FD69008D39FE /* BookModel.swift in Sources */,
@@ -400,6 +407,7 @@
 				E1A01FEA2999517B00133FDA /* RegexValidations.swift in Sources */,
 				E13BA99C29A0F05C004F1EA4 /* BookCell.swift in Sources */,
 				E183806B2997FB3A008D39FE /* Device.swift in Sources */,
+				E170BE4C29A3FCDB00B5AD9A /* CartViewModel.swift in Sources */,
 				E141F72B299AE0E000381631 /* AuthorModel.swift in Sources */,
 				E1A46AC329999C7E00E1CA40 /* TabBar.swift in Sources */,
 				E14B3C0D29A137480053A426 /* RatingStarsView.swift in Sources */,

@@ -12,19 +12,24 @@ import SwiftUI
 final class BookDetailViewModel: ObservableObject {
     
     let networkPersistence = NetworkPersistence.shared
+    let persistence = ModelPersistence()
     
     // MARK: - Overlays properties
     @Published var loading = false
     @Published var errorMsg = ""
+    @Published var errorTitle = ""
     @Published var showErrorAlert = false
     @Published var showSuccessAlert = false
+    @Published var showBasketAlert = false
     @Published var orderNumber = ""
     @Published var asReaded = false
     
     let bookDetail: BooksList
+    var basketBooks: [BooksList] = []
     
     init(book: BooksList) {
         self.bookDetail = book
+        self.basketBooks = persistence.loadBasketBooks()
         Task {
             await userHistory()
         }
@@ -43,8 +48,10 @@ final class BookDetailViewModel: ObservableObject {
         case .failure(let error as APIErrors):
             print(error)
             errorMsg = error.description
+            errorTitle = "ERROR_TITLE".localized
             showErrorAlert.toggle()
         case .failure(let error):
+            errorTitle = "ERROR_TITLE".localized
             errorMsg = error.localizedDescription
             showErrorAlert.toggle()
         }
@@ -59,9 +66,11 @@ final class BookDetailViewModel: ObservableObject {
             try await networkPersistence.postBooksReaded(booksReaded: ReadModel(email: email, books: [bookDetail.book.id]))
             asReaded = true
         } catch let error as APIErrors {
+            errorTitle = "ERROR_TITLE".localized
             errorMsg = error.description
             showErrorAlert.toggle()
         } catch {
+            errorTitle = "ERROR_TITLE".localized
             errorMsg = error.localizedDescription
             showErrorAlert.toggle()
         }
@@ -79,12 +88,26 @@ final class BookDetailViewModel: ObservableObject {
                 }
             }
         } catch let error as APIErrors {
+            errorTitle = "ERROR_TITLE".localized
             errorMsg = error.description
             showErrorAlert.toggle()
         } catch {
+            errorTitle = "ERROR_TITLE".localized
             errorMsg = error.localizedDescription
             showErrorAlert.toggle()
         }
         loading = false
+    }
+    
+    func addBookInBasket(book: BooksList) {
+        if !basketBooks.contains(where: { $0.book.id == book.book.id }) {
+            basketBooks.append(book)
+            persistence.saveBasketBooks(basketBooks: basketBooks)
+            showBasketAlert.toggle()
+        } else {
+            errorTitle = "APP_NAME".localized
+            errorMsg = "ERROR_BASKET_BOOK_EXIST".localized
+            showErrorAlert.toggle()
+        }
     }
 }

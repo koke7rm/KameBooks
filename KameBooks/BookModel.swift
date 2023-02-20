@@ -60,7 +60,7 @@ struct OrderResponse: Codable {
     }
 }
 
-struct BooksList: Hashable {
+struct BooksList: Codable, Hashable {
     let book: BookModel
     let author: String
 }

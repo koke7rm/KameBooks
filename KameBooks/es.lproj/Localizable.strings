@@ -32,6 +32,7 @@
 "ERROR_INVALID_DATA" = "Dato Invalido";
 "ERROR_TITLE" = "Error de conexión";
 "ERROR_FIELD_EMPTY" = "El campo no puede estar vacio";
+"ERROR_BASKET_BOOK_EXIST" = "El libro ya se encuentra en la cesta";
 
 // FORM
 "FORM_INVALID_MAIL_MESSAGE" = "Introduce un email válido";
@@ -74,6 +75,7 @@
 "TABBAR_HOME" = "Home";
 "TABBAR_PROFILE" = "Perfil";
 "TABBAR_ORDERS" = "Pedidos";
+"TABBAR_CART" = "Carrito";
 
 // HOME
 "HOME_SEARCH_PLACEHOLDER" = "Buscar...";
