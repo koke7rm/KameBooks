@@ -22,28 +22,7 @@ struct HistoryOrdersView: View {
                     .bold()
                     .foregroundColor(.white)
                     .textCase(.uppercase)
-                List(homeVM.orderedList, id: \.orderData.orderNumber) { order in
-                    VStack(alignment: .leading, spacing: 16) {
-                        HeaderOrderRow(orderNumber: order.orderData.orderNumber, orderState: order.orderData.orderState, state: order.orderData.state)
-                        
-                        ForEach(order.book, id: \.book.id) { purchased in
-                            BookOrderedRow(cover: purchased.book.cover, bookTitle: purchased.book.title)
-                        }
-                        Text(String(format: "MYORDERS_ORDER_DATE".localized, order.orderData.formatDate))
-                            .font(.caption)
-                    }
-                }
-                .scrollContentBackground(.hidden)
-                .overlay {
-                    if homeVM.orderedList.isEmpty {
-                        Text("MYORDERS_NO_ORDERS".localized)
-                            .bold()
-                    }
-                }
-                .refreshable {
-                    homeVM.orderedList.removeAll()
-                    await homeVM.userOrderHistory()
-                }
+                ordersList
             }
             .padding(.top)
         }
@@ -63,6 +42,31 @@ struct HistoryOrdersView: View {
         }
     }
     
+    var ordersList: some View {
+        List(homeVM.orderedList, id: \.orderData.orderNumber) { order in
+            VStack(alignment: .leading, spacing: 16) {
+                HeaderOrderRow(orderNumber: order.orderData.orderNumber, orderState: order.orderData.orderState, state: order.orderData.state)
+                
+                ForEach(order.book, id: \.book.id) { purchased in
+                    BookOrderedRow(cover: purchased.book.cover, bookTitle: purchased.book.title)
+                }
+                Text(String(format: "MYORDERS_ORDER_DATE".localized, order.orderData.formatDate))
+                    .font(.caption)
+            }
+        }
+        .scrollContentBackground(.hidden)
+        .overlay {
+            if homeVM.orderedList.isEmpty {
+                Text("MYORDERS_NO_ORDERS".localized)
+                    .bold()
+            }
+        }
+        .refreshable {
+            homeVM.orderedList.removeAll()
+            await homeVM.userOrderHistory()
+        }
+    }
+    
     struct HeaderOrderRow: View {
         
         let orderNumber: String
@@ -74,7 +78,7 @@ struct HistoryOrdersView: View {
                 .font(.caption)
             HStack {
                 Image(systemName: "smallcircle.filled.circle.fill")
-                    .foregroundColor(orderState == .recived ? Color.green : Color.lightGray)
+                    .foregroundColor(orderState == .delivered ? Color.green : Color.lightGray)
                 Text(state.capitalized)
                     .font(.caption)
             }

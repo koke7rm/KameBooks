@@ -229,7 +229,6 @@
 				E1A01FEB299955FD00133FDA /* CustomTextField.swift */,
 				E13BA99B29A0F05C004F1EA4 /* BookCell.swift */,
 				E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */,
-				E14B3C0C29A137480053A426 /* RatingStarsView.swift */,
 				E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */,
 				E101AFD029A1A3A800197456 /* SuccessOrderAlert.swift */,
 				E158BFF029A54F0100164707 /* BasketBookCell.swift */,
@@ -242,6 +241,7 @@
 			children = (
 				E1A01FC8299937DE00133FDA /* AppOfflineView.swift */,
 				E1A01FED299964E800133FDA /* LoaderView.swift */,
+				E14B3C0C29A137480053A426 /* RatingStarsView.swift */,
 				E1A01FF12999662F00133FDA /* SimpleButton.swift */,
 			);
 			name = Components;

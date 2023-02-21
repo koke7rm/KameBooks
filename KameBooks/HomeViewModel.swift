@@ -18,16 +18,14 @@ final class HomeViewModel: ObservableObject {
     @Published var featuredList: [BooksList] = []
     @Published var showNoResults = false
     @Published var showSearch = false
-    
+    @Published var loading = false
+    @Published var errorMsg = ""
+    @Published var showErrorAlert = false
     @Published var searchText = "" {
         didSet {
             searchTextActions(searchText)
         }
     }
-    // MARK: - Overlays properties
-    @Published var loading = false
-    @Published var errorMsg = ""
-    @Published var showErrorAlert = false
     
     var authorsList: [AuthorModel] = []
     
@@ -63,9 +61,9 @@ final class HomeViewModel: ObservableObject {
                     BooksList(book: book, author: author.name)
                 }
             }
-            
             self.completeList = bookAuthor
             self.filteredList = self.completeList
+            
         } catch let error as APIErrors {
             errorMsg = error.description
             showErrorAlert.toggle()
@@ -130,15 +128,11 @@ final class HomeViewModel: ObservableObject {
         do {
             let orderHistoryList = try await networkPersistance.userOrderHistory(mail: email)
             
-            orderHistoryList.forEach { userHistory in
-                var booksList: [BooksList] = []
-                
-                userHistory.books.forEach { libro in
-                    let booksOrdered = completeList.filter { $0.book.id == libro }
-                    booksList.append(contentsOf: booksOrdered)
-                }
-                orderedList.append(OrderList(book: booksList, orderData: userHistory))
+            orderedList = orderHistoryList.map { userHistory in
+                let booksList = completeList.filter { userHistory.books.contains($0.book.id) }
+                return OrderList(book: booksList, orderData: userHistory)
             }
+            .reversed()
             
         } catch let error as APIErrors {
             errorMsg = error.description

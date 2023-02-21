@@ -47,4 +47,5 @@ struct UserOrderHistoryModel: Codable, Hashable {
 enum OrderState: String {
     case sent = "enviado"
     case recived = "recibido"
+    case delivered = "entregado"
 }

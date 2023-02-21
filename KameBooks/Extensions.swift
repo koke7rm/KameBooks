@@ -51,6 +51,8 @@ extension UIApplication {
     }
 }
 
+// MARK: - Date
+// MARK: -
 extension Date {
     var showOnlyYear: String {
         self.formatted(.dateTime.year())
@@ -63,6 +65,8 @@ extension Date {
     }
 }
 
+// MARK: - Image
+// MARK: -
 extension Image {
     func setImageScore(rating: Double, tag: Int) -> Image {
         if tag > Int(rating) {
