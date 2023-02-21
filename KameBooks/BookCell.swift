@@ -16,7 +16,7 @@ struct BookCell: View {
     
     var body: some View {
         HStack {
-            Rectangle()
+            RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(.gold)
                 .frame(width: 130, height: 200)
                 .overlay {

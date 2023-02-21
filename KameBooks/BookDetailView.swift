@@ -54,7 +54,13 @@ struct BookDetailView: View {
             .padding()
         }
         .overlay {
-            SuccessOrderAlert(isPresented: $bookVM.showSuccessAlert, bookTitle: bookVM.bookDetail.book.title, orderNumber: bookVM.orderNumber)
+            SuccessOrderAlert(isPresented: $bookVM.showSuccessAlert, bookTitle: [bookVM.bookDetail], orderNumber: bookVM.orderNumber) {
+                Text(String(format: "BOOKDETAIL_TITLE".localized, bookVM.bookDetail.book.title))
+                    .foregroundColor(.black)
+                    .font(.system(size: 18))
+            } action: {
+                bookVM.showSuccessAlert = false
+            }
             SimpleCustomAlert(isPresented: $bookVM.showBasketAlert, title: "Libro añadido a la cesta", description: "El libro \(bookVM.bookDetail.book.title) ha sido añadido a la cesta") {
                 bookVM.showBasketAlert = false
             }

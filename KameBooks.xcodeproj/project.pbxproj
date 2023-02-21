@@ -17,6 +17,7 @@
 		E1517FBB299C333E00661441 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FBA299C333E00661441 /* BookDetailView.swift */; };
 		E1517FBF299C340600661441 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FBE299C340600661441 /* BookDetailViewModel.swift */; };
 		E1517FC1299C36CA00661441 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FC0299C36CA00661441 /* Profile.swift */; };
+		E158BFF129A54F0100164707 /* BasketBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BFF029A54F0100164707 /* BasketBookCell.swift */; };
 		E170BE4A29A3FC5400B5AD9A /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170BE4929A3FC5400B5AD9A /* CartView.swift */; };
 		E170BE4C29A3FCDB00B5AD9A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170BE4B29A3FCDB00B5AD9A /* CartViewModel.swift */; };
 		E18380472997F585008D39FE /* KameBooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380462997F585008D39FE /* KameBooksApp.swift */; };
@@ -70,6 +71,7 @@
 		E1517FBA299C333E00661441 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		E1517FBE299C340600661441 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		E1517FC0299C36CA00661441 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		E158BFF029A54F0100164707 /* BasketBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketBookCell.swift; sourceTree = "<group>"; };
 		E170BE4929A3FC5400B5AD9A /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		E170BE4B29A3FCDB00B5AD9A /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		E18380432997F585008D39FE /* KameBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KameBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +232,7 @@
 				E14B3C0C29A137480053A426 /* RatingStarsView.swift */,
 				E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */,
 				E101AFD029A1A3A800197456 /* SuccessOrderAlert.swift */,
+				E158BFF029A54F0100164707 /* BasketBookCell.swift */,
 			);
 			name = ViewComponents;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				E14B3C0D29A137480053A426 /* RatingStarsView.swift in Sources */,
 				E1A01FE82999506700133FDA /* UserModel.swift in Sources */,
 				E141F729299AB4D000381631 /* HomeViewModel.swift in Sources */,
+				E158BFF129A54F0100164707 /* BasketBookCell.swift in Sources */,
 				E1A01FEE299964E800133FDA /* LoaderView.swift in Sources */,
 				E1517FBF299C340600661441 /* BookDetailViewModel.swift in Sources */,
 				E1A01FC9299937DE00133FDA /* AppOfflineView.swift in Sources */,

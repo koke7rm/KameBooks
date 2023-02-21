@@ -58,12 +58,13 @@ final class HomeViewModel: ObservableObject {
             let booksList = try await networkPersistance.getBooksList()
             authorsList = try await networkPersistance.getAuthors()
             
-            booksList.forEach { book in
-                let authors = authorsList.filter { $0.id == book.author }
-                authors.forEach { author in
-                    completeList.append(BooksList(book: book, author: author.name))
+            let bookAuthor = booksList.compactMap { book in
+                authorsList.first { $0.id == book.author }.map { author in
+                    BooksList(book: book, author: author.name)
                 }
             }
+            
+            self.completeList = bookAuthor
             self.filteredList = self.completeList
         } catch let error as APIErrors {
             errorMsg = error.description
@@ -80,12 +81,13 @@ final class HomeViewModel: ObservableObject {
         do {
             let booksList = try await networkPersistance.getFeaturedBooks().sorted { $0.title < $1.title }
             
-            booksList.forEach { book in
-                let authors = authorsList.filter { $0.id == book.author }
-                authors.forEach { author in
-                    featuredList.append(BooksList(book: book, author: author.name))
+            let bookAuthor = booksList.compactMap { book in
+                authorsList.first { $0.id == book.author }.map { author in
+                    BooksList(book: book, author: author.name)
                 }
             }
+            featuredList = bookAuthor
+            
         } catch let error as APIErrors {
             errorMsg = error.description
             showErrorAlert.toggle()
@@ -105,12 +107,13 @@ final class HomeViewModel: ObservableObject {
             if booksList.isEmpty {
                 showNoResults = true
             }
-            booksList.forEach { book in
-                let authors = authorsList.filter { $0.id == book.author }
-                authors.forEach { author in
-                    filteredList.append(BooksList(book: book, author: author.name))
+            let bookAuthor = booksList.compactMap { book in
+                authorsList.first { $0.id == book.author }.map { author in
+                    BooksList(book: book, author: author.name)
                 }
             }
+            filteredList = bookAuthor
+            
         } catch let error as APIErrors {
             errorMsg = error.description
             showErrorAlert.toggle()

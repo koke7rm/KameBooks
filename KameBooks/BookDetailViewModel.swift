@@ -36,8 +36,8 @@ final class BookDetailViewModel: ObservableObject {
     }
     
     @MainActor func createBooksOrder() async {
-        loading = true
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
+        loading = true
         let task = Task(priority: .utility) {
             return try await networkPersistence.createBooksOrder(order: OrderModel(email: email, order: [bookDetail.book.id]))
         }
@@ -60,8 +60,8 @@ final class BookDetailViewModel: ObservableObject {
     }
     
     @MainActor func bookReaded() async {
-        loading = true
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
+        loading = true
         do {
             try await networkPersistence.postBooksReaded(booksReaded: ReadModel(email: email, books: [bookDetail.book.id]))
             asReaded = true
@@ -82,11 +82,9 @@ final class BookDetailViewModel: ObservableObject {
         loading = true
         do {
             let userHistory = try await networkPersistence.userHistory(mail: email)
-            userHistory.readed.forEach { readed in
-                if bookDetail.book.id == readed {
-                    asReaded = true
-                }
-            }
+            
+            asReaded = userHistory.readed.contains(bookDetail.book.id)
+
         } catch let error as APIErrors {
             errorTitle = "ERROR_TITLE".localized
             errorMsg = error.description

@@ -19,7 +19,6 @@ final class CartViewModel: ObservableObject {
     @Published var showErrorAlert = false
     @Published var showSuccessAlert = false
     @Published var orderNumber = ""
-    var booksIds: [Int] = []
     
     init() {
         self.basketBooks = persistence.loadBasketBooks()
@@ -28,9 +27,9 @@ final class CartViewModel: ObservableObject {
     @MainActor func createBooksOrder() async {
         loading = true
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
-        basketBooks.forEach { basketBook in
-            booksIds.append(basketBook.book.id)
-        }
+        
+        let booksIds = basketBooks.map { $0.book.id }
+        
         let task = Task(priority: .utility) {
             return try await networkPersistence.createBooksOrder(order: OrderModel(email: email, order: booksIds))
         }
@@ -38,8 +37,7 @@ final class CartViewModel: ObservableObject {
         case .success(let res):
             orderNumber = res.orderNumber
             showSuccessAlert.toggle()
-            basketBooks.removeAll()
-            persistence.saveBasketBooks(basketBooks: basketBooks)
+            
         case .failure(let error as APIErrors):
             print(error)
             errorMsg = error.description
@@ -62,5 +60,11 @@ final class CartViewModel: ObservableObject {
             removeBasketBook(bookId: book.book.id)
         }
         persistence.saveBasketBooks(basketBooks: basketBooks)
+    }
+    
+    func finalizePurchase() {
+        basketBooks.removeAll()
+        persistence.saveBasketBooks(basketBooks: basketBooks)
+        showSuccessAlert = false
     }
 }

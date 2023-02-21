@@ -8,11 +8,13 @@
 
 import SwiftUI
 
-struct SuccessOrderAlert: View {
+struct SuccessOrderAlert<Content:View>: View {
     
     @Binding var isPresented: Bool
-    let bookTitle: String
+    let bookTitle: [BooksList]
     let orderNumber: String
+    @ViewBuilder var bookFields: () -> Content
+    let action: () -> ()
     
     var body: some View {
         ZStack {
@@ -23,26 +25,9 @@ struct SuccessOrderAlert: View {
                     isPresented = false
                 }))
             VStack(spacing: 16) {
-                Text("BOOKDETAIL_ORDER_SUCCESS_TITLE".localized)
-                    .foregroundColor(.black)
-                    .font(.system(size: 18))
-                    .bold()
-                    .textCase(.uppercase)
-                Text("BOOKDETAIL_ORDER_SUCCESS_MESSAGE".localized)
-                    .foregroundColor(.black)
-                    .font(.system(size: 18))
-                    .multilineTextAlignment(.center)
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(String(format: "BOOKDETAIL_TITLE".localized, bookTitle))
-                        .foregroundColor(.black)
-                        .font(.system(size: 18))
-                    Text(String(format: "BOOKDETAIL_ORDER_NUMBER".localized, orderNumber))
-                        .foregroundColor(.black)
-                        .font(.system(size: 18))
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                infoSection
                 SimpleButton(text: "ACCEPT".localized, foregroundColor: .white, backroundColor: .gold) {
-                    isPresented = false
+                    action()
                 }
             }
             .padding()
@@ -54,10 +39,31 @@ struct SuccessOrderAlert: View {
         }
         .animation(.default, value: isPresented)
     }
+    
+    var infoSection: some View {
+        VStack {
+            Text("BOOKDETAIL_ORDER_SUCCESS_TITLE".localized)
+                .foregroundColor(.black)
+                .font(.system(size: 18))
+                .bold()
+                .textCase(.uppercase)
+            Text("BOOKDETAIL_ORDER_SUCCESS_MESSAGE".localized)
+                .foregroundColor(.black)
+                .font(.system(size: 18))
+                .multilineTextAlignment(.center)
+            VStack(alignment: .leading, spacing: 8) {
+                bookFields()
+                Text(String(format: "BOOKDETAIL_ORDER_NUMBER".localized, orderNumber))
+                    .foregroundColor(.black)
+                    .font(.system(size: 18))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
 }
 
 struct SuccessOrderAlert_Previews: PreviewProvider {
     static var previews: some View {
-        SuccessOrderAlert(isPresented: .constant(true), bookTitle: "Test", orderNumber: "123")
+        SuccessOrderAlert(isPresented: .constant(true), bookTitle: [BooksList(book: BookModel.bookTest, author: "H.G. Wells")], orderNumber: "123", bookFields: {}, action: {})
     }
 }
