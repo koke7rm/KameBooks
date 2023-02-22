@@ -78,7 +78,7 @@ struct HistoryOrdersView: View {
                 .font(.caption)
             HStack {
                 Image(systemName: "smallcircle.filled.circle.fill")
-                    .foregroundColor(orderState == .delivered ? Color.green : Color.lightGray)
+                    .foregroundColor(orderState?.color)
                 Text(state.capitalized)
                     .font(.caption)
             }

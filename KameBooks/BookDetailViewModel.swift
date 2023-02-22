@@ -63,7 +63,7 @@ final class BookDetailViewModel: ObservableObject {
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
         loading = true
         do {
-            try await networkPersistence.postBooksReaded(booksReaded: ReadModel(email: email, books: [bookDetail.book.id]))
+           _ = try await networkPersistence.postBooksReaded(booksReaded: ReadModel(email: email, books: [bookDetail.book.id]))
             asReaded = true
         } catch let error as APIErrors {
             errorTitle = "ERROR_TITLE".localized

@@ -46,7 +46,7 @@ final class ProfileViewModel: ObservableObject {
             try await networkPersistance.updateUser(user: UserModel(name: name, email: mail, location: address) )
         }
         switch await task.result {
-        case .success():
+        case .success(_):
             KameBooksKeyChain.shared.user = UserModel(name: name, email: mail, location: address)
             userData = KameBooksKeyChain.shared.user
             showSuccessAlert.toggle()

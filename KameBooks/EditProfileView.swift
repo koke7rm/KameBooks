@@ -44,6 +44,14 @@ struct EditProfileView: View {
                     .transition(.opacity)
             }
         }
+        .alert("ERROR_TITLE".localized, isPresented: $profileVM.showErrorAlert) {
+            Button(action: {}) {
+                Text("CLOSE".localized)
+                    .textCase(.uppercase)
+            }
+        } message: {
+            Text(profileVM.errorMsg)
+        }
     }
     
     var userImage: some View {

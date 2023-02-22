@@ -8,6 +8,8 @@
 
 import Foundation
 
+struct VoidResponse: Codable {}
+
 final class NetworkPersistence {
     
     static let shared = NetworkPersistence()
@@ -16,8 +18,8 @@ final class NetworkPersistence {
         try await checkResponse(request: .request(networkRequest: .getBooksList), type: [BookModel].self)
     }
     
-    func createUser(user: UserModel) async throws {
-        try await checkResponseVoid(request: .request(networkRequest: .createUser(user: user)))
+    func createUser(user: UserModel) async throws -> VoidResponse{
+        try await checkResponse(request: .request(networkRequest: .createUser(user: user)), type: VoidResponse.self)
     }
     
     func checkUser(mail: String) async throws -> UserModel {
@@ -40,12 +42,12 @@ final class NetworkPersistence {
         try await checkResponse(request: .request(networkRequest: .createBookOrer(orderData: order)), type: OrderResponse.self)
     }
     
-    func postBooksReaded(booksReaded: ReadModel) async throws {
-        try await checkResponseVoid(request: .request(networkRequest: .postBooksRead(readsData: booksReaded)))
+    func postBooksReaded(booksReaded: ReadModel) async throws -> VoidResponse {
+        try await checkResponse(request: .request(networkRequest: .postBooksRead(readsData: booksReaded)), type: VoidResponse.self)
     }
     
-    func updateUser(user: UserModel) async throws {
-        try await checkResponseVoid(request: .request(networkRequest: .updateUser(user: user)))
+    func updateUser(user: UserModel) async throws -> VoidResponse {
+        try await checkResponse(request: .request(networkRequest: .updateUser(user: user)), type: VoidResponse.self)
     }
     
     func userHistory(mail: String) async throws -> UserHistoryModel {
@@ -69,6 +71,11 @@ final class NetworkPersistence {
                 print("✅ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
                 let json = try? JSONSerialization.jsonObject(with: data, options: [])
                 print("🧠 Data: ", json ?? "No data")
+                
+                if data.isEmpty {
+                    return VoidResponse() as! T
+                }
+                
                 do {
                     return try decoder.decode(T.self, from: data)
                 } catch {
@@ -94,28 +101,29 @@ final class NetworkPersistence {
         }
     }
     
-    /// Método para controlar una respuesta vacía con control de errores
-    func checkResponseVoid(request: URLRequest) async throws -> Void{
-        do {
-            let (_, response) = try await URLSession.shared.data(for: request)
-            guard let response = response as? HTTPURLResponse else { throw APIErrors.nonHTTP }
-            
-            switch response.statusCode {
-            case 200...300:
-                print("✅ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
-                
-            case 400...1000:
-                print("❌ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
-                throw DefaultError(messageDefault: "Error unknown \(response.statusCode)")
-                
-            default:
-                print("❌ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
-                throw DefaultError(messageDefault: "Error unknown \(response.statusCode)")
-            }
-        } catch let error as APIErrors {
-            throw error
-        } catch {
-            throw APIErrors.general
-        }
-    }
+    //SE USABAN MÉTODOS SEPARADOS PARA MANEJAR RESPUESTAS VACIAS, HE UNIFICADO TODO EN EL MISMO MÉTODO PERO NO SE SI ES CORRECTO(FUNCIONAR FUNCIONA DESDE LUEGO). QUEDA ESTO COMENTADO POR SI ACASO
+    //    /// Método para controlar una respuesta vacía con control de errores
+    //    func checkResponseVoid(request: URLRequest) async throws -> Void{
+    //        do {
+    //            let (_, response) = try await URLSession.shared.data(for: request)
+    //            guard let response = response as? HTTPURLResponse else { throw APIErrors.nonHTTP }
+    //
+    //            switch response.statusCode {
+    //            case 200...300:
+    //                print("✅ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
+    //
+    //            case 400...1000:
+    //                print("❌ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
+    //                throw DefaultError(messageDefault: "Error unknown \(response.statusCode)")
+    //
+    //            default:
+    //                print("❌ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
+    //                throw DefaultError(messageDefault: "Error unknown \(response.statusCode)")
+    //            }
+    //        } catch let error as APIErrors {
+    //            throw error
+    //        } catch {
+    //            throw APIErrors.general
+    //        }
+    //    }
 }

@@ -55,7 +55,7 @@ final class AuthViewModel: ObservableObject {
             return try await networkPersistance.createUser(user:UserModel(name: name, email: mail, location: address))
         }
         switch await task.result {
-        case .success():
+        case .success(_):
             showSuccessAlert.toggle()
         case .failure(let error as APIErrors):
             errorMsg = error.description

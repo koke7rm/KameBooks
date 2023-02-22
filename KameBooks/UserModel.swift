@@ -6,7 +6,7 @@
 //  Copyright © 2023 Trantor S.L. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 struct UserModel: Codable {
     let name: String
@@ -48,4 +48,15 @@ enum OrderState: String {
     case sent = "enviado"
     case recived = "recibido"
     case delivered = "entregado"
+    
+    var color: Color {
+        switch self {
+        case .sent:
+            return Color.gold
+        case .recived:
+            return Color.lightGray
+        case .delivered:
+            return Color.green
+        }
+    }
 }
