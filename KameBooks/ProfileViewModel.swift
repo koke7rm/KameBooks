@@ -35,9 +35,6 @@ final class ProfileViewModel: ObservableObject {
         mail = KameBooksKeyChain.shared.user?.email ?? ""
         address = KameBooksKeyChain.shared.user?.location ?? ""
         newPhoto = persistence.loadCover(mail: userData?.email ?? "")
-        Task {
-            await userHistory()
-        }
     }
     
     @MainActor func updateUser() async {

@@ -16,6 +16,8 @@ struct BookDetailView: View {
     @AppStorage("isGuest") var isGuest = false
     
     @State var seeAllText = false
+    @State var price = Int.random(in: 15...80)
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient.mainGradient, startPoint: .top, endPoint: .bottom)
@@ -110,6 +112,7 @@ struct BookDetailView: View {
                     .frame(width: 25)
                     .foregroundColor(bookVM.asReaded ? .green : .lightGray)
                 InfoField(sectionTitle: "BOOKDETAIL_AUTHOR".localized, sectionInfo: bookVM.bookDetail.author)
+                InfoField(sectionTitle: "BOOKDETAIL_PRICE".localized, sectionInfo: "\(price) €")
                 InfoField(sectionTitle: "BOOKDETAIL_YEAR".localized, sectionInfo: "\(bookVM.bookDetail.book.year ?? 0)")
                 InfoField(sectionTitle: "BOOKDETAIL_PAGES".localized, sectionInfo: "\(bookVM.bookDetail.book.pages ?? 0)")
             }

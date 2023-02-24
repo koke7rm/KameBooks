@@ -11,6 +11,7 @@ import SwiftUI
 struct BookCell: View {
     
     @ObservedObject var homeVM: HomeViewModel
+    @State var price = Int.random(in: 15...80)
     
     let bookList: BooksList
     
@@ -38,8 +39,15 @@ struct BookCell: View {
                     .font(.headline)
                 Text(bookList.author)
                     .font(.callout)
+                    .padding(.bottom, 2)
                 RatingStarsView(rating: bookList.book.rating ?? 0)
+
+                Spacer()
                 
+                Text("\(price) €")
+                    .font(.title)
+                    .bold()
+                    .frame(maxWidth: .infinity)
                 Spacer()
                 
                 Text(String(format: "BOOKINFO_PUBLISHED".localized, "\(bookList.book.year ?? 0)"))

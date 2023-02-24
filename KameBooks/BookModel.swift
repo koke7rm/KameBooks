@@ -63,6 +63,7 @@ struct OrderResponse: Codable {
 struct BooksList: Codable, Hashable {
     let book: BookModel
     let author: String
+    var price = Int.random(in: 15...80)
 }
 
 struct OrderList: Hashable {

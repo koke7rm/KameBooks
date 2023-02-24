@@ -21,12 +21,12 @@ extension String {
         components(separatedBy: .whitespaces).joined()
     }
     
-    func toDate(withFormat format: String = "yyyy-MM-dd'T'HH:mm:ssZ") -> Date?{
+    var dateFormatHistory: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.calendar = Calendar(identifier: .gregorian)
-        dateFormatter.dateFormat = format
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let date = dateFormatter.date(from: self)
-        return date
+        dateFormatter.dateFormat = "dd-MM-yyyy, HH:mm"
+        return dateFormatter.string(from: date ?? Date.now)
     }
 }
 
@@ -56,12 +56,6 @@ extension UIApplication {
 extension Date {
     var showOnlyYear: String {
         self.formatted(.dateTime.year())
-    }
-    
-    var formatDateString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy, HH:mm"
-        return formatter.string(from: self)
     }
 }
 

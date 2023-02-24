@@ -20,7 +20,7 @@ struct CartView: View {
             if !cartVM.basketBooks.isEmpty {
                 basketBooksList
             } else {
-                Text("Tu cesta está vacía")
+                Text("CART_EMPTY_MESSAGE".localized)
             }
         }
         .onAppear {
@@ -37,7 +37,6 @@ struct CartView: View {
                 cartVM.finalizePurchase()
                 tabBarSelection = 0
             }
-            
             if cartVM.loading {
                 LoaderView()
                     .transition(.opacity)
@@ -55,16 +54,20 @@ struct CartView: View {
     
     var basketBooksList: some View {
         VStack {
-            SimpleButton(text: "Realizar pedido (\(cartVM.basketBooks.count) producto)", foregroundColor: .blackLight, backroundColor: .gold) {
+            SimpleButton(text: "\("CART_PLACE_ORDER".localized) (\(cartVM.basketBooks.count)producto/s)", foregroundColor: .blackLight, backroundColor: .gold) {
                 Task {
                     await cartVM.createBooksOrder()
                 }
             }
             .padding([.top, .horizontal])
             
+            Text(String(format: "CART_ORDER_AMOUNT".localized, cartVM.basketPrice))
+                .foregroundColor(.white)
+                .bold()
+            
             List {
                 ForEach(cartVM.basketBooks, id: \.book.id) { basketBook in
-                    BasketBookCell(bookCover: basketBook.book.cover, bookTitle: basketBook.book.title, author: basketBook.author) {
+                    BasketBookCell(bookCover: basketBook.book.cover, bookTitle: basketBook.book.title, author: basketBook.author, price: basketBook.price) {
                         cartVM.removeBasketBook(bookId: basketBook.book.id)
                     }
                 }

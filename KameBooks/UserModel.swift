@@ -33,10 +33,6 @@ struct UserOrderHistoryModel: Codable, Hashable {
         OrderState(rawValue: state)
     }
     
-    var formatDate: String {
-        date.toDate()?.formatDateString ?? "-"
-    }
-    
     enum CodingKeys: String, CodingKey {
         case books, date
         case orderNumber = "npedido"

@@ -56,6 +56,11 @@ struct Profile: View {
             .background(Color.white)
             .padding(.top)
         }
+        .onAppear {
+            Task {
+                await profileVM.userHistory()
+            }
+        }
         .sheet(isPresented: $presentEditProfile, content: {
             EditProfileView()
                 .environmentObject(profileVM)

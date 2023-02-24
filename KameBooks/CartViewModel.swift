@@ -13,12 +13,17 @@ final class CartViewModel: ObservableObject {
     let networkPersistence = NetworkPersistence.shared
     let persistence = ModelPersistence()
     
-    @Published var basketBooks: [BooksList] = []
+    @Published var basketBooks: [BooksList] = [] {
+        didSet {
+            cartPrice()
+        }
+    }
     @Published var loading = false
     @Published var errorMsg = ""
     @Published var showErrorAlert = false
     @Published var showSuccessAlert = false
     @Published var orderNumber = ""
+    @Published var basketPrice = 0
     
     init() {
         self.basketBooks = persistence.loadBasketBooks()
@@ -37,7 +42,6 @@ final class CartViewModel: ObservableObject {
         case .success(let res):
             orderNumber = res.orderNumber
             showSuccessAlert.toggle()
-            
         case .failure(let error as APIErrors):
             print(error)
             errorMsg = error.description
@@ -52,6 +56,7 @@ final class CartViewModel: ObservableObject {
     func removeBasketBook(bookId: Int) {
         basketBooks.removeAll(where: { $0.book.id == bookId })
         persistence.saveBasketBooks(basketBooks: basketBooks)
+        cartPrice()
     }
     
     func removeBasketBookOffset(offsets: IndexSet) {
@@ -66,5 +71,9 @@ final class CartViewModel: ObservableObject {
         basketBooks.removeAll()
         persistence.saveBasketBooks(basketBooks: basketBooks)
         showSuccessAlert = false
+    }
+    
+    func cartPrice() {
+        basketPrice = basketBooks.map { $0.price }.reduce(0, +)
     }
 }

@@ -88,6 +88,7 @@
 "BOOKDETAIL_SEE_LESS" = "See less";
 "BOOKDETAIL_AUTHOR" = "Author:";
 "BOOKDETAIL_YEAR" = "Year:";
+"BOOKDETAIL_PRICE" = "Price:";
 "BOOKDETAIL_PAGES" = "Pages:";
 "BOOKDETAIL_ORDER_SUCCESS_TITLE" = "Order placed";
 "BOOKDETAIL_ORDER_SUCCESS_MESSAGE" = "You will receive an email with your order information.";
@@ -98,3 +99,8 @@
 "MYORDERS_TITLE" = "My orders";
 "MYORDERS_ORDER_DATE" = "Order Date: %@";
 "MYORDERS_NO_ORDERS" = "No orders placed";
+
+// CART
+"CART_EMPTY_MESSAGE" = "Cart is empty";
+"CART_PLACE_ORDER" = "Place an order (%@ product/s)";
+"CART_ORDER_AMOUNT" = "Order total: %d €";
