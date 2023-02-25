@@ -24,20 +24,26 @@ struct AuthView: View {
         ZStack {
             LinearGradient(gradient: Gradient.mainGradient, startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
-            Group {
-                switch authStep {
-                case .auth:
-                    auth
-                        .transition(.move(edge: .leading))
-                case .register:
-                    RegisterView(screen: $screen, authStep: $authStep)
-                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-                case .login:
-                    LoginView(screen: $screen, authStep: $authStep)
-                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            VStack {
+                headerSection
+                Spacer()
+                
+                Group {
+                    switch authStep {
+                    case .auth:
+                        auth
+                            .transition(.move(edge: .leading))
+                    case .register:
+                        RegisterView(screen: $screen, authStep: $authStep)
+                            .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                    case .login:
+                        LoginView(screen: $screen, authStep: $authStep)
+                            .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                    }
                 }
+                .animation(.default, value: authStep)
+                Spacer()
             }
-            .animation(.default, value: authStep)
         }
     }
     
@@ -58,6 +64,20 @@ struct AuthView: View {
             }
         }
         .padding(.horizontal, 50)
+    }
+    
+    var headerSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Image("img_logoText")
+                .resizable()
+                .scaledToFit()
+            Text("Especialistas en novelas de ciencia ficción clásicas")
+                .font(.title2)
+                .bold()
+                .foregroundColor(.white)
+                .frame(maxWidth: UIScreen.main.bounds.width / 2)
+        }
+        .padding()
     }
 }
 
