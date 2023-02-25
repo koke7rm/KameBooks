@@ -21,6 +21,7 @@ struct SimpleButton: View {
         } label: {
             Text(text)
                 .font(.system(size: 18))
+                .multilineTextAlignment(.center)
                 .bold()
                 .textCase(.uppercase)
                 .padding(.horizontal)

@@ -13,7 +13,7 @@ struct BasketBookCell: View {
     let bookCover: URL?
     let bookTitle: String
     let author: String
-    let price: Int
+    let price: Double
     let action: () -> ()
     
     var body: some View {
@@ -48,7 +48,7 @@ struct BasketBookCell: View {
                 .bold()
             Text(author)
             HStack {
-                Text("\(price) €")
+                Text("\((price.formatted(.number.precision(.fractionLength(2))))) €")
                     .font(.system(size: 24))
                     .bold()
                     .padding(.horizontal)
@@ -70,7 +70,7 @@ struct BasketBookCell: View {
 
 struct BasketBookCell_Previews: PreviewProvider {
     static var previews: some View {
-        BasketBookCell(bookCover: URL(string: "https://images.gr-assets.com/books/1327942880l/2493.jpg"), bookTitle: "The Time Machine", author: "H.G. Wells", price: 34, action: {})
+        BasketBookCell(bookCover: URL(string: "https://images.gr-assets.com/books/1327942880l/2493.jpg"), bookTitle: "The Time Machine", author: "H.G. Wells", price: 34.3, action: {})
             .previewLayout(.fixed(width: 450, height: 150))
     }
 }

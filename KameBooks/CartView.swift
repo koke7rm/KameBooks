@@ -67,7 +67,7 @@ struct CartView: View {
             
             List {
                 ForEach(cartVM.basketBooks, id: \.book.id) { basketBook in
-                    BasketBookCell(bookCover: basketBook.book.cover, bookTitle: basketBook.book.title, author: basketBook.author, price: basketBook.price) {
+                    BasketBookCell(bookCover: basketBook.book.cover, bookTitle: basketBook.book.title, author: basketBook.author, price: basketBook.book.price) {
                         cartVM.removeBasketBook(bookId: basketBook.book.id)
                     }
                 }

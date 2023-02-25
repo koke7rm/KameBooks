@@ -109,4 +109,4 @@
 // CART
 "CART_EMPTY_MESSAGE" = "El carrito está vacío";
 "CART_PLACE_ORDER" = "Realizar pedido";
-"CART_ORDER_AMOUNT" = "Total del pedido: %d €";
+"CART_ORDER_AMOUNT" = "Total del pedido: %.2f €";

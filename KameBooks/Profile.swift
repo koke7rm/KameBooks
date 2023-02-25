@@ -12,10 +12,11 @@ struct Profile: View {
     
     @StateObject var profileVM = ProfileViewModel()
     
-    @Binding var screen: Screens
-    let booksOrderCount: Int?
-    @State var presentEditProfile = false
     @AppStorage("isGuest") var isGuest = false
+    
+    @Binding var screen: Screens
+    @State var presentEditProfile = false
+    let booksOrderCount: Int?
     
     var body: some View {
         ZStack {

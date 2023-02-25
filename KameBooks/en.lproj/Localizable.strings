@@ -103,4 +103,4 @@
 // CART
 "CART_EMPTY_MESSAGE" = "Cart is empty";
 "CART_PLACE_ORDER" = "Place an order (%@ product/s)";
-"CART_ORDER_AMOUNT" = "Order total: %d €";
+"CART_ORDER_AMOUNT" = "Order total: %.2f €";

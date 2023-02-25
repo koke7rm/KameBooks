@@ -44,7 +44,7 @@ struct BookCell: View {
 
                 Spacer()
                 
-                Text("\(price) €")
+                Text("\(bookList.book.price.formatted(.number.precision(.fractionLength(2)))) €")
                     .font(.title)
                     .bold()
                     .frame(maxWidth: .infinity)

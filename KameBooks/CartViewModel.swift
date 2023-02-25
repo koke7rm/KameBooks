@@ -23,7 +23,7 @@ final class CartViewModel: ObservableObject {
     @Published var showErrorAlert = false
     @Published var showSuccessAlert = false
     @Published var orderNumber = ""
-    @Published var basketPrice = 0
+    @Published var basketPrice = 0.0
     
     init() {
         self.basketBooks = persistence.loadBasketBooks()
@@ -56,7 +56,6 @@ final class CartViewModel: ObservableObject {
     func removeBasketBook(bookId: Int) {
         basketBooks.removeAll(where: { $0.book.id == bookId })
         persistence.saveBasketBooks(basketBooks: basketBooks)
-        cartPrice()
     }
     
     func removeBasketBookOffset(offsets: IndexSet) {
@@ -74,6 +73,6 @@ final class CartViewModel: ObservableObject {
     }
     
     func cartPrice() {
-        basketPrice = basketBooks.map { $0.price }.reduce(0, +)
+        basketPrice = basketBooks.map { $0.book.price }.reduce(0, +)
     }
 }
