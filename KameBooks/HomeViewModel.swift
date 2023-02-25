@@ -61,7 +61,7 @@ final class HomeViewModel: ObservableObject {
                     BooksList(book: book, author: author.name)
                 }
             }
-            self.completeList = bookAuthor
+            self.completeList = bookAuthor.sorted(by: {$0.book.id < $1.book.id})
             self.filteredList = self.completeList
             
         } catch let error as APIErrors {

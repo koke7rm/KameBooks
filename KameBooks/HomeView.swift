@@ -13,31 +13,64 @@ struct HomeView: View {
     @EnvironmentObject var homeVM: HomeViewModel
     
     @State var userName = ""
+    @State var showButton = false
     
     var body: some View {
-        VStack {
-            CustomSearchBar(searchText: $homeVM.searchText, showSearch: $homeVM.showSearch, placeHolder: "HOME_SEARCH_PLACEHOLDER".localized) {
-                Task(priority: .userInitiated) {
-                    await homeVM.searchBook(word: homeVM.searchText)
+        ScrollViewReader { proxy in
+            VStack {
+                CustomSearchBar(searchText: $homeVM.searchText, showSearch: $homeVM.showSearch, placeHolder: "HOME_SEARCH_PLACEHOLDER".localized) {
+                    Task(priority: .userInitiated) {
+                        await homeVM.searchBook(word: homeVM.searchText)
+                    }
+                }
+                
+                
+                Text(String(format: "HOME_WELLCOME_USER".localized, userName))
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    .padding(.bottom, 6)
+                
+                featuredBooksSection
+                
+                List(homeVM.filteredList, id: \.book.id) { bookList in
+                    VStack {
+                        BookCell(homeVM: homeVM, bookList: bookList)
+                            .onAppear {
+                                withAnimation {
+                                    if bookList.book.id > 5 {
+                                        showButton = true
+                                    } else {
+                                        showButton = false
+                                    }
+                                }
+                            }
+                        NavigationLink(value: bookList) {}
+                            .frame(height: 0)
+                            .opacity(0)
+                    }
+                }
+                .listStyle(.sidebar)
+                .background(Color.blackLight)
+                .scrollContentBackground(.hidden)
+                .overlay {
+                    noResults
                 }
             }
-            Text(String(format: "HOME_WELLCOME_USER".localized, userName))
-                .font(.headline)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-            
-            featuredBooksSection
-            
-            List(homeVM.filteredList, id: \.book.id) { bookList in
-                NavigationLink(value: bookList) {
-                    BookCell(homeVM: homeVM, bookList: bookList)
+            .overlay(alignment: .bottomTrailing) {
+                Button {
+                    withAnimation {
+                        proxy.scrollTo(1)
+                    }
+                } label: {
+                    Image(systemName: "arrow.up.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50)
+                        .foregroundColor(.gold)
                 }
-            }
-            .listStyle(.sidebar)
-            .background(Color.blackLight)
-            .scrollContentBackground(.hidden)
-            .overlay {
-                noResults
+                .padding()
+                .opacity(showButton ? 1 : 0)
             }
         }
         .navigationDestination(for: BooksList.self) { book in
