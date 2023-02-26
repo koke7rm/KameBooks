@@ -18,6 +18,8 @@
 "CLOSE" = "Cerrar";
 "GUEST" = "Invitado/a";
 "SAVE" = "Guardar";
+"ACCEPT" = "Aceptar";
+"LOGOUT_MESSAGE" = "¿Deseas cerrar sesión?";
 
 // NETWORK CONNECTION
 "NETWORKCONNECTION_TITLE" = "No hay conexión de red";
@@ -33,6 +35,7 @@
 "ERROR_TITLE" = "Error de conexión";
 "ERROR_FIELD_EMPTY" = "El campo no puede estar vacio";
 "ERROR_BASKET_BOOK_EXIST" = "El libro ya se encuentra en la cesta";
+"ERROR_WORKER_LOGIN_ERROR" = "Tienes que ser administrador para poder entrar, contacta con tu supervisor";
 
 // FORM
 "FORM_INVALID_MAIL_MESSAGE" = "Introduce un email válido";
@@ -49,7 +52,7 @@
 // AUTH
 "AUTH_INVALID_MAIL_MESSAGE" = "Introduce un email válido";
 "AUTH_NAME_PLACEHOLDER" = "Bruce Wayne";
-"AUTH_MAIL_PLACEHOLDER" = "user@example.com";
+"AUTH_MAIL_PLACEHOLDER" = "usuario@ejemplo.com";
 "AUTH_ADDRESS_PLACEHOLDER" = "Calle Central, Madrid";
 "AUTH_CREATE_ACCOUNT" = "Crear cuenta";
 "AUTH_LOGIN" = "Iniciar sesión";
@@ -60,6 +63,7 @@
 "AUTH_LOGIN_SUCCESS" = "¡Hola de nuevo!";
 "AUTH_LOGIN_SUCCESS_MESSAGE" = "Te estabamos esperando";
 "AUTH_LOGIN_ERROR" = "Error en inicio de sesión";
+"AUTH_HEADER_SUBTITLE" = "Especialistas en novelas de ciencia ficción clásicas";
 
 // PROFILE
 "PROFILE_VERSION" = "Versión %@ © Trantor Books %@";
@@ -114,3 +118,9 @@
 "CART_EMPTY_MESSAGE" = "El carrito está vacío";
 "CART_PLACE_ORDER" = "Realizar pedido";
 "CART_ORDER_AMOUNT" = "Total del pedido: %.2f €";
+
+// HOME WORKER
+"HOMEWORKER_HEADER_TITLE" = "Listado de pedidos";
+"HOMEWORKER_SUCCESS_DESCRIPTION" = "Se ha actualizado el estado del pedido";
+"HOMEWORKER_CHANGE_ORDER_STATE_TITLE" = "¿En que estado se encuentra el pedido?";
+

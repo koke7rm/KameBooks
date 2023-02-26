@@ -22,6 +22,8 @@ enum NetworkInterface {
     case userReadedHistory(mail: String)
     case userOrderHistory(mail: String)
     case userBookIsReaded(request: AsReadRequest)
+    case getAllOrders(mail: String)
+    case modifyOrderState(requestData: OrderStateRequest)
 }
 
 extension NetworkInterface {
@@ -40,7 +42,9 @@ extension NetworkInterface {
                 .userHistory,
                 .userReadedHistory,
                 .userOrderHistory,
-                .userBookIsReaded:
+                .userBookIsReaded,
+                .getAllOrders,
+                .modifyOrderState:
             return InfoKey.baseUrl
         }
     }
@@ -71,6 +75,10 @@ extension NetworkInterface {
             return "/api/shop/orders"
         case .userBookIsReaded:
             return "/api/client/isReaded"
+        case .getAllOrders:
+            return "/api/shop/allOrders"
+        case .modifyOrderState:
+            return "/api/shop/orderStatus"
         }
     }
     
@@ -88,9 +96,11 @@ extension NetworkInterface {
                 .userHistory,
                 .userReadedHistory,
                 .userOrderHistory,
-                .userBookIsReaded:
+                .userBookIsReaded,
+                .getAllOrders:
             return .post
-        case .updateUser:
+        case .updateUser,
+                .modifyOrderState:
             return .put
         }
     }
@@ -123,6 +133,11 @@ extension NetworkInterface {
             return try? JSONEncoder().encode(["email" : mail])
         case .userBookIsReaded(let request):
             let dto = request
+            return try? JSONEncoder().encode(dto)
+        case .getAllOrders(let mail):
+            return try? JSONEncoder().encode(["email" : mail])
+        case .modifyOrderState(let requestData):
+            let dto = requestData
             return try? JSONEncoder().encode(dto)
         default:
             return nil

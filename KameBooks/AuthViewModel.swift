@@ -52,7 +52,7 @@ final class AuthViewModel: ObservableObject {
     @MainActor func createUser() async {
         loading = true
         let task = Task(priority: .utility) {
-            return try await networkPersistance.createUser(user:UserModel(name: name, email: mail, location: address))
+            return try await networkPersistance.createUser(user:UserModel(name: name, email: mail, location: address, role: RoleType.user.rawValue))
         }
         switch await task.result {
         case .success(_):
@@ -75,9 +75,33 @@ final class AuthViewModel: ObservableObject {
         }
         switch await task.result {
         case .success(let response):
-            print(response)
             KameBooksKeyChain.shared.user = response
             showSuccessAlert.toggle()
+        case .failure(let error as APIErrorCodeMessage):
+            errorMsg = error.reason ?? "No hemos podido"
+            showErrorAlert.toggle()
+        case .failure(let error):
+            errorMsg = error.localizedDescription
+            showErrorAlert.toggle()
+        }
+        loading = false
+    }
+    
+    /// Método para comprobar si el usuario existe y obtener sus datos
+    @MainActor func checkWorker() async {
+        loading = true
+        let task = Task(priority: .utility) {
+            return try await networkPersistance.checkUser(mail: mail)
+        }
+        switch await task.result {
+        case .success(let response):
+            if response.roleType == .admin {
+                KameBooksKeyChain.shared.user = response
+                showSuccessAlert.toggle()
+            } else {
+                errorMsg = "ERROR_WORKER_LOGIN_ERROR".localized
+                showErrorAlert.toggle()
+            }
         case .failure(let error as APIErrorCodeMessage):
             errorMsg = error.reason ?? "No hemos podido"
             showErrorAlert.toggle()

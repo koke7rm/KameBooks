@@ -18,6 +18,8 @@
 "CLOSE" = "Close";
 "GUEST" = "Guest";
 "SAVE" = "Save";
+"ACCEPT" = "Accept";
+"LOGOUT_MESSAGE" = "Do you wish to log out?";
 
 // NETWORK CONNECTION
 "NETWORKCONNECTION_TITLE" = "No network connection";
@@ -33,6 +35,7 @@
 "ERROR_TITLE" = "Connection error";
 "ERROR_FIELD_EMPTY" = "Field cannot be empty";
 "ERROR_BASKET_BOOK_EXIST" = "The book is already in your basket";
+"ERROR_WORKER_LOGIN_ERROR" = "You must be an administrator to log in, contact your supervisor";
 
 // ONBOARDING
 "ONBOARDING_FIRST_TITLE" = "Can't make up your mind?";
@@ -54,6 +57,7 @@
 "AUTH_LOGIN_SUCCESS" = "Hi again!";
 "AUTH_LOGIN_SUCCESS_MESSAGE" = "We were waiting for you";
 "AUTH_LOGIN_ERROR" = "Login error";
+"AUTH_HEADER_SUBTITLE" = "Specialists in classic science fiction novels";
 
 // PROFILE
 "PROFILE_VERSION" = "Version %@ © Trantor Books %@";
@@ -108,3 +112,8 @@
 "CART_EMPTY_MESSAGE" = "Cart is empty";
 "CART_PLACE_ORDER" = "Place an order (%@ product/s)";
 "CART_ORDER_AMOUNT" = "Order total: %.2f €";
+
+// HOME WORKER
+"HOMEWORKER_HEADER_TITLE" = "Order list";
+"HOMEWORKER_SUCCESS_DESCRIPTION" = "Order status has been updated";
+"HOMEWORKER_CHANGE_ORDER_STATE_TITLE" = "What is the status of the order?";

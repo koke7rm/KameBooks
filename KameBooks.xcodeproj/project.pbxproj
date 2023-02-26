@@ -9,6 +9,75 @@
 /* Begin PBXBuildFile section */
 		E101AFCF29A1A21300197456 /* SimpleCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */; };
 		E101AFD129A1A3A800197456 /* SuccessOrderAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E101AFD029A1A3A800197456 /* SuccessOrderAlert.swift */; };
+		E11FF82D29ABAB1400029A47 /* SimpleCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */; };
+		E11FF82E29ABAB1400029A47 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FC62999375600133FDA /* SplashView.swift */; };
+		E11FF83129ABAB1400029A47 /* KameBooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380462997F585008D39FE /* KameBooksApp.swift */; };
+		E11FF83429ABAB1400029A47 /* NetworkPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183806C2997FB84008D39FE /* NetworkPersistence.swift */; };
+		E11FF83529ABAB1400029A47 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183806E2997FD69008D39FE /* BookModel.swift */; };
+		E11FF83629ABAB1400029A47 /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FF12999662F00133FDA /* SimpleButton.swift */; };
+		E11FF83A29ABAB1400029A47 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380612997F930008D39FE /* NetworkErrors.swift */; };
+		E11FF83B29ABAB1400029A47 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FF32999664F00133FDA /* Styles.swift */; };
+		E11FF83C29ABAB1400029A47 /* ModelPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E190366E299E773F004DF1C3 /* ModelPersistence.swift */; };
+		E11FF83D29ABAB1400029A47 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */; };
+		E11FF83E29ABAB1400029A47 /* KameBooksKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A46ACA29999F7300E1CA40 /* KameBooksKeyChain.swift */; };
+		E11FF83F29ABAB1400029A47 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FE529994A6B00133FDA /* AuthViewModel.swift */; };
+		E11FF84029ABAB1400029A47 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E190366A299E5CE8004DF1C3 /* ProfileViewModel.swift */; };
+		E11FF84229ABAB1400029A47 /* NetworkInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380652997F99D008D39FE /* NetworkInterface.swift */; };
+		E11FF84329ABAB1400029A47 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FD729993A5700133FDA /* NetworkStatus.swift */; };
+		E11FF84529ABAB1400029A47 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380632997F95E008D39FE /* Extensions.swift */; };
+		E11FF84629ABAB1400029A47 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FEB299955FD00133FDA /* CustomTextField.swift */; };
+		E11FF84729ABAB1400029A47 /* RegexValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FE92999517B00133FDA /* RegexValidations.swift */; };
+		E11FF84929ABAB1400029A47 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = E183806A2997FB3A008D39FE /* Device.swift */; };
+		E11FF84A29ABAB1400029A47 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170BE4B29A3FCDB00B5AD9A /* CartViewModel.swift */; };
+		E11FF84B29ABAB1400029A47 /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F72A299AE0E000381631 /* AuthorModel.swift */; };
+		E11FF84D29ABAB1400029A47 /* RatingStarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B3C0C29A137480053A426 /* RatingStarsView.swift */; };
+		E11FF84E29ABAB1400029A47 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FE72999506700133FDA /* UserModel.swift */; };
+		E11FF85129ABAB1400029A47 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FED299964E800133FDA /* LoaderView.swift */; };
+		E11FF85229ABAB1400029A47 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FBE299C340600661441 /* BookDetailViewModel.swift */; };
+		E11FF85329ABAB1400029A47 /* AppOfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FC8299937DE00133FDA /* AppOfflineView.swift */; };
+		E11FF85429ABAB1400029A47 /* InfoKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18380672997FA03008D39FE /* InfoKeys.swift */; };
+		E11FF85629ABAB1400029A47 /* SuccessOrderAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E101AFD029A1A3A800197456 /* SuccessOrderAlert.swift */; };
+		E11FF85829ABAB1400029A47 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = E11FF82929ABAB1400029A47 /* KeychainAccess */; };
+		E11FF85A29ABAB1400029A47 /* KameBooks_Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E18380562997F6CF008D39FE /* KameBooks_Release.xcconfig */; };
+		E11FF85B29ABAB1400029A47 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1A01FD42999386D00133FDA /* Localizable.strings */; };
+		E11FF85C29ABAB1400029A47 /* KameBooks_Develop.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E1A01FD929993C1600133FDA /* KameBooks_Develop.xcconfig */; };
+		E11FF85D29ABAB1400029A47 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1A01FCF2999385600133FDA /* Localizable.strings */; };
+		E11FF85E29ABAB1400029A47 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A01FD52999399500133FDA /* Colors.xcassets */; };
+		E11FF85F29ABAB1400029A47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183804D2997F588008D39FE /* Preview Assets.xcassets */; };
+		E11FF86029ABAB1400029A47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E183804A2997F588008D39FE /* Assets.xcassets */; };
+		E11FF86B29ABAD8800029A47 /* KameWorkers_Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E11FF86A29ABAD8800029A47 /* KameWorkers_Release.xcconfig */; };
+		E11FF86D29ABADA000029A47 /* KameWorkers_Develop.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E11FF86C29ABADA000029A47 /* KameWorkers_Develop.xcconfig */; };
+		E11FF86F29ABAE5F00029A47 /* AppIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF86E29ABAE5F00029A47 /* AppIdentifier.swift */; };
+		E11FF87029ABAE5F00029A47 /* AppIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF86E29ABAE5F00029A47 /* AppIdentifier.swift */; };
+		E11FF87229ABAEE300029A47 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF87129ABAEE300029A47 /* LoginWorker.swift */; };
+		E11FF87429ABB30700029A47 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF87329ABB30700029A47 /* HomeWorker.swift */; };
+		E11FF87629ABB52000029A47 /* HomeWorkerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF87529ABB52000029A47 /* HomeWorkerViewModel.swift */; };
+		E11FF87729ABB95300029A47 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F728299AB4D000381631 /* HomeViewModel.swift */; };
+		E11FF87829ABB96600029A47 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FDD2999419E00133FDA /* OnboardingView.swift */; };
+		E11FF87929ABB96900029A47 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FE12999468200133FDA /* AuthView.swift */; };
+		E11FF87A29ABB96B00029A47 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FE32999495200133FDA /* RegisterView.swift */; };
+		E11FF87B29ABB96D00029A47 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A46AC0299993A600E1CA40 /* LoginView.swift */; };
+		E11FF87C29ABB96F00029A47 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A46AC229999C7E00E1CA40 /* TabBar.swift */; };
+		E11FF87D29ABB97100029A47 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A46AC429999CBE00E1CA40 /* HomeView.swift */; };
+		E11FF87E29ABB97300029A47 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FBA299C333E00661441 /* BookDetailView.swift */; };
+		E11FF87F29ABB97500029A47 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1517FC0299C36CA00661441 /* Profile.swift */; };
+		E11FF88029ABB97800029A47 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E190366C299E6089004DF1C3 /* EditProfileView.swift */; };
+		E11FF88129ABB97A00029A47 /* HistoryOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC945629A23C200002AB67 /* HistoryOrdersView.swift */; };
+		E11FF88229ABB97C00029A47 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E170BE4929A3FC5400B5AD9A /* CartView.swift */; };
+		E11FF88329ABB98A00029A47 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A01FDF2999421100133FDA /* OnboardingPage.swift */; };
+		E11FF88429ABB98D00029A47 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BA99B29A0F05C004F1EA4 /* BookCell.swift */; };
+		E11FF88529ABB99100029A47 /* BasketBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158BFF029A54F0100164707 /* BasketBookCell.swift */; };
+		E11FF88629ABBA1200029A47 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF87129ABAEE300029A47 /* LoginWorker.swift */; };
+		E11FF88729ABBA1800029A47 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF87329ABB30700029A47 /* HomeWorker.swift */; };
+		E11FF88829ABBA2700029A47 /* HomeWorkerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF87529ABB52000029A47 /* HomeWorkerViewModel.swift */; };
+		E11FF88D29ABCF9C00029A47 /* BookOrderedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF88C29ABCF9C00029A47 /* BookOrderedRow.swift */; };
+		E11FF88E29ABCF9C00029A47 /* BookOrderedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF88C29ABCF9C00029A47 /* BookOrderedRow.swift */; };
+		E11FF89029ABCFE900029A47 /* HeaderOrderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF88F29ABCFE900029A47 /* HeaderOrderRow.swift */; };
+		E11FF89129ABCFE900029A47 /* HeaderOrderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF88F29ABCFE900029A47 /* HeaderOrderRow.swift */; };
+		E11FF89329ABDC4C00029A47 /* ChangeOrderStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF89229ABDC4C00029A47 /* ChangeOrderStateView.swift */; };
+		E11FF89429ABDC4C00029A47 /* ChangeOrderStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FF89229ABDC4C00029A47 /* ChangeOrderStateView.swift */; };
+		E11FF89629AC0F2200029A47 /* Assets_KameBooks.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11FF89529AC0F2200029A47 /* Assets_KameBooks.xcassets */; };
+		E11FF89829AC0F3500029A47 /* Assets-KameWorker.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E11FF89729AC0F3500029A47 /* Assets-KameWorker.xcassets */; };
 		E13BA99C29A0F05C004F1EA4 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BA99B29A0F05C004F1EA4 /* BookCell.swift */; };
 		E13BA99E29A0F1B5004F1EA4 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */; };
 		E141F729299AB4D000381631 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F728299AB4D000381631 /* HomeViewModel.swift */; };
@@ -63,6 +132,19 @@
 /* Begin PBXFileReference section */
 		E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCustomAlert.swift; sourceTree = "<group>"; };
 		E101AFD029A1A3A800197456 /* SuccessOrderAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessOrderAlert.swift; sourceTree = "<group>"; };
+		E11FF86429ABAB1400029A47 /* KameBooks_Workers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KameBooks_Workers.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11FF86529ABAB1400029A47 /* KameBooks copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KameBooks copy-Info.plist"; path = "/Users/koke/Library/Mobile Documents/com~apple~CloudDocs/Developer/KameBooks/KameBooks copy-Info.plist"; sourceTree = "<absolute>"; };
+		E11FF86A29ABAD8800029A47 /* KameWorkers_Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = KameWorkers_Release.xcconfig; sourceTree = "<group>"; };
+		E11FF86C29ABADA000029A47 /* KameWorkers_Develop.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = KameWorkers_Develop.xcconfig; sourceTree = "<group>"; };
+		E11FF86E29ABAE5F00029A47 /* AppIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIdentifier.swift; sourceTree = "<group>"; };
+		E11FF87129ABAEE300029A47 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		E11FF87329ABB30700029A47 /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
+		E11FF87529ABB52000029A47 /* HomeWorkerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorkerViewModel.swift; sourceTree = "<group>"; };
+		E11FF88C29ABCF9C00029A47 /* BookOrderedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookOrderedRow.swift; sourceTree = "<group>"; };
+		E11FF88F29ABCFE900029A47 /* HeaderOrderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderOrderRow.swift; sourceTree = "<group>"; };
+		E11FF89229ABDC4C00029A47 /* ChangeOrderStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOrderStateView.swift; sourceTree = "<group>"; };
+		E11FF89529AC0F2200029A47 /* Assets_KameBooks.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets_KameBooks.xcassets; sourceTree = "<group>"; };
+		E11FF89729AC0F3500029A47 /* Assets-KameWorker.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-KameWorker.xcassets"; sourceTree = "<group>"; };
 		E13BA99B29A0F05C004F1EA4 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		E141F728299AB4D000381631 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -116,6 +198,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E11FF85729ABAB1400029A47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11FF85829ABAB1400029A47 /* KeychainAccess in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E18380402997F585008D39FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +222,7 @@
 			children = (
 				E18380452997F585008D39FE /* KameBooks */,
 				E18380442997F585008D39FE /* Products */,
+				E11FF86529ABAB1400029A47 /* KameBooks copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				E18380432997F585008D39FE /* KameBooks.app */,
+				E11FF86429ABAB1400029A47 /* KameBooks_Workers.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,6 +267,8 @@
 			isa = PBXGroup;
 			children = (
 				E18380462997F585008D39FE /* KameBooksApp.swift */,
+				E11FF89729AC0F3500029A47 /* Assets-KameWorker.xcassets */,
+				E11FF89529AC0F2200029A47 /* Assets_KameBooks.xcassets */,
 				E183804A2997F588008D39FE /* Assets.xcassets */,
 				E1A01FD52999399500133FDA /* Colors.xcassets */,
 			);
@@ -186,6 +280,8 @@
 			children = (
 				E18380562997F6CF008D39FE /* KameBooks_Release.xcconfig */,
 				E1A01FD929993C1600133FDA /* KameBooks_Develop.xcconfig */,
+				E11FF86A29ABAD8800029A47 /* KameWorkers_Release.xcconfig */,
+				E11FF86C29ABADA000029A47 /* KameWorkers_Develop.xcconfig */,
 			);
 			name = Config;
 			sourceTree = "<group>";
@@ -205,6 +301,8 @@
 				E190366C299E6089004DF1C3 /* EditProfileView.swift */,
 				E1FC945629A23C200002AB67 /* HistoryOrdersView.swift */,
 				E170BE4929A3FC5400B5AD9A /* CartView.swift */,
+				E11FF87129ABAEE300029A47 /* LoginWorker.swift */,
+				E11FF87329ABB30700029A47 /* HomeWorker.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -218,6 +316,7 @@
 				E1517FBE299C340600661441 /* BookDetailViewModel.swift */,
 				E190366A299E5CE8004DF1C3 /* ProfileViewModel.swift */,
 				E170BE4B29A3FCDB00B5AD9A /* CartViewModel.swift */,
+				E11FF87529ABB52000029A47 /* HomeWorkerViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -231,6 +330,9 @@
 				E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */,
 				E101AFD029A1A3A800197456 /* SuccessOrderAlert.swift */,
 				E158BFF029A54F0100164707 /* BasketBookCell.swift */,
+				E11FF88C29ABCF9C00029A47 /* BookOrderedRow.swift */,
+				E11FF88F29ABCFE900029A47 /* HeaderOrderRow.swift */,
+				E11FF89229ABDC4C00029A47 /* ChangeOrderStateView.swift */,
 			);
 			name = ViewComponents;
 			sourceTree = "<group>";
@@ -266,6 +368,7 @@
 				E183806A2997FB3A008D39FE /* Device.swift */,
 				E1A01FE92999517B00133FDA /* RegexValidations.swift */,
 				E1A01FF32999664F00133FDA /* Styles.swift */,
+				E11FF86E29ABAE5F00029A47 /* AppIdentifier.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -300,6 +403,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E11FF82829ABAB1400029A47 /* KameBooks_Workers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E11FF86129ABAB1400029A47 /* Build configuration list for PBXNativeTarget "KameBooks_Workers" */;
+			buildPhases = (
+				E11FF82B29ABAB1400029A47 /* Sources */,
+				E11FF85729ABAB1400029A47 /* Frameworks */,
+				E11FF85929ABAB1400029A47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KameBooks_Workers;
+			packageProductDependencies = (
+				E11FF82929ABAB1400029A47 /* KeychainAccess */,
+			);
+			productName = KameBooks;
+			productReference = E11FF86429ABAB1400029A47 /* KameBooks_Workers.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E18380422997F585008D39FE /* KameBooks */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E18380512997F588008D39FE /* Build configuration list for PBXNativeTarget "KameBooks" */;
@@ -354,11 +477,29 @@
 			projectRoot = "";
 			targets = (
 				E18380422997F585008D39FE /* KameBooks */,
+				E11FF82829ABAB1400029A47 /* KameBooks_Workers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E11FF85929ABAB1400029A47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11FF89829AC0F3500029A47 /* Assets-KameWorker.xcassets in Resources */,
+				E11FF85A29ABAB1400029A47 /* KameBooks_Release.xcconfig in Resources */,
+				E11FF85B29ABAB1400029A47 /* Localizable.strings in Resources */,
+				E11FF86D29ABADA000029A47 /* KameWorkers_Develop.xcconfig in Resources */,
+				E11FF85C29ABAB1400029A47 /* KameBooks_Develop.xcconfig in Resources */,
+				E11FF85D29ABAB1400029A47 /* Localizable.strings in Resources */,
+				E11FF85E29ABAB1400029A47 /* Colors.xcassets in Resources */,
+				E11FF85F29ABAB1400029A47 /* Preview Assets.xcassets in Resources */,
+				E11FF86B29ABAD8800029A47 /* KameWorkers_Release.xcconfig in Resources */,
+				E11FF86029ABAB1400029A47 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E18380412997F585008D39FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +507,7 @@
 				E18380572997F6CF008D39FE /* KameBooks_Release.xcconfig in Resources */,
 				E1A01FD22999386D00133FDA /* Localizable.strings in Resources */,
 				E1A01FDA29993C1600133FDA /* KameBooks_Develop.xcconfig in Resources */,
+				E11FF89629AC0F2200029A47 /* Assets_KameBooks.xcassets in Resources */,
 				E1A01FCD2999385600133FDA /* Localizable.strings in Resources */,
 				E1A01FD62999399500133FDA /* Colors.xcassets in Resources */,
 				E183804E2997F588008D39FE /* Preview Assets.xcassets in Resources */,
@@ -376,6 +518,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E11FF82B29ABAB1400029A47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E11FF88029ABB97800029A47 /* EditProfileView.swift in Sources */,
+				E11FF82D29ABAB1400029A47 /* SimpleCustomAlert.swift in Sources */,
+				E11FF87729ABB95300029A47 /* HomeViewModel.swift in Sources */,
+				E11FF88129ABB97A00029A47 /* HistoryOrdersView.swift in Sources */,
+				E11FF82E29ABAB1400029A47 /* SplashView.swift in Sources */,
+				E11FF87229ABAEE300029A47 /* LoginWorker.swift in Sources */,
+				E11FF88229ABB97C00029A47 /* CartView.swift in Sources */,
+				E11FF83129ABAB1400029A47 /* KameBooksApp.swift in Sources */,
+				E11FF83429ABAB1400029A47 /* NetworkPersistence.swift in Sources */,
+				E11FF83529ABAB1400029A47 /* BookModel.swift in Sources */,
+				E11FF89129ABCFE900029A47 /* HeaderOrderRow.swift in Sources */,
+				E11FF83629ABAB1400029A47 /* SimpleButton.swift in Sources */,
+				E11FF87429ABB30700029A47 /* HomeWorker.swift in Sources */,
+				E11FF87A29ABB96B00029A47 /* RegisterView.swift in Sources */,
+				E11FF83A29ABAB1400029A47 /* NetworkErrors.swift in Sources */,
+				E11FF88429ABB98D00029A47 /* BookCell.swift in Sources */,
+				E11FF83B29ABAB1400029A47 /* Styles.swift in Sources */,
+				E11FF88529ABB99100029A47 /* BasketBookCell.swift in Sources */,
+				E11FF83C29ABAB1400029A47 /* ModelPersistence.swift in Sources */,
+				E11FF87B29ABB96D00029A47 /* LoginView.swift in Sources */,
+				E11FF83D29ABAB1400029A47 /* CustomSearchBar.swift in Sources */,
+				E11FF87D29ABB97100029A47 /* HomeView.swift in Sources */,
+				E11FF87629ABB52000029A47 /* HomeWorkerViewModel.swift in Sources */,
+				E11FF83E29ABAB1400029A47 /* KameBooksKeyChain.swift in Sources */,
+				E11FF87829ABB96600029A47 /* OnboardingView.swift in Sources */,
+				E11FF83F29ABAB1400029A47 /* AuthViewModel.swift in Sources */,
+				E11FF84029ABAB1400029A47 /* ProfileViewModel.swift in Sources */,
+				E11FF84229ABAB1400029A47 /* NetworkInterface.swift in Sources */,
+				E11FF87C29ABB96F00029A47 /* TabBar.swift in Sources */,
+				E11FF84329ABAB1400029A47 /* NetworkStatus.swift in Sources */,
+				E11FF84529ABAB1400029A47 /* Extensions.swift in Sources */,
+				E11FF87F29ABB97500029A47 /* Profile.swift in Sources */,
+				E11FF88329ABB98A00029A47 /* OnboardingPage.swift in Sources */,
+				E11FF87929ABB96900029A47 /* AuthView.swift in Sources */,
+				E11FF84629ABAB1400029A47 /* CustomTextField.swift in Sources */,
+				E11FF84729ABAB1400029A47 /* RegexValidations.swift in Sources */,
+				E11FF84929ABAB1400029A47 /* Device.swift in Sources */,
+				E11FF84A29ABAB1400029A47 /* CartViewModel.swift in Sources */,
+				E11FF84B29ABAB1400029A47 /* AuthorModel.swift in Sources */,
+				E11FF84D29ABAB1400029A47 /* RatingStarsView.swift in Sources */,
+				E11FF87E29ABB97300029A47 /* BookDetailView.swift in Sources */,
+				E11FF89429ABDC4C00029A47 /* ChangeOrderStateView.swift in Sources */,
+				E11FF88E29ABCF9C00029A47 /* BookOrderedRow.swift in Sources */,
+				E11FF84E29ABAB1400029A47 /* UserModel.swift in Sources */,
+				E11FF85129ABAB1400029A47 /* LoaderView.swift in Sources */,
+				E11FF85229ABAB1400029A47 /* BookDetailViewModel.swift in Sources */,
+				E11FF85329ABAB1400029A47 /* AppOfflineView.swift in Sources */,
+				E11FF85429ABAB1400029A47 /* InfoKeys.swift in Sources */,
+				E11FF87029ABAE5F00029A47 /* AppIdentifier.swift in Sources */,
+				E11FF85629ABAB1400029A47 /* SuccessOrderAlert.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E183803F2997F585008D39FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -385,19 +584,23 @@
 				E1A01FC72999375600133FDA /* SplashView.swift in Sources */,
 				E1A01FDE2999419E00133FDA /* OnboardingView.swift in Sources */,
 				E190366D299E6089004DF1C3 /* EditProfileView.swift in Sources */,
+				E11FF88629ABBA1200029A47 /* LoginWorker.swift in Sources */,
 				E18380472997F585008D39FE /* KameBooksApp.swift in Sources */,
 				E170BE4A29A3FC5400B5AD9A /* CartView.swift in Sources */,
 				E1FC945729A23C200002AB67 /* HistoryOrdersView.swift in Sources */,
 				E183806D2997FB84008D39FE /* NetworkPersistence.swift in Sources */,
+				E11FF89029ABCFE900029A47 /* HeaderOrderRow.swift in Sources */,
 				E183806F2997FD69008D39FE /* BookModel.swift in Sources */,
 				E1A01FF22999662F00133FDA /* SimpleButton.swift in Sources */,
 				E1A46AC1299993A600E1CA40 /* LoginView.swift in Sources */,
 				E1A01FE22999468200133FDA /* AuthView.swift in Sources */,
+				E11FF88729ABBA1800029A47 /* HomeWorker.swift in Sources */,
 				E1517FC1299C36CA00661441 /* Profile.swift in Sources */,
 				E18380622997F930008D39FE /* NetworkErrors.swift in Sources */,
 				E1A01FF42999664F00133FDA /* Styles.swift in Sources */,
 				E190366F299E773F004DF1C3 /* ModelPersistence.swift in Sources */,
 				E13BA99E29A0F1B5004F1EA4 /* CustomSearchBar.swift in Sources */,
+				E11FF88829ABBA2700029A47 /* HomeWorkerViewModel.swift in Sources */,
 				E1A46ACB29999F7300E1CA40 /* KameBooksKeyChain.swift in Sources */,
 				E1A01FE629994A6B00133FDA /* AuthViewModel.swift in Sources */,
 				E190366B299E5CE8004DF1C3 /* ProfileViewModel.swift in Sources */,
@@ -417,11 +620,14 @@
 				E1A01FE82999506700133FDA /* UserModel.swift in Sources */,
 				E141F729299AB4D000381631 /* HomeViewModel.swift in Sources */,
 				E158BFF129A54F0100164707 /* BasketBookCell.swift in Sources */,
+				E11FF89329ABDC4C00029A47 /* ChangeOrderStateView.swift in Sources */,
+				E11FF88D29ABCF9C00029A47 /* BookOrderedRow.swift in Sources */,
 				E1A01FEE299964E800133FDA /* LoaderView.swift in Sources */,
 				E1517FBF299C340600661441 /* BookDetailViewModel.swift in Sources */,
 				E1A01FC9299937DE00133FDA /* AppOfflineView.swift in Sources */,
 				E18380682997FA03008D39FE /* InfoKeys.swift in Sources */,
 				E1A01FE02999421100133FDA /* OnboardingPage.swift in Sources */,
+				E11FF86F29ABAE5F00029A47 /* AppIdentifier.swift in Sources */,
 				E101AFD129A1A3A800197456 /* SuccessOrderAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +654,80 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E11FF86229ABAB1400029A47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E11FF86C29ABADA000029A47 /* KameWorkers_Develop.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KameBooks/Preview Content\"";
+				DEVELOPMENT_TEAM = L67YVQVQHF;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KameBooks copy-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = TrantorWorkers;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KameWorkers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E11FF86329ABAB1400029A47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E11FF86A29ABAD8800029A47 /* KameWorkers_Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KameBooks/Preview Content\"";
+				DEVELOPMENT_TEAM = L67YVQVQHF;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KameBooks copy-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = TrantorWorkers;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KameWorkers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		E183804F2997F588008D39FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -578,7 +858,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = TrantorBooks;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -616,7 +895,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = TrantorBooks;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -641,6 +919,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E11FF86129ABAB1400029A47 /* Build configuration list for PBXNativeTarget "KameBooks_Workers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E11FF86229ABAB1400029A47 /* Debug */,
+				E11FF86329ABAB1400029A47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E183803E2997F585008D39FE /* Build configuration list for PBXProject "KameBooks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -662,6 +949,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E11FF82A29ABAB1400029A47 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		E1A46AC629999EFE00E1CA40 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
@@ -673,6 +968,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E11FF82929ABAB1400029A47 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E11FF82A29ABAB1400029A47 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		E1A46AC729999EFE00E1CA40 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E1A46AC629999EFE00E1CA40 /* XCRemoteSwiftPackageReference "KeychainAccess" */;

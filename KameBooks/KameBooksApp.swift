@@ -14,8 +14,12 @@ struct KameBooksApp: App {
     
     var body: some Scene {
         WindowGroup {
-           SplashView()
+            SplashView()
                 .environment(\.colorScheme, .light)
+                .onAppear {
+                    AppIdentifier.shared.initAppIdentifier()
+                }
+                .environmentObject(homeVM)
         }
     }
 }

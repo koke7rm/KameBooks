@@ -13,11 +13,14 @@ enum Screens {
     case onboarding
     case auth
     case home
+    case loginWorker
+    case homeWorker
 }
 
 struct SplashView: View {
     
     @StateObject var monitorNetwork = NetworkStatus()
+    @EnvironmentObject var homeVM: HomeViewModel
     
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
     
@@ -42,6 +45,13 @@ struct SplashView: View {
                         .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 case .home:
                     TabBar(screen: $screen)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                case .loginWorker:
+                    LoginWorker(screen: $screen)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                case .homeWorker:
+                    HomeWorker(screen: $screen)
+                        .environmentObject(HomeWorkerViewModel(completeList: homeVM.completeList))
                         .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 }
             }
@@ -68,12 +78,18 @@ struct SplashView: View {
         .onAppear {
             splashAnimation = true
             Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { _ in
-                if isFirstLaunch {
-                    screen = .onboarding
-                } else if user == nil{
-                    screen = .auth
-                } else {
-                    screen = .home
+                
+                switch AppIdentifier.shared.identifier {
+                case .users:
+                    if isFirstLaunch {
+                        screen = .onboarding
+                    } else if user == nil{
+                        screen = .auth
+                    } else {
+                        screen = .home
+                    }
+                case .workers:
+                    screen = .loginWorker
                 }
             }
         }

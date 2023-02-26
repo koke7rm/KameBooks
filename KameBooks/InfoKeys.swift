@@ -10,6 +10,7 @@ import Foundation
 
 final class InfoKey {
     static let baseUrl: String = infoForKey("baseUrl")!
+    static let app: String = infoForKey("app")!
 }
 
 func infoForKey(_ key: String) -> String? {

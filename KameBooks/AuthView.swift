@@ -71,7 +71,7 @@ struct AuthView: View {
             Image("img_logoText")
                 .resizable()
                 .scaledToFit()
-            Text("Especialistas en novelas de ciencia ficción clásicas")
+            Text("AUTH_HEADER_SUBTITLE".localized)
                 .font(.title2)
                 .bold()
                 .foregroundColor(.white)

@@ -11,3 +11,4 @@
 
 KENV_BUNDLE_NAME = KameBooks_Develop
 KENV_BASE_URL = https:\/\/trantorapi-acacademy.herokuapp.com
+KENV_APP = KameBooks

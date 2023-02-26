@@ -53,7 +53,6 @@ final class BookDetailViewModel: ObservableObject {
             showErrorAlert.toggle()
         }
         loading = false
-        
     }
     
     @MainActor func postBookReaded() async {

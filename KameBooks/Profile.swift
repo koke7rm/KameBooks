@@ -15,6 +15,7 @@ struct Profile: View {
     @AppStorage("isGuest") var isGuest = false
     
     @Binding var screen: Screens
+    @State var showLogoutAlert = false
     @State var presentEditProfile = false
     let booksOrderCount: Int?
     
@@ -42,8 +43,12 @@ struct Profile: View {
                 
                 Spacer()
                 Button {
-                    screen = .auth
-                    KameBooksKeyChain.shared.deleteUser()
+                    if isGuest {
+                        screen = .auth
+                        KameBooksKeyChain.shared.deleteUser()
+                    } else {
+                        showLogoutAlert.toggle()
+                    }
                 } label: {
                     if isGuest {
                         Text("PROFILE_LOGIN".localized)
@@ -73,6 +78,22 @@ struct Profile: View {
             }
         } message: {
             Text(profileVM.errorMsg)
+        }
+        .alert("APP_NAME".localized, isPresented: $showLogoutAlert) {
+            Button(role: .destructive) {
+                screen = .auth
+                KameBooksKeyChain.shared.deleteUser()
+            } label: {
+                Text("ACCEPT".localized)
+                    .textCase(.uppercase)
+            }
+
+            Button(role: .cancel, action: {}) {
+                Text("CANCEL".localized)
+                    .textCase(.uppercase)
+            }
+        } message: {
+            Text("LOGOUT_MESSAGE".localized)
         }
         .overlay {
             if profileVM.loading {

@@ -50,7 +50,7 @@ struct HistoryOrdersView: View {
     var ordersList: some View {
         List(homeVM.orderedList, id: \.orderData.orderNumber) { order in
             VStack(alignment: .leading, spacing: 16) {
-                HeaderOrderRow(orderNumber: order.orderData.orderNumber, orderState: order.orderData.orderState, state: order.orderData.state)
+                HeaderOrderRow(orderNumber: order.orderData.orderNumber, orderState: order.orderData.orderState, state: order.orderData.state) {}
                 
                 ForEach(order.book, id: \.book.id) { purchased in
                     BookOrderedRow(cover: purchased.book.cover, bookTitle: purchased.book.title)
@@ -58,6 +58,7 @@ struct HistoryOrdersView: View {
                 Text(String(format: "MYORDERS_ORDER_DATE".localized, order.orderData.date.dateFormatHistory))
                     .font(.caption)
             }
+            .padding(.vertical)
         }
         .scrollContentBackground(.hidden)
         .overlay {
@@ -69,47 +70,6 @@ struct HistoryOrdersView: View {
         .refreshable {
             homeVM.orderedList.removeAll()
             await homeVM.userOrderHistory()
-        }
-    }
-    
-    struct HeaderOrderRow: View {
-        
-        let orderNumber: String
-        let orderState: OrderState?
-        let state: String
-        
-        var body: some View {
-            Text(orderNumber)
-                .font(.caption)
-            HStack {
-                Image(systemName: "smallcircle.filled.circle.fill")
-                    .foregroundColor(orderState?.color)
-                Text(state.capitalized)
-                    .font(.caption)
-            }
-        }
-    }
-    
-    struct BookOrderedRow: View {
-        
-        let cover: URL?
-        let bookTitle: String
-        
-        var body: some View {
-            HStack(alignment: .center) {
-                AsyncImage(url: cover) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                } placeholder: {
-                    Image("img_placeholder")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                }
-                Text(bookTitle)
-            }
         }
     }
 }
