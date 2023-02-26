@@ -36,15 +36,13 @@ struct BookDetailView: View {
                                         await bookVM.createBooksOrder()
                                     }
                                 }
-                                SimpleButton(text: "Añadir a la cesta".localized, foregroundColor: .blackLight, backroundColor: .gold) {
+                                SimpleButton(text: "BOOKDETAIL_ADD_BASKET".localized, foregroundColor: .blackLight, backroundColor: .gold) {
                                     bookVM.addBookInBasket(book: bookVM.bookDetail)
                                 }
                             }
-                            if !bookVM.asReaded {
-                                SimpleButton(text: "BOOKDETAIL_MARK_READ".localized, foregroundColor: .blackLight, backroundColor: .gold) {
-                                    Task {
-                                        await bookVM.bookReaded()
-                                    }
+                            SimpleButton(text: bookVM.asReaded ? "BOOKDETAIL_UNCHECK_READ".localized : "BOOKDETAIL_MARK_READ".localized, foregroundColor: .blackLight, backroundColor: .gold) {
+                                Task {
+                                    await bookVM.postBookReaded()
                                 }
                             }
                         }
@@ -54,6 +52,11 @@ struct BookDetailView: View {
             }
             .padding()
         }
+        .onAppear {
+            Task {
+                await bookVM.checkBookIsReaded()
+            }
+        }
         .overlay {
             SuccessOrderAlert(isPresented: $bookVM.showSuccessAlert, bookTitle: [bookVM.bookDetail], orderNumber: bookVM.orderNumber) {
                 Text(String(format: "BOOKDETAIL_TITLE".localized, bookVM.bookDetail.book.title))
@@ -62,7 +65,7 @@ struct BookDetailView: View {
             } action: {
                 bookVM.showSuccessAlert = false
             }
-            SimpleCustomAlert(isPresented: $bookVM.showBasketAlert, title: "Libro añadido a la cesta", description: "El libro \(bookVM.bookDetail.book.title) ha sido añadido a la cesta") {
+            SimpleCustomAlert(isPresented: $bookVM.showBasketAlert, title: "BOOKDETAIL_BOOK_ADDED".localized, description:String(format: "BOOKDETAIL_BOOK_ADDED_MESSAGE".localized, bookVM.bookDetail.book.title)) {
                 bookVM.showBasketAlert = false
             }
             

@@ -15,12 +15,13 @@ enum NetworkInterface {
     case checkUser(mail: String)
     case getAuthors
     case getFeaturedBooks
-    case searchbook(word: String)
+    case searchBook(word: String)
     case createBookOrer(orderData: OrderModel)
     case postBooksRead(readsData: ReadModel)
     case userHistory(mail: String)
     case userReadedHistory(mail: String)
     case userOrderHistory(mail: String)
+    case userBookIsReaded(request: AsReadRequest)
 }
 
 extension NetworkInterface {
@@ -32,13 +33,14 @@ extension NetworkInterface {
                 .checkUser,
                 .getAuthors,
                 .getFeaturedBooks,
-                .searchbook,
+                .searchBook,
                 .createBookOrer,
                 .postBooksRead,
                 .updateUser,
                 .userHistory,
                 .userReadedHistory,
-                .userOrderHistory:
+                .userOrderHistory,
+                .userBookIsReaded:
             return InfoKey.baseUrl
         }
     }
@@ -55,7 +57,7 @@ extension NetworkInterface {
             return "/api/books/authors"
         case .getFeaturedBooks:
             return "/api/books/latest"
-        case .searchbook(let word):
+        case .searchBook(let word):
             return "/api/books/find/\(word)"
         case .createBookOrer:
             return "/api/shop/newOrder"
@@ -67,6 +69,8 @@ extension NetworkInterface {
             return "/api/client/readedBooks"
         case .userOrderHistory:
             return "/api/shop/orders"
+        case .userBookIsReaded:
+            return "/api/client/isReaded"
         }
     }
     
@@ -75,7 +79,7 @@ extension NetworkInterface {
         case .getBooksList,
                 .getAuthors,
                 .getFeaturedBooks,
-                .searchbook:
+                .searchBook:
             return .get
         case .createUser,
                 .checkUser,
@@ -83,7 +87,8 @@ extension NetworkInterface {
                 .postBooksRead,
                 .userHistory,
                 .userReadedHistory,
-                .userOrderHistory:
+                .userOrderHistory,
+                .userBookIsReaded:
             return .post
         case .updateUser:
             return .put
@@ -116,6 +121,9 @@ extension NetworkInterface {
             return try? JSONEncoder().encode(["email" : mail])
         case .userOrderHistory(let mail):
             return try? JSONEncoder().encode(["email" : mail])
+        case .userBookIsReaded(let request):
+            let dto = request
+            return try? JSONEncoder().encode(dto)
         default:
             return nil
         }

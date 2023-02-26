@@ -59,7 +59,7 @@
 "PROFILE_VERSION" = "Version %@ © Trantor Books %@";
 "PROFILE_EDIT_PROFILE" = "Edit My profile";
 "PROFILE_BOOKS_READ" = "Books read";
-"PROFILE_BOOKS_PURCHASED" = "Books purchased";
+"PROFILE_ORDERS_PLACED" = "Orders placed";
 "PROFILE_LOGIN" = "Login";
 "PROFILE_LOGOUT" = "Logout";
 "PROFILE_EDIT_IMAGE" = "Edit image";
@@ -83,6 +83,7 @@
 //BOOK DETAIL
 "BOOKDETAIL_PLACE_ORDER" = "Place order";
 "BOOKDETAIL_MARK_READ" = "Mark read";
+"BOOKDETAIL_UNCHECK_READ" = "Uncheck as read";
 "BOOKDETAIL_NO_INFORMATION" = "No information";
 "BOOKDETAIL_SEE_MORE" = "See more";
 "BOOKDETAIL_SEE_LESS" = "See less";
@@ -94,6 +95,9 @@
 "BOOKDETAIL_ORDER_SUCCESS_MESSAGE" = "You will receive an email with your order information.";
 "BOOKDETAIL_TITLE" = "-Title: %@";
 "BOOKDETAIL_ORDER_NUMBER" = "-Order number: %@";
+"BOOKDETAIL_ADD_BASKET" = "Add to basket";
+"BOOKDETAIL_BOOK_ADDED" = "Book added to cart";
+"BOOKDETAIL_BOOK_ADDED_MESSAGE" = "The book '%@' has been added to your basket";
 
 // MY ORDERS
 "MYORDERS_TITLE" = "My orders";

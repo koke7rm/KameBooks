@@ -30,9 +30,6 @@ final class BookDetailViewModel: ObservableObject {
     init(book: BooksList) {
         self.bookDetail = book
         self.basketBooks = persistence.loadBasketBooks()
-        Task {
-            await userHistory()
-        }
     }
     
     @MainActor func createBooksOrder() async {
@@ -59,12 +56,12 @@ final class BookDetailViewModel: ObservableObject {
         
     }
     
-    @MainActor func bookReaded() async {
+    @MainActor func postBookReaded() async {
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
         loading = true
         do {
-           _ = try await networkPersistence.postBooksReaded(booksReaded: ReadModel(email: email, books: [bookDetail.book.id]))
-            asReaded = true
+            _ = try await networkPersistence.postBooksReaded(booksReaded: ReadModel(email: email, books: [bookDetail.book.id]))
+            asReaded.toggle()
         } catch let error as APIErrors {
             errorTitle = "ERROR_TITLE".localized
             errorMsg = error.description
@@ -77,14 +74,12 @@ final class BookDetailViewModel: ObservableObject {
         loading = false
     }
     
-    @MainActor func userHistory() async {
+    @MainActor func checkBookIsReaded() async {
         guard let email = KameBooksKeyChain.shared.user?.email else { return }
         loading = true
         do {
-            let userHistory = try await networkPersistence.userHistory(mail: email)
+            asReaded = try await networkPersistence.bookIsReaded(request: AsReadRequest(email: email, book: bookDetail.book.id)).readed
             
-            asReaded = userHistory.readed.contains(bookDetail.book.id)
-
         } catch let error as APIErrors {
             errorTitle = "ERROR_TITLE".localized
             errorMsg = error.description

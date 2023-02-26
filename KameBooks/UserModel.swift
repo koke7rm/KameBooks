@@ -23,6 +23,10 @@ struct UserReadedHistoryModel: Codable {
     let books: [Int]
 }
 
+struct UserBookIsReader: Codable {
+    let readed: Bool
+}
+
 struct UserOrderHistoryModel: Codable, Hashable {
     let orderNumber: String
     let books: [Int]

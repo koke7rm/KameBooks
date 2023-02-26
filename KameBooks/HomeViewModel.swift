@@ -34,7 +34,6 @@ final class HomeViewModel: ObservableObject {
         Task {
             await getBooksList()
             await getFeaturedBooks()
-            await userOrderHistory()
         }
     }
     

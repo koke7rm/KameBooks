@@ -17,24 +17,28 @@ struct EditProfileView: View {
     
     var body: some View {
         
-        VStack {
-            userImage
-            
+        ZStack {
+            Color.white
+                .ignoresSafeArea()
             VStack {
-                formFields
+                userImage
                 
-                SimpleButton(text: "SAVE".localized, foregroundColor: .black, backroundColor: .gold) {
-                    Task{
-                        await profileVM.saveData()
+                VStack {
+                    formFields
+                    
+                    SimpleButton(text: "SAVE".localized, foregroundColor: .black, backroundColor: .gold) {
+                        Task{
+                            await profileVM.saveData()
+                        }
                     }
+                    .opacity(profileVM.validateFields() ? 1 : 0.6)
+                    .disabled(!profileVM.validateFields())
+                    .padding()
                 }
-                .opacity(profileVM.validateFields() ? 1 : 0.6)
-                .disabled(!profileVM.validateFields())
                 .padding()
             }
-            .padding()
+            .frame(maxHeight: .infinity)
         }
-        .frame(maxHeight: .infinity)
         .overlay{
             SimpleCustomAlert(isPresented: $profileVM.showSuccessAlert, title: "APP_NAME".localized, description: "PROFILE_UPDATE_OK".localized) {
                 dismiss()
@@ -75,6 +79,7 @@ struct EditProfileView: View {
                         Color.gray.opacity(0.2)
                     }
                     .clipShape(Circle())
+                    .foregroundColor(.blackLight)
             }
             PhotosPicker(selection: $profileVM.photoItem, matching: .images) {
                 Label("PROFILE_EDIT_IMAGE".localized, systemImage: "photo")

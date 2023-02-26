@@ -22,11 +22,13 @@ struct CustomTextField: View {
             Text(field)
                 .font(.headline)
                 .padding(.leading)
+                .foregroundColor(.black)
             TextField(placeholder, text: $text)
                 .foregroundColor(.black)
                 .padding(.horizontal)
                 .autocorrectionDisabled()
                 .textFieldStyle(.roundedBorder)
+                .environment(\.colorScheme, .light)
                 .frame(height: 40)
                 .onChange(of: text) { newValue in
                     if let validation, let message = validation(newValue) {

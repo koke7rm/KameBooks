@@ -124,7 +124,7 @@ struct Profile: View {
             
             Divider()
             
-            HistorySection(section: "PROFILE_BOOKS_PURCHASED".localized, info: "\(booksOrderCount ?? 0)")
+            HistorySection(section: "PROFILE_ORDERS_PLACED".localized, info: "\(booksOrderCount ?? 0)")
             Divider()
         }
     }

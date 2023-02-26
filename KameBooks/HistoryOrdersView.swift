@@ -40,6 +40,11 @@ struct HistoryOrdersView: View {
                     .transition(.opacity)
             }
         }
+        .onAppear {
+            Task {
+                await homeVM.userOrderHistory()
+            }
+        }
     }
     
     var ordersList: some View {

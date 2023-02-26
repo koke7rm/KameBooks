@@ -47,6 +47,11 @@ struct ReadModel: Codable {
     let books: [Int]
 }
 
+struct AsReadRequest: Codable {
+    let email: String
+    let book: Int
+}
+
 struct OrderResponse: Codable {
     let state: String
     let email: String

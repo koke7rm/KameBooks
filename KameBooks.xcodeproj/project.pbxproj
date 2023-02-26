@@ -226,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				E1A01FDF2999421100133FDA /* OnboardingPage.swift */,
-				E1A01FEB299955FD00133FDA /* CustomTextField.swift */,
 				E13BA99B29A0F05C004F1EA4 /* BookCell.swift */,
 				E13BA99D29A0F1B5004F1EA4 /* CustomSearchBar.swift */,
 				E101AFCE29A1A21300197456 /* SimpleCustomAlert.swift */,
@@ -243,6 +242,7 @@
 				E1A01FED299964E800133FDA /* LoaderView.swift */,
 				E14B3C0C29A137480053A426 /* RatingStarsView.swift */,
 				E1A01FF12999662F00133FDA /* SimpleButton.swift */,
+				E1A01FEB299955FD00133FDA /* CustomTextField.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";

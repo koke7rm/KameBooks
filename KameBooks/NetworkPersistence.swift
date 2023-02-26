@@ -35,7 +35,7 @@ final class NetworkPersistence {
     }
     
     func searchBook(word: String) async throws -> [BookModel] {
-        try await checkResponse(request: .request(networkRequest: .searchbook(word: word)), type: [BookModel].self)
+        try await checkResponse(request: .request(networkRequest: .searchBook(word: word)), type: [BookModel].self)
     }
     
     func createBooksOrder(order: OrderModel) async throws -> OrderResponse {
@@ -56,6 +56,10 @@ final class NetworkPersistence {
     
     func userOrderHistory(mail: String) async throws -> [UserOrderHistoryModel] {
         try await checkResponse(request: .request(networkRequest: .userOrderHistory(mail: mail)), type: [UserOrderHistoryModel].self)
+    }
+    
+    func bookIsReaded(request: AsReadRequest) async throws -> UserBookIsReader {
+        try await checkResponse(request: .request(networkRequest: .userBookIsReaded(request: request)), type: UserBookIsReader.self)
     }
     
     /// Método para obtener un JSON lanzando una petición asíncrona y controlando los errores
