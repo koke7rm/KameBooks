@@ -16,11 +16,6 @@ extension String {
         NSLocalizedString(self, comment: "")
     }
     
-    /// Metodo para quitar los espacios de un String
-    func removingWhiteSpaces() -> String {
-        components(separatedBy: .whitespaces).joined()
-    }
-    
     var dateFormatHistory: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"

@@ -112,30 +112,4 @@ final class NetworkPersistence {
             throw APIErrors.general
         }
     }
-    
-    //SE USABAN MÉTODOS SEPARADOS PARA MANEJAR RESPUESTAS VACIAS, HE UNIFICADO TODO EN EL MISMO MÉTODO PERO NO SE SI ES CORRECTO(FUNCIONAR FUNCIONA DESDE LUEGO). QUEDA ESTO COMENTADO POR SI ACASO
-    //    /// Método para controlar una respuesta vacía con control de errores
-    //    func checkResponseVoid(request: URLRequest) async throws -> Void{
-    //        do {
-    //            let (_, response) = try await URLSession.shared.data(for: request)
-    //            guard let response = response as? HTTPURLResponse else { throw APIErrors.nonHTTP }
-    //
-    //            switch response.statusCode {
-    //            case 200...300:
-    //                print("✅ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
-    //
-    //            case 400...1000:
-    //                print("❌ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
-    //                throw DefaultError(messageDefault: "Error unknown \(response.statusCode)")
-    //
-    //            default:
-    //                print("❌ \(request.httpMethod ?? "") (\(response.statusCode)): \(request.url!)")
-    //                throw DefaultError(messageDefault: "Error unknown \(response.statusCode)")
-    //            }
-    //        } catch let error as APIErrors {
-    //            throw error
-    //        } catch {
-    //            throw APIErrors.general
-    //        }
-    //    }
 }
