@@ -53,14 +53,14 @@ struct BasketBookCell: View {
                     .bold()
                     .padding(.horizontal)
                 Spacer()
-                Button(role: .destructive) {
-                    action()
-                } label: {
-                    Image(systemName: "trash.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                }
+                Image(systemName: "trash.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.red)
+                    .onTapGesture {
+                        action()
+                    }
             }
             .padding()
         }

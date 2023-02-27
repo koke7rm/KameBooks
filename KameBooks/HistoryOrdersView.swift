@@ -54,6 +54,7 @@ struct HistoryOrdersView: View {
                 
                 ForEach(order.book, id: \.book.id) { purchased in
                     BookOrderedRow(cover: purchased.book.cover, bookTitle: purchased.book.title)
+                        .disabled(true)
                 }
                 Text(String(format: "MYORDERS_ORDER_DATE".localized, order.orderData.date.dateFormatHistory))
                     .font(.caption)

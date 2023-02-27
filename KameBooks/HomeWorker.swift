@@ -16,6 +16,7 @@ struct HomeWorker: View {
     @State var showChangeState = false
     @State var orderState = ""
     @State var showLogoutAlert = false
+    @State var orderId = ""
     
     var body: some View {
         ZStack {
@@ -44,6 +45,13 @@ struct HomeWorker: View {
                 ordersList
             }
             .padding(.vertical)
+        }
+        .sheet(isPresented: $showChangeState) {
+            ChangeOrderStateView(setState: $orderState) {
+                Task {
+                    await homeWorkerVM.modifyOrderState(id: orderId, state: orderState)
+                }
+            }
         }
         .overlay {
             if homeWorkerVM.loading {
@@ -91,6 +99,7 @@ struct HomeWorker: View {
                     .onTapGesture {
                         showChangeState.toggle()
                         orderState = order.orderData.orderState?.rawValue ?? ""
+                        orderId = order.orderData.orderNumber
                     }
                 VStack(alignment: .leading, spacing: 16) {
                     HeaderOrderRow(orderNumber: order.orderData.orderNumber, orderState: order.orderData.orderState, state: order.orderData.state) {
@@ -105,13 +114,6 @@ struct HomeWorker: View {
                 }
                 .padding(.vertical)
                 .frame(maxHeight: .infinity)
-                .sheet(isPresented: $showChangeState) {
-                    ChangeOrderStateView(setState: $orderState) {
-                        Task {
-                            await homeWorkerVM.modifyOrderState(id: order.orderData.orderNumber, state: orderState)
-                        }
-                    }
-                }
             }
         }
         .scrollContentBackground(.hidden)
