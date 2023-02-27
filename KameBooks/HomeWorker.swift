@@ -42,6 +42,8 @@ struct HomeWorker: View {
                 }
                 .padding()
                 
+                CustomSearchBar(searchText: $homeWorkerVM.search, showSearch: .constant(false), placeHolder: "HOMEWORKER_SEARCH_PLACEHOLDER".localized, action: {})
+                
                 ordersList
             }
             .padding(.vertical)
@@ -92,7 +94,7 @@ struct HomeWorker: View {
     }
     
     var ordersList: some View {
-        List(homeWorkerVM.orderedList, id: \.orderData.orderNumber) { order in
+        List(homeWorkerVM.filterOrders, id: \.orderData.orderNumber) { order in
             ZStack(alignment: .leading) {
                 Rectangle()
                     .foregroundColor(.white)
@@ -120,6 +122,10 @@ struct HomeWorker: View {
         .overlay {
             if homeWorkerVM.orderedList.isEmpty {
                 Text("MYORDERS_NO_ORDERS".localized)
+                    .bold()
+            }
+            if homeWorkerVM.filterOrders.isEmpty {
+                Text("Usuario no encontrado")
                     .bold()
             }
         }

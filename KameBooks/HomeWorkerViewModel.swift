@@ -12,12 +12,24 @@ final class HomeWorkerViewModel: ObservableObject {
     
     let networkPersistance = NetworkPersistence.shared
     
+    @Published var search = ""
     @Published var loading = false
     @Published var errorMsg = ""
     @Published var showErrorAlert = false
     @Published var showSuccessAlert = false
     @Published var orderedList: [OrderList] = []
     @Published var completeList: [BooksList] = []
+    
+    var filterOrders: [OrderList] {
+        if search.isEmpty {
+            return orderedList
+        } else {
+            return orderedList.filter {
+                $0.orderData.email.lowercased().hasPrefix(search.lowercased()) ||
+                $0.orderData.orderNumber.lowercased().hasPrefix(search.lowercased())
+            }
+        }
+    }
     
     init(completeList: [BooksList]) {
         self.completeList = completeList

@@ -18,7 +18,7 @@ struct CustomSearchBar: View {
     
     var body: some View {
         HStack {
-            TextField("HOME_SEARCH_PLACEHOLDER".localized, text: $searchText)
+            TextField(placeHolder, text: $searchText)
                 .textFieldStyle(CustomRounderedTextFieldStyle())
                 .focused($focusField)
             if showSearch {

@@ -123,4 +123,5 @@
 "HOMEWORKER_HEADER_TITLE" = "Listado de pedidos";
 "HOMEWORKER_SUCCESS_DESCRIPTION" = "Se ha actualizado el estado del pedido";
 "HOMEWORKER_CHANGE_ORDER_STATE_TITLE" = "¿En que estado se encuentra el pedido?";
+"HOMEWORKER_SEARCH_PLACEHOLDER" = "Buscar por mail o nºpedido";
 

@@ -16,23 +16,23 @@ struct HomeView: View {
     @State var showButton = false
     
     var body: some View {
-        ScrollViewReader { proxy in
-            VStack {
-                CustomSearchBar(searchText: $homeVM.searchText, showSearch: $homeVM.showSearch, placeHolder: "HOME_SEARCH_PLACEHOLDER".localized) {
-                    Task(priority: .userInitiated) {
-                        await homeVM.searchBook(word: homeVM.searchText)
-                    }
+        
+        VStack {
+            CustomSearchBar(searchText: $homeVM.searchText, showSearch: $homeVM.showSearch, placeHolder: "HOME_SEARCH_PLACEHOLDER".localized) {
+                Task(priority: .userInitiated) {
+                    await homeVM.searchBook(word: homeVM.searchText)
                 }
-                
-                
-                Text(String(format: "HOME_WELLCOME_USER".localized, userName))
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
-                    .padding(.bottom, 6)
-                
-                featuredBooksSection
-                
+            }
+            
+            
+            Text(String(format: "HOME_WELLCOME_USER".localized, userName))
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .padding(.bottom, 6)
+            
+            featuredBooksSection
+            ScrollViewReader { proxy in
                 List(homeVM.filteredList, id: \.book.id) { bookList in
                     VStack {
                         BookCell(homeVM: homeVM, bookList: bookList)
@@ -56,21 +56,21 @@ struct HomeView: View {
                 .overlay {
                     noResults
                 }
-            }
-            .overlay(alignment: .bottomTrailing) {
-                Button {
-                    withAnimation {
-                        proxy.scrollTo(1)
+                .overlay(alignment: .bottomTrailing) {
+                    Button {
+                        withAnimation {
+                            proxy.scrollTo(1)
+                        }
+                    } label: {
+                        Image(systemName: "arrow.up.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50)
+                            .foregroundColor(.gold)
                     }
-                } label: {
-                    Image(systemName: "arrow.up.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50)
-                        .foregroundColor(.gold)
+                    .padding()
+                    .opacity(showButton ? 1 : 0)
                 }
-                .padding()
-                .opacity(showButton ? 1 : 0)
             }
         }
         .navigationDestination(for: BooksList.self) { book in

@@ -117,3 +117,4 @@
 "HOMEWORKER_HEADER_TITLE" = "Order list";
 "HOMEWORKER_SUCCESS_DESCRIPTION" = "Order status has been updated";
 "HOMEWORKER_CHANGE_ORDER_STATE_TITLE" = "What is the status of the order?";
+"HOMEWORKER_SEARCH_PLACEHOLDER" = "Search by e-mail or Order No";
