@@ -40,11 +40,11 @@ final class ProfileViewModel: ObservableObject {
     @MainActor func updateUser() async {
         loading = true
         let task = Task(priority: .utility) {
-            try await networkPersistance.updateUser(user: UserModel(name: name, email: mail, location: address, role: "usuario") )
+            try await networkPersistance.updateUser(user: UserModel(name: name, email: mail, location: address, role: userData?.role ?? ""))
         }
         switch await task.result {
         case .success(_):
-            KameBooksKeyChain.shared.user = UserModel(name: name, email: mail, location: address, role: "usuario")
+            KameBooksKeyChain.shared.user = UserModel(name: name, email: mail, location: address, role: userData?.role ?? "")
             userData = KameBooksKeyChain.shared.user
             showSuccessAlert.toggle()
         case .failure(let error as APIErrors):

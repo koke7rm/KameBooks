@@ -125,7 +125,7 @@ struct HomeWorker: View {
                     .bold()
             }
             if homeWorkerVM.filterOrders.isEmpty {
-                Text("Usuario no encontrado")
+                Text("HOME_NO_RESULTS".localized)
                     .bold()
             }
         }
